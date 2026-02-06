@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="廊坊非遗互动体验 - 亲手体验花丝镶嵌、景泰蓝等传统工艺制作流程">
+  <meta name="keywords" content="非遗体验,花丝镶嵌体验,景泰蓝制作,工艺课程,非遗工坊">
+  <meta name="author" content="廊坊非遗数字中心">
+
+  <title>互动体验 | 廊坊非遗数字中心</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <!-- 预加载字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preload" href="assets/fonts/NotoSerifSC-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/NotoSansSC-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- 样式表 -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/experience.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+
+  <!-- AOS动画库 -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ========== 顶部导航栏 ========== -->
+  <header class="navbar" id="navbar" role="banner">
+    <div class="container">
+      <a href="../../index.html" class="logo-group" aria-label="廊坊非遗数字中心首页">
+        <svg class="logo-icon" width="50" height="50" viewBox="0 0 50 50" aria-hidden="true">
+          <defs>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#D4AF37" />
+              <stop offset="100%" stop-color="#F0D98C" />
+            </linearGradient>
+          </defs>
+          <polygon class="logo-outer" points="25,2 47,14 47,36 25,48 3,36 3,14" fill="none"
+            stroke="url(#goldGradient)" stroke-width="2" />
+          <polygon class="logo-inner" points="25,10 40,18 40,32 25,40 10,32 10,18" fill="none" stroke="#9D2933"
+            stroke-width="1.5" />
+          <circle cx="25" cy="25" r="6" fill="none" stroke="url(#goldGradient)" stroke-width="1" />
+          <circle cx="25" cy="25" r="2" fill="#9D2933" />
+        </svg>
+        <div class="logo-text">
+          <h1>廊坊非遗数字中心</h1>
+          <span class="logo-subtitle" lang="en">Langfang ICH Digital Center</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" role="navigation" aria-label="主导航">
+        <a href="museum.html" class="nav-item" data-section="museum">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3 21H21M5 21V7L12 3L19 7V21M9 21V13H15V21" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="nav-text">虚拟博物馆</span>
+          <span class="nav-underline"></span>
+        </a>
+        <a href="experience.html" class="nav-item active" data-section="experience">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="nav-text">互动体验</span>
+          <span class="nav-underline"></span>
+        </a>
+        <a href="quiz.html" class="nav-item" data-section="quiz">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
+              <path d="M9 9C9 7.5 10.5 6 12 6C13.5 6 15 7.5 15 9C15 10.5 13.5 11.5 12 12V14" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" />
+              <circle cx="12" cy="17" r="1" fill="currentColor" />
+            </svg>
+          </span>
+          <span class="nav-text">非遗答题</span>
+          <span class="nav-underline"></span>
+        </a>
+        <a href="ai-guide.html" class="nav-item" data-section="culture">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="nav-text">智能导览</span>
+          <span class="nav-underline"></span>
+        </a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="../index.html" class="action-btn" aria-label="返回首页" title="返回首页">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M3 10L10 3L17 10M5 8V17H15V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+        <button class="mobile-menu-toggle" aria-label="打开菜单" aria-expanded="false" id="mobileMenuToggle">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="nav-border-decoration">
+      <svg class="border-pattern" width="100%" height="4" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="transparent" />
+            <stop offset="20%" stop-color="#D4AF37" />
+            <stop offset="50%" stop-color="#D4AF37" />
+            <stop offset="80%" stop-color="#D4AF37" />
+            <stop offset="100%" stop-color="transparent" />
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="1" fill="url(#borderGradient)" />
+      </svg>
+    </div>
+  </header>
+
+  <!-- ========== 主要内容区 ========== -->
+  <main class="experience-main">
+
+    <!-- Hero区 -->
+    <section class="experience-hero">
+      <div class="container">
+        <div class="hero-deco" data-aos="fade-down">
+          <span class="line"></span>
+          <svg class="icon" width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M14 2L17.5 10H26L19.5 15.5L22 24L14 18.5L6 24L8.5 15.5L2 10H10.5L14 2Z" stroke="currentColor"
+              stroke-width="1.5" />
+          </svg>
+          <span class="line"></span>
+        </div>
+        <h1 class="page-title" data-aos="fade-up">互动体验中心</h1>
+        <p class="page-subtitle" data-aos="fade-up" data-aos-delay="100">亲手触摸千年技艺 · 感受匠心传承温度</p>
+
+        <div class="exp-nav" data-aos="fade-up" data-aos-delay="200">
+          <button class="exp-nav-btn active" data-target="all">
+            <svg class="nav-icon" viewBox="0 0 18 18" fill="none">
+              <rect x="1" y="1" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+              <rect x="10" y="1" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+              <rect x="1" y="10" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+              <rect x="10" y="10" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+            全部
+          </button>
+          <button class="exp-nav-btn" data-target="craft">
+            <svg class="nav-icon" viewBox="0 0 18 18" fill="none">
+              <path d="M9 1L11 7H17L12 10.5L14 17L9 13L4 17L6 10.5L1 7H7L9 1Z" stroke="currentColor"
+                stroke-width="1.5" />
+            </svg>
+            工艺体验
+          </button>
+          <button class="exp-nav-btn" data-target="video">
+            <svg class="nav-icon" viewBox="0 0 18 18" fill="none">
+              <rect x="2" y="3" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.5" />
+              <path d="M7 7L12 9.5L7 12V7Z" fill="currentColor" />
+            </svg>
+            视频课堂
+          </button>
+          <button class="exp-nav-btn" data-target="event">
+            <svg class="nav-icon" viewBox="0 0 18 18" fill="none">
+              <rect x="2" y="3" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5" />
+              <path d="M2 7H16M6 1V4M12 1V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+            活动日历
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 工艺流程体验 ========== -->
+    <section class="craft-process-section" id="sectionCraft" data-category="craft">
+      <div class="container">
+        <header class="section-header" data-aos="fade-up">
+          <span class="section-tag">CRAFT EXPERIENCE</span>
+          <h2 class="section-title">花丝镶嵌 · 工艺体验流程</h2>
+          <p class="section-desc">沿着千年匠人的足迹，亲手体验从金丝拉制到成品镶嵌的完整工艺历程</p>
+        </header>
+
+        <div class="process-timeline">
+          <div class="process-step" data-aos="fade-right">
+            <div class="step-content">
+              <h3 class="step-title">拉丝 · 化金为线</h3>
+              <p class="step-desc">将金银锭反复锤打拉制，穿过由粗到细的拉丝板，最终成为细如发丝的金属丝线。体验从0.5mm到0.16mm的极限拉制过程。</p>
+              <span class="step-tag">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1" />
+                  <path d="M6 3.5V6.5L8 7.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+                </svg>
+                约30分钟
+              </span>
+            </div>
+            <div class="step-number-wrapper">
+              <span class="step-number">1</span>
+            </div>
+          </div>
+
+          <div class="process-step" data-aos="fade-left">
+            <div class="step-content">
+              <h3 class="step-title">掐丝 · 弯曲成形</h3>
+              <p class="step-desc">用镊子将金属丝弯折成各种纹样造型——回纹、如意纹、莲花纹。在导师指导下完成属于自己的花丝图案设计。</p>
+              <span class="step-tag">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1" />
+                  <path d="M6 3.5V6.5L8 7.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+                </svg>
+                约45分钟
+              </span>
+            </div>
+            <div class="step-number-wrapper">
+              <span class="step-number">2</span>
+            </div>
+          </div>
+
+          <div class="process-step" data-aos="fade-right">
+            <div class="step-content">
+              <h3 class="step-title">焊接 · 定形凝固</h3>
+              <p class="step-desc">用焊药将掐好的花丝纹样焊接固定在底座上。学习银粉与硼砂的配比技巧，掌握火候的精准控制。</p>
+              <span class="step-tag">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1" />
+                  <path d="M6 3.5V6.5L8 7.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+                </svg>
+                约30分钟
+              </span>
+            </div>
+            <div class="step-number-wrapper">
+              <span class="step-number">3</span>
+            </div>
+          </div>
+
+          <div class="process-step" data-aos="fade-left">
+            <div class="step-content">
+              <h3 class="step-title">镶嵌 · 点睛之笔</h3>
+              <p class="step-desc">选择珍珠、绿松石、红珊瑚等天然宝石，镶嵌入花丝框架之中。完成专属花丝镶嵌胸针作品，可带走珍藏。</p>
+              <span class="step-tag">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1" />
+                  <path d="M6 3.5V6.5L8 7.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+                </svg>
+                约20分钟
+              </span>
+            </div>
+            <div class="step-number-wrapper">
+              <span class="step-number">4</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 非遗工坊 ========== -->
+    <section class="workshops-section" id="sectionWorkshop" data-category="craft">
+      <div class="container">
+        <header class="section-header" data-aos="fade-up">
+          <span class="section-tag">WORKSHOPS</span>
+          <h2 class="section-title">非遗工坊 · 匠心课堂</h2>
+          <p class="section-desc">名师指导，小班教学，从零基础到独立完成一件非遗手作</p>
+        </header>
+
+        <div class="workshops-grid">
+          <!-- 工坊1 -->
+          <div class="workshop-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="workshop-cover">
+              <div class="workshop-cover-bg" style="background: var(--gradient-red);">
+                <svg viewBox="0 0 80 80" fill="none">
+                  <path d="M40 10L50 30H70L55 42L60 62L40 50L20 62L25 42L10 30H30L40 10Z" stroke="white"
+                    stroke-width="2" />
+                  <circle cx="40" cy="38" r="8" stroke="white" stroke-width="1.5" />
+                </svg>
+              </div>
+              <div class="cover-overlay"></div>
+              <span class="workshop-badge">热门</span>
+            </div>
+            <div class="workshop-body">
+              <h3 class="workshop-title">花丝镶嵌入门班</h3>
+              <p class="workshop-desc">学习基础拉丝与掐丝技法，在大师指导下完成一枚花丝胸针。适合零基础学员，提供全套工具。</p>
+              <div class="workshop-meta">
+                <span class="workshop-meta-item">
+                  <svg viewBox="0 0 14 14" fill="none">
+                    <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2" />
+                    <path d="M7 4V7.5L9.5 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                  </svg>
+                  3小时
+                </span>
+                <span class="workshop-meta-item">
+                  <svg viewBox="0 0 14 14" fill="none">
+                    <circle cx="7" cy="5" r="3" stroke="currentColor" stroke-width="1.2" />
+                    <path d="M2 13C2 10.2 4.2 8 7 8C9.8 8 12 10.2 12 13" stroke="currentColor" stroke-width="1.2" />
+                  </svg>
+                  8人小班
+                </span>
+                <span class="workshop-meta-item">
+                  <svg viewBox="0 0 14 14" fill="none">
+                    <path d="M7 1L8.5 5H13L9.5 7.5L11 12L7 9L3 12L4.5 7.5L1 5H5.5L7 1Z" stroke="currentColor"
+                      stroke-width="1.2" />
+                  </svg>
+                  4.9分
+                </span>
+              </div>
+              <div class="workshop-action">
+                <div class="workshop-price">
+                  ¥298 <span class="price-label">/人</span>
+                </div>
+                <button class="workshop-btn">
+                  立即预约
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M3 7H11M8 4L11 7L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 工坊2 -->
+          <div class="workshop-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="workshop-cover">
+              <div class="workshop-cover-bg" style="background: var(--gradient-blue);">
+                <svg viewBox="0 0 80 80" fill="none">
+                  <circle cx="40" cy="40" r="25" stroke="white" stroke-width="2" />
+                  <path d="M25 40C25 31.7 31.7 25 40 25" stroke="white" stroke-width="1.5" />
+                  <path d="M40 55C48.3 55 55 48.3 55 40" stroke="white" stroke-width="1.5" />
+                  <circle cx="40" cy="40" r="8" stroke="white" stroke-width="1.5" />
+                </svg>
+              </div>
+              <div class="cover-overlay"></div>
+              <span class="workshop-badge">经典</span>
+            </div>
+            <div class="workshop-body">
+              <h3 class="workshop-title">景泰蓝掐丝体验</h3>
+              <p class="workshop-desc">体验铜胎掐丝珐琅工艺，亲手用铜丝在瓶身上掐出传统纹样，完成点蓝上色，制作一件景泰蓝摆件。</p>
+              <div class="workshop-meta">
+                <span class="workshop-meta-item">
+                  <svg viewBox="0 0 14 14" fill="none">
+                    <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2" />
+                    <path d="M7 4V7.5L9.5 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                  </svg>
+                  4小时
+                </span>
+                <span class="workshop-meta-item">
+                  <svg viewBox="0 0 14 14" fill="none">
+                    <circle cx="7" cy="5" r="3" stroke="currentColor" stroke-width="1.2" />
+                    <path d="M2 13C2 10.2 4.2 8 7 8C9.8 8 12 10.2 12 13" stroke="currentColor" stroke-width="1.2" />
+                  </svg>
+                  6人小班
+                </span>
+                <span class="workshop-meta-item">
+                  <svg viewBox="0 0 14 14" fill="none">
+                    <path d="M7 1L8.5 5H13L9.5 7.5L11 12L7 9L3 12L4.5 7.5L1 5H5.5L7 1Z" stroke="currentColor"
+                      stroke-width="1.2" />
+                  </svg>
+                  4.8分
+                </span>
+              </div>
+              <div class="workshop-action">
+                <div class="workshop-price">
+                  ¥368 <span class="price-label">/人</span>
+                </div>
+                <button class="workshop-btn">
+                  立即预约
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M3 7H11M8 4L11 7L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 工坊3 -->
+          <div class="workshop-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="workshop-cover">
+              <div class="workshop-cover-bg" style="background: linear-gradient(135deg, #6B4E9E 0%, #4A3570 100%);">
+                <svg viewBox="0 0 80 80" fill="none">
+                  <path d="M40 15L55 30V55L40 65L25 55V30L40 15Z" stroke="white" stroke-width="2" />
+                  <path d="M40 30L48 35V48L40 53L32 48V35L40 30Z" stroke="white" stroke-width="1.5" />
+                </svg>
+              </div>
+              <div class="cover-overlay"></div>
+              <span class="workshop-badge">新课</span>
+            </div>
+            <div class="workshop-body">
+              <h3 class="workshop-title">风筝扎制工坊</h3>
+              <p class="workshop-desc">学习第什里风筝的"扎、糊、绘、放"四艺，亲手扎制一只传统沙燕风筝，绘上吉祥图案后放飞。</p>
+              <div class="workshop-meta">
+                <span class="workshop-meta-item">
+                  <svg viewBox="0 0 14 14" fill="none">
+                    <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2" />
+                    <path d="M7 4V7.5L9.5 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                  </svg>
+                  2.5小时
+                </span>
+                <span class="workshop-meta-item">
+                  <svg viewBox="0 0 14 14" fill="none">
+                    <circle cx="7" cy="5" r="3" stroke="currentColor" stroke-width="1.2" />
+                    <path d="M2 13C2 10.2 4.2 8 7 8C9.8 8 12 10.2 12 13" stroke="currentColor" stroke-width="1.2" />
+                  </svg>
+                  10人小班
+                </span>
+                <span class="workshop-meta-item">
+                  <svg viewBox="0 0 14 14" fill="none">
+                    <path d="M7 1L8.5 5H13L9.5 7.5L11 12L7 9L3 12L4.5 7.5L1 5H5.5L7 1Z" stroke="currentColor"
+                      stroke-width="1.2" />
+                  </svg>
+                  4.9分
+                </span>
+              </div>
+              <div class="workshop-action">
+                <div class="workshop-price">
+                  ¥168 <span class="price-label">/人</span>
+                </div>
+                <button class="workshop-btn">
+                  立即预约
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M3 7H11M8 4L11 7L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 视频课堂 ========== -->
+    <section class="video-section" id="sectionVideo" data-category="video">
+      <div class="container">
+        <header class="section-header" data-aos="fade-up">
+          <span class="section-tag">VIDEO CLASS</span>
+          <h2 class="section-title">大师讲堂 · 视频课程</h2>
+          <p class="section-desc">国家级非遗传承人亲自讲解，在线学习非遗工艺精髓</p>
+        </header>
+
+        <div class="video-grid">
+          <div class="video-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="video-thumbnail" style="background: var(--gradient-red);">
+              <div class="video-play-btn">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M6 4L16 10L6 16V4Z" fill="currentColor" />
+                </svg>
+              </div>
+              <span class="video-duration">18:32</span>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">花丝镶嵌：从金锭到金丝的拉制工艺</h3>
+              <p class="video-desc">传承人亲自演示如何将一块金锭拉制成比头发还细的金丝</p>
+              <div class="video-tags">
+                <span class="video-tag">花丝镶嵌</span>
+                <span class="video-tag">拉丝</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="video-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="video-thumbnail" style="background: var(--gradient-blue);">
+              <div class="video-play-btn">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M6 4L16 10L6 16V4Z" fill="currentColor" />
+                </svg>
+              </div>
+              <span class="video-duration">24:15</span>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">景泰蓝六大工序全流程解密</h3>
+              <p class="video-desc">从制胎到镀金，完整记录一件景泰蓝作品诞生的全过程</p>
+              <div class="video-tags">
+                <span class="video-tag">景泰蓝</span>
+                <span class="video-tag">全流程</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="video-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="video-thumbnail" style="background: linear-gradient(135deg, #6B4E9E 0%, #4A3570 100%);">
+              <div class="video-play-btn">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M6 4L16 10L6 16V4Z" fill="currentColor" />
+                </svg>
+              </div>
+              <span class="video-duration">12:48</span>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">第什里风筝：沙燕风筝的扎制秘诀</h3>
+              <p class="video-desc">安次非遗传承人传授沙燕风筝骨架扎制的核心技巧</p>
+              <div class="video-tags">
+                <span class="video-tag">风筝</span>
+                <span class="video-tag">扎制</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="video-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="video-thumbnail" style="background: var(--gradient-gold);">
+              <div class="video-play-btn">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M6 4L16 10L6 16V4Z" fill="currentColor" />
+                </svg>
+              </div>
+              <span class="video-duration">15:20</span>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">廊坊剪纸：阴剪与阳剪的艺术对话</h3>
+              <p class="video-desc">一把剪刀一张纸，剪出千年民俗文化的精彩故事</p>
+              <div class="video-tags">
+                <span class="video-tag">剪纸</span>
+                <span class="video-tag">技法</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 活动日历 ========== -->
+    <section class="events-section" id="sectionEvent" data-category="event">
+      <div class="container">
+        <header class="section-header" data-aos="fade-up">
+          <span class="section-tag">EVENTS</span>
+          <h2 class="section-title">近期活动 · 非遗日历</h2>
+          <p class="section-desc">线下研学、大师工坊、非遗市集，精彩活动不断</p>
+        </header>
+
+        <div class="events-list">
+          <div class="event-item" data-aos="fade-up" data-aos-delay="0">
+            <div class="event-date">
+              <span class="date-day">15</span>
+              <span class="date-month">2月</span>
+            </div>
+            <div class="event-body">
+              <div class="event-info">
+                <h3 class="event-title">「指尖乾坤」花丝镶嵌亲子研学营</h3>
+                <p class="event-detail">大厂花丝镶嵌工坊 · 9:30-16:00 · 亲子家庭</p>
+              </div>
+              <span class="event-status open">报名中</span>
+            </div>
+          </div>
+
+          <div class="event-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="event-date">
+              <span class="date-day">22</span>
+              <span class="date-month">2月</span>
+            </div>
+            <div class="event-body">
+              <div class="event-info">
+                <h3 class="event-title">景泰蓝大师工坊 · 开放日</h3>
+                <p class="event-detail">廊坊非遗体验馆 · 10:00-17:00 · 免费参观</p>
+              </div>
+              <span class="event-status open">报名中</span>
+            </div>
+          </div>
+
+          <div class="event-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="event-date">
+              <span class="date-day">08</span>
+              <span class="date-month">3月</span>
+            </div>
+            <div class="event-body">
+              <div class="event-info">
+                <h3 class="event-title">「燕赵风华」非遗文创市集</h3>
+                <p class="event-detail">廊坊万达广场 · 全天 · 免费入场</p>
+              </div>
+              <span class="event-status upcoming">即将开始</span>
+            </div>
+          </div>
+
+          <div class="event-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="event-date">
+              <span class="date-day">15</span>
+              <span class="date-month">3月</span>
+            </div>
+            <div class="event-body">
+              <div class="event-info">
+                <h3 class="event-title">风筝节 · 第什里风筝放飞大赛</h3>
+                <p class="event-detail">安次区第什里风筝小镇 · 8:00-17:00</p>
+              </div>
+              <span class="event-status upcoming">即将开始</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-box" data-aos="zoom-in">
+          <svg class="cta-icon" viewBox="0 0 64 64" fill="none">
+            <path d="M32 6L40 22H56L44 34L48 50L32 40L16 50L20 34L8 22H24L32 6Z" stroke="currentColor"
+              stroke-width="2.5" />
+            <circle cx="32" cy="30" r="8" stroke="currentColor" stroke-width="2" />
+          </svg>
+          <h2 class="cta-title">开启您的非遗之旅</h2>
+          <p class="cta-desc">预约线下工坊体验，在传承人的指导下亲手完成一件非遗作品，<br>感受指尖流淌的千年文化温度。</p>
+          <div class="cta-buttons">
+            <button class="cta-btn-primary">
+              预约体验
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M4 9H14M10 5L14 9L10 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </button>
+            <a href="ai-guide.html" class="cta-btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M16 12a1.5 1.5 0 01-1.5 1.5H5.5L2 17V4a1.5 1.5 0 011.5-1.5h11A1.5 1.5 0 0116 4z"
+                  stroke="currentColor" stroke-width="1.5" />
+              </svg>
+              咨询导览
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== 页脚 ========== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <svg width="40" height="40" viewBox="0 0 50 50">
+                <polygon points="25,2 47,14 47,36 25,48 3,36 3,14" fill="none" stroke="#D4AF37" stroke-width="2" />
+                <circle cx="25" cy="25" r="6" fill="#9D2933" />
+              </svg>
+              <span>廊坊非遗数字中心</span>
+            </div>
+            <p class="footer-desc">以数字之笔，复刻花丝镶嵌的指尖乾坤。致力于非物质文化遗产的数字化保护与传承创新。</p>
+          </div>
+          <div class="footer-links">
+            <h3>快速导航</h3>
+            <ul>
+              <li><a href="museum.html">虚拟博物馆</a></li>
+              <li><a href="experience.html">互动体验</a></li>
+              <li><a href="quiz.html">非遗答题</a></li>
+              <li><a href="ai-guide.html">智能导览</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h3>联系我们</h3>
+            <ul>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M8 1C4.686 1 2 3.686 2 7c0 4.5 6 8 6 8s6-3.5 6-8c0-3.314-2.686-6-6-6z"
+                    stroke="currentColor" stroke-width="1.5" />
+                  <circle cx="8" cy="7" r="2" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+                <span>河北省廊坊市大厂回族自治县</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M2 4l6 4 6-4M2 4h12v8H2V4z" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+                <a href="mailto:contact@lfich.cn">contact@lfich.cn</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-content">
+          <p class="copyright">&copy; 2026 廊坊非遗数字中心 版权所有</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== JavaScript ========== -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script type="module" src="../main.js"></script>
+  <script type="module" src="../js/experience.js"></script>
+
+</body>
+
+</html>

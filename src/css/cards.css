@@ -1,0 +1,463 @@
+/* ==========================================
+   廊坊非遗数字中心 - 卡片样式
+   ========================================== */
+
+/* ========== 传承人卡片区域 ========== */
+.inheritors-section {
+  position: relative;
+  padding: var(--spacing-24) 0;
+  background: var(--color-ivory-white);
+  overflow: hidden;
+}
+
+.inheritor-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-8);
+  margin-bottom: var(--spacing-12);
+}
+
+@media (max-width: 1024px) {
+  .inheritor-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .inheritor-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========== 传承人卡片 ========== */
+.inheritor-card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: white;
+  box-shadow: var(--shadow-md);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.inheritor-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.card-inner {
+  position: relative;
+}
+
+/* 卡片图片区 */
+.card-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image {
+  position: relative;
+  padding-top: 56.25%;
+  /* 16:9 比例 */
+  overflow: hidden;
+}
+
+.card-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.inheritor-card:hover .card-image img {
+  transform: scale(1.08);
+}
+
+/* 卡片遮罩层 */
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.inheritor-card:hover .card-overlay {
+  opacity: 1;
+}
+
+.overlay-icon {
+  color: white;
+  transform: scale(0.8);
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.inheritor-card:hover .overlay-icon {
+  transform: scale(1);
+}
+
+.overlay-text {
+  color: white;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+}
+
+/* 荣誉标签 */
+.card-badge {
+  position: absolute;
+  top: var(--spacing-3);
+  right: var(--spacing-3);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-3);
+  background: rgba(157, 41, 51, 0.9);
+  color: white;
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+.card-badge.provincial {
+  background: rgba(30, 90, 140, 0.9);
+}
+
+.card-badge.digital {
+  background: rgba(212, 175, 55, 0.9);
+  color: var(--color-ink-gray-dark);
+}
+
+.badge-icon {
+  font-size: var(--text-sm);
+}
+
+/* 卡片内容区 */
+.card-content {
+  padding: var(--spacing-6);
+}
+
+.card-name {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--color-palace-red);
+  margin-bottom: var(--spacing-2);
+}
+
+.card-title {
+  font-size: var(--text-sm);
+  color: var(--color-ink-gray-light);
+  margin-bottom: var(--spacing-4);
+}
+
+.card-description {
+  font-size: var(--text-sm);
+  color: var(--color-ink-gray);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--spacing-4);
+
+  /* 限制行数 */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-5);
+}
+
+.card-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* 卡片装饰 */
+.card-pattern-decoration {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  pointer-events: none;
+}
+
+.pattern-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ========== 快速入口卡片 ========== */
+.quick-access-section {
+  padding: var(--spacing-24) 0;
+  background: linear-gradient(180deg, var(--color-ivory-white) 0%, var(--color-ivory-white-dark) 100%);
+}
+
+.access-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-8);
+}
+
+@media (max-width: 1024px) {
+  .access-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .access-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.access-card {
+  position: relative;
+  display: block;
+  padding: var(--spacing-10);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  text-decoration: none;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.access-card:hover {
+  transform: translateY(-8px);
+}
+
+/* 卡片背景 */
+.card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.access-card:hover .card-bg {
+  transform: scale(1.05);
+}
+
+.museum-bg {
+  background: linear-gradient(135deg, var(--color-palace-red) 0%, var(--color-palace-red-dark) 100%);
+}
+
+.experience-bg {
+  background: linear-gradient(135deg, var(--color-cloisonne-blue) 0%, var(--color-cloisonne-blue-dark) 100%);
+}
+
+.quiz-bg {
+  background: linear-gradient(135deg, #6B4E9E 0%, #4A3570 100%);
+}
+
+.culture-bg {
+  background: linear-gradient(135deg, var(--color-gold-dark) 0%, var(--color-gold) 100%);
+}
+
+/* 卡片内容 */
+.access-card .card-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  padding: 0;
+}
+
+.access-card .card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--spacing-5);
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(8px);
+}
+
+.access-card .card-title {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: white;
+  margin-bottom: var(--spacing-3);
+}
+
+.access-card .card-desc {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.8);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--spacing-5);
+}
+
+.card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-5);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.access-card:hover .card-action {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.card-action svg {
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.access-card:hover .card-action svg {
+  transform: translateX(4px);
+}
+
+/* 卡片光效 */
+.card-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent);
+  z-index: 2;
+  transition: left var(--duration-slow) var(--ease-out);
+}
+
+.access-card:hover .card-shine {
+  left: 150%;
+}
+
+/* ========== 工艺项目卡片 ========== */
+.craft-card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: white;
+  box-shadow: var(--shadow-md);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.craft-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.craft-card .card-image {
+  padding-top: 75%;
+  /* 4:3 比例 */
+}
+
+.craft-card .card-content {
+  padding: var(--spacing-5);
+}
+
+.craft-category {
+  display: inline-block;
+  padding: var(--spacing-1) var(--spacing-2);
+  font-size: var(--text-xs);
+  color: var(--color-palace-red);
+  background: rgba(var(--color-palace-red-rgb), 0.1);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--spacing-2);
+}
+
+.craft-name {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--color-ink-gray-dark);
+  margin-bottom: var(--spacing-2);
+}
+
+.craft-desc {
+  font-size: var(--text-sm);
+  color: var(--color-ink-gray-light);
+  line-height: var(--leading-relaxed);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ========== 文创产品卡片 ========== */
+.product-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: white;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.product-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.product-card .card-image {
+  padding-top: 100%;
+  /* 1:1 正方形 */
+  background: var(--color-ivory-white);
+}
+
+.product-card .card-content {
+  padding: var(--spacing-4);
+}
+
+.product-name {
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  color: var(--color-ink-gray-dark);
+  margin-bottom: var(--spacing-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-2);
+}
+
+.price-current {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--color-palace-red);
+}
+
+.price-original {
+  font-size: var(--text-sm);
+  color: var(--color-ink-gray-light);
+  text-decoration: line-through;
+}
+
+.product-card .card-actions {
+  display: flex;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
+  border-top: 1px solid var(--color-light-gray);
+}

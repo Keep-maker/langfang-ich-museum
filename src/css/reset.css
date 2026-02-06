@@ -1,0 +1,225 @@
+/* ==========================================
+   廊坊非遗数字中心 - 样式重置
+   ========================================== */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 移除默认边距和内边距 */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 根元素设置 */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  height: 100%;
+}
+
+/* 无障碍：尊重用户偏好 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Body设置 */
+body {
+  min-height: 100%;
+  line-height: 1.5;
+  font-family: var(--font-sans);
+  color: var(--color-ink-gray);
+  background-color: var(--color-ivory-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* 防止body滚动（模态框打开时） */
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* 标题重置 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+/* 列表重置 */
+ul,
+ol {list-style: none;
+}
+
+/* 链接重置 */
+a {
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-palace-red);
+  outline-offset: 2px;
+}
+
+/* 按钮重置 */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--color-palace-red);
+  outline-offset: 2px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* 表单元素重置 */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-ink-gray-light);
+  opacity: 1;
+}
+
+/* 图片和媒体重置 */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  border-style: none;
+}
+
+/* 表格重置 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 隐藏元素 */
+[hidden] {
+  display: none !important;
+}
+
+/* 可视化隐藏（仍可被屏幕阅读器访问） */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 跳过链接（无障碍） */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--spacing-3) var(--spacing-6);
+  background: var(--color-palace-red);
+  color: white;
+  z-index: var(--z-max);
+  transition: top var(--duration-normal) var(--ease-out);
+}
+
+.skip-link:focus {
+  top: var(--spacing-4);
+}
+
+/* 选择文本样式 */
+::selection {
+  background-color: rgba(var(--color-palace-red-rgb), 0.2);
+  color: var(--color-palace-red-dark);
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ivory-white-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-ivory-white-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-palace-red);
+}
+
+/* Firefox滚动条 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gold) var(--color-ivory-white-dark);
+}

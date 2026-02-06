@@ -1,0 +1,246 @@
+/* ==========================================
+   廊坊非遗数字中心 - CSS变量定义
+   设计规范 v1.0
+   ========================================== */
+
+:root {
+  /* ========== 色彩系统 ========== */
+
+  /* 主色调 */
+  --color-palace-red: #9D2933;
+  /* 故宫红 - 主要强调色 */
+  --color-palace-red-light: #C63946;
+  /* 故宫红 - 浅色 */
+  --color-palace-red-dark: #7A1F28;
+  /* 故宫红 - 深色 */
+  --color-palace-red-rgb: 157, 41, 51;
+  /* RGB值用于透明度 */
+
+  --color-cloisonne-blue: #1E5A8C;
+  /* 景泰蓝青 - 次要色 */
+  --color-cloisonne-blue-light: #2A6BA8;
+  --color-cloisonne-blue-dark: #164468;
+  --color-cloisonne-blue-rgb: 30, 90, 140;
+
+  --color-ivory-white: #F5F0E8;
+  /* 象牙白 - 背景色 */
+  --color-ivory-white-pure: #FFFDF9;
+  --color-ivory-white-dark: #E8E3DB;
+  --color-ivory-white-rgb: 245, 240, 232;
+
+  /* 辅助色 */
+  --color-gold: #D4AF37;
+  /* 鎏金 - 装饰色 */
+  --color-gold-light: #F0D98C;
+  --color-gold-dark: #B8942E;
+  --color-gold-rgb: 212, 175, 55;
+
+  /* 中性色 */
+  --color-ink-gray: #4A4A4A;
+  /* 墨灰 - 正文 */
+  --color-ink-gray-light: #6B6B6B;
+  --color-ink-gray-dark: #2D2D2D;
+
+  --color-light-gray: #E8E8E8;
+  --color-border-gray: #D0D0D0;
+
+  /* 功能色 */
+  --color-success: #52C41A;
+  --color-warning: #FAAD14;
+  --color-error: #FF4D4F;
+  --color-info: #1890FF;
+
+  /* ========== 渐变 ========== */
+  --gradient-blue: linear-gradient(135deg, #1E5A8C 0%, #2A6BA8 100%);
+  --gradient-blue-vertical: linear-gradient(180deg, #1E5A8C 0%, #2A6BA8 100%);
+  --gradient-red: linear-gradient(135deg, #9D2933 0%, #C63946 100%);
+  --gradient-gold: linear-gradient(135deg, #D4AF37 0%, #F0D98C 100%);
+  --gradient-gold-metallic: linear-gradient(135deg, #B8942E 0%, #D4AF37 25%, #F0D98C 50%, #D4AF37 75%, #B8942E 100%);
+  --gradient-ivory: linear-gradient(180deg, #F5F0E8 0%, #E8E3DB 100%);
+
+  /* 遮罩渐变 */
+  --gradient-overlay-dark: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+  --gradient-overlay-light: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 100%);
+
+  /* ========== 阴影 ========== */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.18);
+  --shadow-2xl: 0 20px 48px rgba(0, 0, 0, 0.22);
+
+  /* 彩色阴影 */
+  --shadow-red: 0 8px 24px rgba(157, 41, 51, 0.25);
+  --shadow-blue: 0 8px 24px rgba(30, 90, 140, 0.25);
+  --shadow-gold: 0 8px 24px rgba(212, 175, 55, 0.3);
+
+  /* 内阴影 */
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  /* ========== 字体 ========== */
+  --font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'SimSun', serif;
+  --font-sans: 'Noto Sans SC', 'Source Han Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  /* 字体大小 */
+  --text-xs: 0.75rem;
+  /* 12px */
+  --text-sm: 0.875rem;
+  /* 14px */
+  --text-base: 1rem;
+  /* 16px */
+  --text-lg: 1.125rem;
+  /* 18px */
+  --text-xl: 1.25rem;
+  /* 20px */
+  --text-2xl: 1.5rem;
+  /* 24px */
+  --text-3xl: 1.875rem;
+  /* 30px */
+  --text-4xl: 2.25rem;
+  /* 36px */
+  --text-5xl: 3rem;
+  /* 48px */
+  --text-6xl: 3.75rem;
+  /* 60px */
+
+  /* 行高 */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* 字重 */
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* 字间距 */
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+
+  /* ========== 间距 ========== */
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;
+  /* 4px */
+  --spacing-2: 0.5rem;
+  /* 8px */
+  --spacing-3: 0.75rem;
+  /* 12px */
+  --spacing-4: 1rem;
+  /* 16px */
+  --spacing-5: 1.25rem;
+  /* 20px */
+  --spacing-6: 1.5rem;
+  /* 24px */
+  --spacing-8: 2rem;
+  /* 32px */
+  --spacing-10: 2.5rem;
+  /* 40px */
+  --spacing-12: 3rem;
+  /* 48px */
+  --spacing-16: 4rem;
+  /* 64px */
+  --spacing-20: 5rem;
+  /* 80px */
+  --spacing-24: 6rem;
+  /* 96px */
+
+  /* ========== 圆角 ========== */
+  --radius-none: 0;
+  --radius-sm: 0.25rem;
+  /* 4px */
+  --radius-md: 0.5rem;
+  /* 8px */
+  --radius-lg: 0.75rem;
+  /* 12px */
+  --radius-xl: 1rem;
+  /* 16px */
+  --radius-2xl: 1.5rem;
+  /* 24px */
+  --radius-full: 9999px;
+
+  /* ========== 动画 ========== */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 800ms;
+
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+  /* ========== 层级 ========== */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-popover: 600;
+  --z-tooltip: 700;
+  --z-toast: 800;
+  --z-loader: 900;
+  --z-max: 9999;
+
+  /* ========== 布局 ========== */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1536px;
+  --container-max: 1600px;
+
+  /* 导航栏高度 */
+  --navbar-height: 80px;
+  --navbar-height-scrolled: 70px;
+  --navbar-height-mobile: 60px;
+
+  /* ========== 断点 ========== */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* ========== 暗色主题变量 ========== */
+[data-theme="dark"] {
+  --color-ivory-white: #1A1A1A;
+  --color-ivory-white-pure: #242424;
+  --color-ivory-white-dark: #0F0F0F;
+  --color-ink-gray: #E0E0E0;
+  --color-ink-gray-light: #B0B0B0;
+  --color-ink-gray-dark: #FFFFFF;
+}
+
+/* ========== 高对比度模式 ========== */
+@media (prefers-contrast: high) {
+  :root {
+    --color-palace-red: #CC0000;
+    --color-cloisonne-blue: #0055CC;
+    --color-gold: #CC9900;
+  }
+}
+
+/* ========== 减少动画模式 ========== */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+    --duration-slower: 0ms;
+  }
+}

@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="廊坊非遗知识答题 - 测试您的非遗知识，AI智能解析助您学习">
+  <meta name="keywords" content="非遗答题,知识测验,花丝镶嵌,景泰蓝,AI解析">
+  <meta name="author" content="廊坊非遗数字中心">
+
+  <title>非遗答题 | 廊坊非遗数字中心</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <!-- 预加载字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preload" href="assets/fonts/NotoSerifSC-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/NotoSansSC-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- 样式表 -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+
+  <!-- AOS动画库 -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* 答题页面专用样式 */
+    .quiz-main {
+      min-height: 100vh;
+      background: linear-gradient(180deg, var(--color-ivory-white) 0%, var(--color-ivory-white-dark) 100%);
+      padding-top: var(--navbar-height);
+    }
+
+    /* 进度条 */
+    .quiz-progress {
+      position: sticky;
+      top: var(--navbar-height);
+      z-index: 50;
+      background: white;
+      padding: var(--spacing-4) 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .progress-container {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-4);
+    }
+
+    .progress-info {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      font-size: var(--text-sm);
+      color: var(--color-ink-gray);
+      white-space: nowrap;
+    }
+
+    .progress-bar-wrapper {
+      flex: 1;
+      height: 8px;
+      background: var(--color-light-gray);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--gradient-gold);
+      border-radius: var(--radius-full);
+      transition: width var(--duration-normal) var(--ease-out);
+    }
+
+    .progress-score {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      padding: var(--spacing-2) var(--spacing-4);
+      background: rgba(var(--color-gold-rgb), 0.1);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: var(--font-bold);
+      color: var(--color-gold-dark);
+    }
+
+    /* 题目卡片 */
+    .quiz-card {
+      max-width: 800px;
+      margin: var(--spacing-8) auto;
+      background: white;
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    .quiz-card-header {
+      padding: var(--spacing-6);
+      background: var(--gradient-red);
+      color: white;
+    }
+
+    .question-number {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      padding: var(--spacing-2) var(--spacing-4);
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      margin-bottom: var(--spacing-4);
+    }
+
+    .question-category {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      margin-left: var(--spacing-2);
+      padding: var(--spacing-1) var(--spacing-3);
+      background: rgba(212, 175, 55, 0.3);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+    }
+
+    .question-text {
+      font-family: var(--font-serif);
+      font-size: var(--text-xl);
+      font-weight: var(--font-bold);
+      line-height: var(--leading-relaxed);
+    }
+
+    .quiz-card-body {
+      padding: var(--spacing-6);
+    }
+
+    /* 选项列表 */
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-3);
+    }
+
+    .option-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-4);
+      padding: var(--spacing-4) var(--spacing-5);
+      background: var(--color-ivory-white);
+      border: 2px solid var(--color-border-gray);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-out);
+    }
+
+    .option-item:hover:not(.disabled) {
+      border-color: var(--color-palace-red);
+      background: rgba(var(--color-palace-red-rgb), 0.05);
+      transform: translateX(4px);
+    }
+
+    .option-item.selected {
+      border-color: var(--color-palace-red);
+      background: rgba(var(--color-palace-red-rgb), 0.1);
+    }
+
+    .option-item.correct {
+      border-color: var(--color-success);
+      background: rgba(82, 196, 26, 0.1);
+    }
+
+    .option-item.wrong {
+      border-color: var(--color-error);
+      background: rgba(255, 77, 79, 0.1);
+    }
+
+    .option-item.disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .option-letter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: white;
+      border: 2px solid var(--color-border-gray);
+      border-radius: var(--radius-full);
+      font-weight: var(--font-bold);
+      color: var(--color-ink-gray);
+      flex-shrink: 0;
+      transition: all var(--duration-fast);
+    }
+
+    .option-item.selected .option-letter {
+      background: var(--color-palace-red);
+      border-color: var(--color-palace-red);
+      color: white;
+    }
+
+    .option-item.correct .option-letter {
+      background: var(--color-success);
+      border-color: var(--color-success);
+      color: white;
+    }
+
+    .option-item.wrong .option-letter {
+      background: var(--color-error);
+      border-color: var(--color-error);
+      color: white;
+    }
+
+    .option-text {
+      flex: 1;
+      font-size: var(--text-base);
+      color: var(--color-ink-gray);
+    }
+
+    .option-icon {
+      width: 24px;
+      height: 24px;
+      opacity: 0;
+      transition: opacity var(--duration-fast);
+    }
+
+    .option-item.correct .option-icon,
+    .option-item.wrong .option-icon {
+      opacity: 1;
+    }
+
+    /* 结果反馈 */
+    .result-feedback {
+      margin-top: var(--spacing-6);
+      padding: var(--spacing-5);
+      border-radius: var(--radius-lg);
+      display: none;
+    }
+
+    .result-feedback.show {
+      display: block;
+      animation: fadeInUp var(--duration-normal) var(--ease-out);
+    }
+
+    .result-feedback.correct {
+      background: rgba(82, 196, 26, 0.1);
+      border: 1px solid rgba(82, 196, 26, 0.3);
+    }
+
+    .result-feedback.wrong {
+      background: rgba(255, 77, 79, 0.1);
+      border: 1px solid rgba(255, 77, 79, 0.3);
+    }
+
+    .feedback-header {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      margin-bottom: var(--spacing-3);
+    }
+
+    .feedback-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .feedback-title {
+      font-family: var(--font-serif);
+      font-size: var(--text-lg);
+      font-weight: var(--font-bold);
+    }
+
+    .result-feedback.correct .feedback-title {
+      color: var(--color-success);
+    }
+
+    .result-feedback.wrong .feedback-title {
+      color: var(--color-error);
+    }
+
+    .feedback-text {
+      font-size: var(--text-sm);
+      color: var(--color-ink-gray);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* AI解析区域 */
+    .ai-analysis {
+      margin-top: var(--spacing-5);
+      padding: var(--spacing-5);
+      background: white;
+      border-radius: var(--radius-lg);
+      border-left: 4px solid var(--color-gold);
+    }
+
+    .ai-analysis-header {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      margin-bottom: var(--spacing-3);
+      color: var(--color-gold-dark);
+      font-weight: var(--font-bold);
+    }
+
+    .ai-analysis-content {
+      font-size: var(--text-sm);
+      color: var(--color-ink-gray);
+      line-height: var(--leading-relaxed);
+    }
+
+    .ai-loading {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      color: var(--color-ink-gray-light);
+    }
+
+    .ai-loading .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--color-gold);
+      border-radius: 50%;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    .ai-loading .dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .ai-loading .dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    /* 操作按钮 */
+    .quiz-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-6);
+      border-top: 1px solid var(--color-light-gray);
+      background: var(--color-ivory-white);
+    }
+
+    .action-hint {
+      font-size: var(--text-sm);
+      color: var(--color-ink-gray-light);
+    }
+
+    .next-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      padding: var(--spacing-4) var(--spacing-8);
+      background: var(--gradient-red);
+      color: white;
+      font-size: var(--text-base);
+      font-weight: var(--font-bold);
+      border-radius: var(--radius-full);
+      transition: all var(--duration-fast);
+      cursor: pointer;
+    }
+
+    .next-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-red);
+    }
+
+    .next-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* 结果页面 */
+    .quiz-result {
+      max-width: 600px;
+      margin: var(--spacing-12) auto;
+      text-align: center;
+      display: none;
+    }
+
+    .quiz-result.show {
+      display: block;
+    }
+
+    .result-icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto var(--spacing-6);
+      background: var(--gradient-gold);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: bounceIn var(--duration-slower) var(--ease-bounce);
+    }
+
+    .result-title {
+      font-family: var(--font-serif);
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      color: var(--color-palace-red);
+      margin-bottom: var(--spacing-4);
+    }
+
+    .result-score {
+      font-size: var(--text-6xl);
+      font-weight: var(--font-bold);
+      color: var(--color-gold);
+      margin-bottom: var(--spacing-2);
+    }
+
+    .result-desc {
+      font-size: var(--text-lg);
+      color: var(--color-ink-gray);
+      margin-bottom: var(--spacing-8);
+    }
+
+    .result-stats {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-8);
+      margin-bottom: var(--spacing-8);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      color: var(--color-ink-gray-dark);
+    }
+
+    .stat-label {
+      font-size: var(--text-sm);
+      color: var(--color-ink-gray-light);
+    }
+
+    .result-actions {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-4);
+    }
+
+    .restart-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      padding: var(--spacing-4) var(--spacing-8);
+      background: var(--gradient-red);
+      color: white;
+      font-size: var(--text-base);
+      font-weight: var(--font-bold);
+      border-radius: var(--radius-full);
+      transition: all var(--duration-fast);
+      cursor: pointer;
+    }
+
+    .restart-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-red);
+    }
+
+    .home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      padding: var(--spacing-4) var(--spacing-8);
+      background: white;
+      color: var(--color-palace-red);
+      font-size: var(--text-base);
+      font-weight: var(--font-bold);
+      border: 2px solid var(--color-palace-red);
+      border-radius: var(--radius-full);
+      transition: all var(--duration-fast);
+      cursor: pointer;
+    }
+
+    .home-btn:hover {
+      background: rgba(var(--color-palace-red-rgb), 0.1);
+    }
+
+    /* 难度选择 */
+    .difficulty-selector {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-3);
+      margin-bottom: var(--spacing-8);
+    }
+
+    .difficulty-btn {
+      padding: var(--spacing-3) var(--spacing-6);
+      background: white;
+      border: 2px solid var(--color-border-gray);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      color: var(--color-ink-gray);
+      cursor: pointer;
+      transition: all var(--duration-fast);
+    }
+
+    .difficulty-btn:hover {
+      border-color: var(--color-palace-red);
+      color: var(--color-palace-red);
+    }
+
+    .difficulty-btn.active {
+      background: var(--color-palace-red);
+      border-color: var(--color-palace-red);
+      color: white;
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .quiz-card {
+        margin: var(--spacing-4);
+        border-radius: var(--radius-xl);
+      }
+
+      .quiz-card-header,
+      .quiz-card-body,
+      .quiz-actions {
+        padding: var(--spacing-4);
+      }
+
+      .question-text {
+        font-size: var(--text-lg);
+      }
+
+      .option-item {
+        padding: var(--spacing-3) var(--spacing-4);
+      }
+
+      .result-actions {
+        flex-direction: column;
+      }
+
+      .progress-container {
+        flex-wrap: wrap;
+      }
+
+      .progress-bar-wrapper {
+        order: 3;
+        width: 100%;
+        flex: none;
+        margin-top: var(--spacing-2);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== 顶部导航栏 ========== -->
+  <header class="navbar" id="navbar" role="banner">
+    <div class="container">
+      <!-- Logo区域 -->
+      <a href="../../index.html" class="logo-group" aria-label="廊坊非遗数字中心首页">
+        <svg class="logo-icon" width="50" height="50" viewBox="0 0 50 50" aria-hidden="true">
+          <defs>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#D4AF37" />
+              <stop offset="100%" stop-color="#F0D98C" />
+            </linearGradient>
+          </defs>
+          <polygon class="logo-outer" points="25,2 47,14 47,36 25,48 3,36 3,14" fill="none" stroke="url(#goldGradient)"
+            stroke-width="2" />
+          <polygon class="logo-inner" points="25,10 40,18 40,32 25,40 10,32 10,18" fill="none" stroke="#9D2933"
+            stroke-width="1.5" />
+          <circle cx="25" cy="25" r="6" fill="none" stroke="url(#goldGradient)" stroke-width="1" />
+          <circle cx="25" cy="25" r="2" fill="#9D2933" />
+        </svg>
+        <div class="logo-text">
+          <h1>廊坊非遗数字中心</h1>
+          <span class="logo-subtitle" lang="en">Langfang ICH Digital Center</span>
+        </div>
+      </a>
+
+      <!-- 主导航菜单 -->
+      <nav class="nav-menu" role="navigation" aria-label="主导航">
+        <a href="museum.html" class="nav-item" data-section="museum">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3 21H21M5 21V7L12 3L19 7V21M9 21V13H15V21" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="nav-text">虚拟博物馆</span>
+          <span class="nav-underline"></span>
+        </a>
+        <a href="experience.html" class="nav-item" data-section="experience">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="nav-text">互动体验</span>
+          <span class="nav-underline"></span>
+        </a>
+        <a href="ai-guide.html" class="nav-item active" data-section="culture">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="nav-text">智能导览</span>
+          <span class="nav-underline"></span>
+        </a>
+        </nav>
+
+      <!-- 右侧功能区 -->
+      <div class="nav-actions">
+        <a href="../index.html" class="action-btn" aria-label="返回首页" title="返回首页">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M7 13L3 9L7 5M3 9H13C15.2091 9 17 10.7909 17 13V15" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+
+        <button class="mobile-menu-toggle" aria-label="打开菜单" aria-expanded="false" id="mobileMenuToggle">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 导航底部装饰线 -->
+    <div class="nav-border-decoration">
+      <svg class="border-pattern" width="100%" height="4" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="transparent" />
+            <stop offset="20%" stop-color="#D4AF37" />
+            <stop offset="50%" stop-color="#D4AF37" />
+            <stop offset="80%" stop-color="#D4AF37" />
+            <stop offset="100%" stop-color="transparent" />
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="1" fill="url(#borderGradient)" />
+      </svg>
+    </div>
+  </header>
+
+  <!-- ========== 主要内容区 ========== -->
+  <main class="quiz-main">
+
+    <!-- 进度条 -->
+    <div class="quiz-progress">
+      <div class="container">
+        <div class="progress-container">
+          <div class="progress-info">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 2L12.5 7.5H18L13.5 11.5L15.5 17L10 13.5L4.5 17L6.5 11.5L2 7.5H7.5L10 2Z"
+                stroke="currentColor" stroke-width="1.5" fill="none" />
+            </svg>
+            <span>题目 <strong id="currentQuestion">1</strong> / <span id="totalQuestions">10</span></span>
+          </div>
+          <div class="progress-bar-wrapper">
+            <div class="progress-bar-fill" id="progressBar" style="width: 10%;"></div>
+          </div>
+          <div class="progress-score">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" />
+              <path d="M8 5V8L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+            <span>得分: <strong id="currentScore">0</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 页面标题 -->
+    <section class="page-header" style="padding: var(--spacing-8) 0; text-align: center;">
+      <div class="container">
+        <div class="header-decoration" style="margin-bottom: var(--spacing-4);" data-aos="fade-down">
+          <svg class="decoration-pattern" width="60" height="20" viewBox="0 0 60 20">
+            <path d="M0 10 Q15 0 30 10 Q45 20 60 10" fill="none" stroke="#D4AF37" stroke-width="2" />
+          </svg>
+        </div>
+        <h1 class="page-title"
+          style="font-family: var(--font-serif); font-size: var(--text-3xl); font-weight: var(--font-bold); color: var(--color-palace-red); margin-bottom: var(--spacing-2);"
+          data-aos="fade-up">
+          非遗知识答题
+        </h1>
+        <p class="page-subtitle" style="font-size: var(--text-base); color: var(--color-ink-gray-light);"
+          data-aos="fade-up" data-aos-delay="100">
+          测试您的非遗知识 · AI智能解析助您学习
+        </p>
+
+        <!-- 难度选择 -->
+        <div class="difficulty-selector" data-aos="fade-up" data-aos-delay="200">
+          <button class="difficulty-btn active" data-difficulty="easy">入门</button>
+          <button class="difficulty-btn" data-difficulty="medium">进阶</button>
+          <button class="difficulty-btn" data-difficulty="hard">专家</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 答题区域 -->
+    <section class="quiz-section">
+      <div class="container">
+        <div class="quiz-card" id="quizCard" data-aos="fade-up">
+          <div class="quiz-card-header">
+            <div class="question-number">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" />
+                <path d="M6 6C6 5 7 4 8 4C9 4 10 5 10 6C10 7 9 7.5 8 8V9" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" />
+                <circle cx="8" cy="11" r="0.5" fill="currentColor" />
+              </svg>
+              <span>第 <span id="questionNum">1</span> 题</span>
+              <span class="question-category" id="questionCategory">花丝镶嵌</span>
+            </div>
+            <h2 class="question-text" id="questionText">
+              花丝镶嵌工艺中，"花丝"主要采用的材料是什么？
+            </h2>
+          </div>
+
+          <div class="quiz-card-body">
+            <div class="options-list" id="optionsList">
+              <!-- 选项将由JS动态生成 -->
+            </div>
+
+            <!-- 结果反馈 -->
+            <div class="result-feedback" id="resultFeedback">
+              <div class="feedback-header">
+                <svg class="feedback-icon correct-icon" viewBox="0 0 32 32" fill="none">
+                  <circle cx="16" cy="16" r="14" stroke="#52C41A" stroke-width="2" />
+                  <path d="M10 16L14 20L22 12" stroke="#52C41A" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+                <svg class="feedback-icon wrong-icon" viewBox="0 0 32 32" fill="none" style="display: none;">
+                  <circle cx="16" cy="16" r="14" stroke="#FF4D4F" stroke-width="2" />
+                  <path d="M11 11L21 21M21 11L11 21" stroke="#FF4D4F" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <span class="feedback-title" id="feedbackTitle">回答正确！</span>
+              </div>
+              <p class="feedback-text" id="feedbackText">
+                正确答案是 A。花丝镶嵌主要采用金、银等贵金属为原料。
+              </p>
+
+              <!-- AI解析 -->
+              <div class="ai-analysis" id="aiAnalysis" style="display: none;">
+                <div class="ai-analysis-header">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" />
+                    <path d="M10 6V10L13 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                  </svg>
+                  <span>AI 智能解析</span>
+                </div>
+                <div class="ai-analysis-content" id="aiAnalysisContent">
+                  <div class="ai-loading">
+                    <span>正在生成解析</span>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <span class="action-hint" id="actionHint">请选择一个答案</span>
+            <button class="next-btn" id="nextBtn" disabled>
+              <span id="nextBtnText">下一题</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10H16M12 6L16 10L12 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 结果页面 -->
+        <div class="quiz-result" id="quizResult">
+          <div class="result-icon">
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+              <path d="M30 5L37.5 20H52.5L40 32.5L45 47.5L30 37.5L15 47.5L20 32.5L7.5 20H22.5L30 5Z" stroke="white"
+                stroke-width="3" fill="none" />
+            </svg>
+          </div>
+          <h2 class="result-title">答题完成！</h2>
+          <div class="result-score" id="finalScore">80</div>
+          <p class="result-desc" id="resultDesc">您的非遗知识水平：优秀</p>
+
+          <div class="result-stats">
+            <div class="stat-item">
+              <div class="stat-value" id="correctCount">8</div>
+              <div class="stat-label">正确</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" id="wrongCount">2</div>
+              <div class="stat-label">错误</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" id="totalTime">2:30</div>
+              <div class="stat-label">用时</div>
+            </div>
+          </div>
+
+          <div class="result-actions">
+            <button class="restart-btn" id="restartBtn">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10C17 13.866 13.866 17 10 17"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <path d="M7 7L3 10L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+              <span>再来一次</span>
+            </button>
+            <a href="../" class="home-btn">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M3 10L10 3L17 10M5 8V17H15V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+              <span>返回首页</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== 页脚 ========== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-8);">
+          <div class="footer-brand">
+            <div class="footer-logo"
+              style="display: flex; align-items: center; gap: var(--spacing-3); margin-bottom: var(--spacing-4);">
+              <svg width="40" height="40" viewBox="0 0 50 50">
+                <polygon points="25,2 47,14 47,36 25,48 3,36 3,14" fill="none" stroke="#D4AF37" stroke-width="2" />
+                <circle cx="25" cy="25" r="6" fill="#9D2933" />
+              </svg>
+              <span
+                style="font-family: var(--font-serif); font-size: var(--text-lg); font-weight: var(--font-bold); color: var(--color-palace-red);">廊坊非遗数字中心</span>
+            </div>
+            <p class="footer-desc"
+              style="font-size: var(--text-sm); color: var(--color-ink-gray-light); line-height: var(--leading-relaxed);">
+              以数字之笔，复刻花丝镶嵌的指尖乾坤。致力于非物质文化遗产的数字化保护与传承创新。
+            </p>
+          </div>
+          <div class="footer-links">
+            <h3
+              style="font-size: var(--text-base); font-weight: var(--font-bold); color: var(--color-ink-gray-dark); margin-bottom: var(--spacing-4);">
+              快速导航</h3>
+            <ul>
+              <li style="margin-bottom: var(--spacing-2);"><a href="museum.html"
+                  style="font-size: var(--text-sm); color: var(--color-ink-gray-light);">虚拟博物馆</a></li>
+              <li style="margin-bottom: var(--spacing-2);"><a href="experience.html"
+                  style="font-size: var(--text-sm); color: var(--color-ink-gray-light);">互动体验</a></li>
+              <li style="margin-bottom: var(--spacing-2);"><a href="quiz.html"
+                  style="font-size: var(--text-sm); color: var(--color-ink-gray-light);">非遗答题</a></li>
+              <li style="margin-bottom: var(--spacing-2);"><a href="ai-guide.html"
+                  style="font-size: var(--text-sm); color: var(--color-ink-gray-light);">智能导览</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h3
+              style="font-size: var(--text-base); font-weight: var(--font-bold); color: var(--color-ink-gray-dark); margin-bottom: var(--spacing-4);">
+              联系我们</h3>
+            <ul>
+              <li
+                style="display: flex; align-items: flex-start; gap: var(--spacing-2); margin-bottom: var(--spacing-3);">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink: 0; margin-top: 2px;">
+                  <path d="M8 1C4.686 1 2 3.686 2 7c0 4.5 6 8 6 8s6-3.5 6-8c0-3.314-2.686-6-6-6z" stroke="currentColor"
+                    stroke-width="1.5" />
+                  <circle cx="8" cy="7" r="2" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+                <span style="font-size: var(--text-sm); color: var(--color-ink-gray-light);">河北省廊坊市大厂回族自治县</span>
+              </li>
+              <li style="display: flex; align-items: center; gap: var(--spacing-2); margin-bottom: var(--spacing-3);">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink: 0;">
+                  <path d="M2 4l6 4 6-4M2 4h12v8H2V4z" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+                <a href="mailto:contact@lfich.cn"
+                  style="font-size: var(--text-sm); color: var(--color-ink-gray-light);">contact@lfich.cn</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom" style="padding: var(--spacing-6) 0; border-top: 1px solid var(--color-light-gray);">
+      <div class="container">
+        <div class="footer-bottom-content"
+          style="display: flex; align-items: center; justify-content: space-between;">
+          <p class="copyright" style="font-size: var(--text-sm); color: var(--color-ink-gray-light);">
+            &copy; 2026 廊坊非遗数字中心 版权所有
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== JavaScript ========== -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script type="module" src="../main.js"></script>
+  <script type="module" src="../js/quiz.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="廊坊非遗智能导览 - AI助您深入了解花丝镶嵌、景泰蓝等非遗工艺">
+  <meta name="keywords" content="非遗导览,AI问答,花丝镶嵌,景泰蓝,智能对话">
+  <meta name="author" content="廊坊非遗数字中心">
+
+  <title>智能导览 | 廊坊非遗数字中心</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <!-- 预加载字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preload" href="assets/fonts/NotoSerifSC-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/NotoSansSC-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- 样式表 -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/chat.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+
+  <!-- AOS动画库 -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ========== 背景装饰粒子 ========== -->
+  <div class="bg-particles" aria-hidden="true"></div>
+
+  <!-- ========== 顶部导航栏 ========== -->
+  <header class="navbar" id="navbar" role="banner">
+    <div class="container">
+      <!-- Logo区域 -->
+      <a href="../../index.html" class="logo-group" aria-label="廊坊非遗数字中心首页">
+        <svg class="logo-icon" width="50" height="50" viewBox="0 0 50 50" aria-hidden="true">
+          <defs>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#D4AF37" />
+              <stop offset="100%" stop-color="#F0D98C" />
+            </linearGradient>
+          </defs>
+          <polygon class="logo-outer" points="25,2 47,14 47,36 25,48 3,36 3,14" fill="none"
+            stroke="url(#goldGradient)" stroke-width="2" />
+          <polygon class="logo-inner" points="25,10 40,18 40,32 25,40 10,32 10,18" fill="none" stroke="#9D2933"
+            stroke-width="1.5" />
+          <circle cx="25" cy="25" r="6" fill="none" stroke="url(#goldGradient)" stroke-width="1" />
+          <circle cx="25" cy="25" r="2" fill="#9D2933" />
+        </svg>
+        <div class="logo-text">
+          <h1>廊坊非遗数字中心</h1>
+          <span class="logo-subtitle" lang="en">Langfang ICH Digital Center</span>
+        </div>
+      </a>
+
+      <!-- 主导航菜单 -->
+      <nav class="nav-menu" role="navigation" aria-label="主导航">
+        <a href="museum.html" class="nav-item" data-section="museum">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3 21H21M5 21V7L12 3L19 7V21M9 21V13H15V21" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="nav-text">虚拟博物馆</span>
+          <span class="nav-underline"></span>
+        </a>
+        <a href="experience.html" class="nav-item" data-section="experience">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="nav-text">互动体验</span>
+          <span class="nav-underline"></span>
+        </a>
+        <a href="quiz.html" class="nav-item" data-section="quiz">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
+              <path d="M9 9C9 7.5 10.5 6 12 6C13.5 6 15 7.5 15 9C15 10.5 13.5 11.5 12 12V14" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" />
+              <circle cx="12" cy="17" r="1" fill="currentColor" />
+            </svg>
+          </span>
+          <span class="nav-text">非遗答题</span>
+          <span class="nav-underline"></span>
+        </a>
+        <a href="ai-guide.html" class="nav-item active" data-section="culture">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="nav-text">智能导览</span>
+          <span class="nav-underline"></span>
+        </a>
+      </nav>
+
+      <!-- 右侧功能区 -->
+      <div class="nav-actions">
+        <a href="../../index.html" class="action-btn" aria-label="返回首页" title="返回首页">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M3 10L10 3L17 10M5 8V17H15V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+        <button class="mobile-menu-toggle" aria-label="打开菜单" aria-expanded="false" id="mobileMenuToggle">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 导航底部装饰线 -->
+    <div class="nav-border-decoration">
+      <svg class="border-pattern" width="100%" height="4" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="transparent" />
+            <stop offset="20%" stop-color="#D4AF37" />
+            <stop offset="50%" stop-color="#D4AF37" />
+            <stop offset="80%" stop-color="#D4AF37" />
+            <stop offset="100%" stop-color="transparent" />
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="1" fill="url(#borderGradient)" />
+      </svg>
+    </div>
+  </header>
+
+  <!-- ========== 主要内容区 ========== -->
+  <main class="ai-guide-main">
+
+    <!-- 页面头部 -->
+    <section class="guide-hero">
+      <div class="container">
+
+        <!-- 装饰纹样 -->
+        <div class="hero-decoration">
+          <span class="deco-line"></span>
+          <svg class="deco-icon" viewBox="0 0 32 32" fill="none">
+            <path d="M16 2L20 10H28L22 16L24 24L16 19L8 24L10 16L4 10H12L16 2Z" stroke="currentColor"
+              stroke-width="1.5" />
+            <circle cx="16" cy="14" r="3" stroke="currentColor" stroke-width="1" />
+          </svg>
+          <span class="deco-line"></span>
+        </div>
+
+        <h1 class="guide-title">智荟东方 · 非遗问答</h1>
+        <p class="guide-subtitle">溯燕赵文脉 · 品匠造风华</p>
+
+        <!-- 快捷问题 -->
+        <div class="quick-questions">
+          <button class="question-tag" data-question="花丝镶嵌的制作工艺有哪些步骤？">
+            <svg class="tag-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M8 1L10 6H15L11 9.5L12.5 14.5L8 11L3.5 14.5L5 9.5L1 6H6L8 1Z" stroke="currentColor"
+                stroke-width="1.2" />
+            </svg>
+            花丝镶嵌工艺
+          </button>
+          <button class="question-tag" data-question="景泰蓝的历史起源是什么？">
+            <svg class="tag-icon" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2" />
+              <path d="M8 5V8.5L10.5 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+            </svg>
+            景泰蓝历史
+          </button>
+          <button class="question-tag" data-question="廊坊有哪些国家级非遗项目？">
+            <svg class="tag-icon" viewBox="0 0 16 16" fill="none">
+              <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2" />
+              <path d="M5 7H11M5 9.5H9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+            </svg>
+            廊坊非遗项目
+          </button>
+          <button class="question-tag" data-question="花丝镶嵌的代表性传承人有谁？">
+            <svg class="tag-icon" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="5" r="3" stroke="currentColor" stroke-width="1.2" />
+              <path d="M3 14C3 11.2 5.2 9 8 9C10.8 9 13 11.2 13 14" stroke="currentColor" stroke-width="1.2"
+                stroke-linecap="round" />
+            </svg>
+            传承人故事
+          </button>
+          <button class="question-tag" data-question="景泰蓝的掐丝工艺具体怎么做？">
+            <svg class="tag-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M2 8H14M8 2V14M4.5 4.5L11.5 11.5M11.5 4.5L4.5 11.5" stroke="currentColor"
+                stroke-width="1.2" stroke-linecap="round" />
+            </svg>
+            掐丝工艺详解
+          </button>
+          <button class="question-tag" data-question="非遗文创产品有哪些创新形式？">
+            <svg class="tag-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M4 2L4 14L12 8L4 2Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" />
+            </svg>
+            文创创新
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 聊天区域 -->
+    <section class="chat-wrapper">
+
+      <div class="chat-container">
+        <!-- 对话流 -->
+        <div id="chat-flow" role="log" aria-live="polite" aria-label="对话内容">
+          <!-- 欢迎消息由 chat.js 动态生成 -->
+        </div>
+
+        <!-- 输入区域 -->
+        <div class="input-wrapper">
+          <div class="input-row">
+            <div class="input-area">
+              <input type="text" id="userInput" placeholder="问 · 非遗：请输入您想了解的技艺…" autocomplete="off"
+                aria-label="输入您的问题">
+              <button class="send-btn" id="sendBtn" aria-label="发送">
+                <span class="btn-text">询问</span>
+                <svg class="btn-icon" viewBox="0 0 18 18" fill="none">
+                  <path d="M3 9H15M11 5L15 9L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="input-tips">
+            <span>按 <kbd>Enter</kbd> 发送</span>
+            <span>·</span>
+            <button class="clear-btn" id="clearBtn">
+              <svg class="clear-icon" viewBox="0 0 14 14" fill="none">
+                <path d="M2 4H12M5 4V2.5H9V4M3 4L4 12.5H10L11 4" stroke="currentColor" stroke-width="1.2"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              清除对话
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ========== 页脚 ========== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+
+          <!-- 品牌信息 -->
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <svg width="40" height="40" viewBox="0 0 50 50">
+                <polygon points="25,2 47,14 47,36 25,48 3,36 3,14" fill="none" stroke="#D4AF37" stroke-width="2" />
+                <circle cx="25" cy="25" r="6" fill="#9D2933" />
+              </svg>
+              <span>廊坊非遗数字中心</span>
+            </div>
+            <p class="footer-desc">
+              以数字之笔，复刻花丝镶嵌的指尖乾坤。致力于非物质文化遗产的数字化保护与传承创新。
+            </p>
+          </div>
+
+          <!-- 快速链接 -->
+          <div class="footer-links">
+            <h3>快速导航</h3>
+            <ul>
+              <li><a href="museum.html">虚拟博物馆</a></li>
+              <li><a href="experience.html">互动体验</a></li>
+              <li><a href="quiz.html">非遗答题</a></li>
+              <li><a href="ai-guide.html">智能导览</a></li>
+            </ul>
+          </div>
+
+          <!-- 联系我们 -->
+          <div class="footer-contact">
+            <h3>联系我们</h3>
+            <ul>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M8 1C4.686 1 2 3.686 2 7c0 4.5 6 8 6 8s6-3.5 6-8c0-3.314-2.686-6-6-6z"
+                    stroke="currentColor" stroke-width="1.5" />
+                  <circle cx="8" cy="7" r="2" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+                <span>河北省廊坊市大厂回族自治县</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M2 4l6 4 6-4M2 4h12v8H2V4z" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+                <a href="mailto:contact@lfich.cn">contact@lfich.cn</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-content">
+          <p class="copyright">&copy; 2026 廊坊非遗数字中心 版权所有</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== JavaScript ========== -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script type="module" src="../main.js"></script>
+  <script type="module" src="../js/chat.js"></script>
+
+</body>
+
+</html>
