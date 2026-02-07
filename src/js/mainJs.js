@@ -71,32 +71,58 @@ import Utils from './utils.js';
    */
   function handlePageLoad() {
     console.log('--- handlePageLoad called ---');
-    // 隐藏加载器
-    if (Elements.loader) {
-      console.log('Loader found, hiding...');
-      Elements.loader.classList.add('hidden');
-      setTimeout(() => {
-        Elements.loader.style.display = 'none';
-        State.isLoading = false;
-        console.log('Loader display none');
-      }, 500);
-    } else {
-      console.warn('Loader element NOT found in handlePageLoad');
+    try {
+      // 隐藏加载器
+      if (Elements.loader) {
+        console.log('Loader found, hiding...');
+        Elements.loader.classList.add('hidden');
+        setTimeout(() => {
+          Elements.loader.style.display = 'none';
+          State.isLoading = false;
+          console.log('Loader display none');
+        }, 500);
+      } else {
+        console.warn('Loader element NOT found in handlePageLoad');
+        // 尝试重新查找一次，万一是之前的 cacheElements 没找着
+        const loader = document.getElementById('pageLoader');
+        if (loader) {
+          loader.classList.add('hidden');
+          setTimeout(() => {
+            loader.style.display = 'none';
+            State.isLoading = false;
+          }, 500);
+        }
+      }
+
+      // 初始化AOS动画库
+      if (typeof AOS !== 'undefined') {
+        try {
+          AOS.init({
+            duration: 800,
+            easing: 'ease-out',
+            once: true,
+            offset: 100,
+            disable: Utils.prefersReducedMotion()
+          });
+        } catch (aosError) {
+          console.error('AOS init error:', aosError);
+        }
+      }
+
+      // 触发数字动画
+      try {
+        initNumberAnimations();
+      } catch (numAnimError) {
+        console.error('initNumberAnimations error:', numAnimError);
+      }
+    } catch (err) {
+      console.error('Error in handlePageLoad:', err);
+      // 最后的最后，强制解锁滚动
+      document.body.classList.remove('no-scroll');
+      State.isLoading = false;
     }
 
-    // 初始化AOS动画库
-    if (typeof AOS !== 'undefined') {
-      AOS.init({
-        duration: 800,
-        easing: 'ease-out',
-        once: true,
-        offset: 100,
-        disable: Utils.prefersReducedMotion()
-      });
-    }
-
-    // 触发数字动画
-    initNumberAnimations();
+    document.body.classList.remove('no-scroll');
   }
 
   /**
