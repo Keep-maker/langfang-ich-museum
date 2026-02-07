@@ -60,13 +60,18 @@ import Utils from './utils.js';
    * 页面加载完成处理
    */
   function handlePageLoad() {
+    console.log('--- handlePageLoad called ---');
     // 隐藏加载器
     if (Elements.loader) {
+      console.log('Loader found, hiding...');
       Elements.loader.classList.add('hidden');
       setTimeout(() => {
         Elements.loader.style.display = 'none';
         State.isLoading = false;
+        console.log('Loader display none');
       }, 500);
+    } else {
+      console.warn('Loader element NOT found in handlePageLoad');
     }
 
     // 初始化AOS动画库
@@ -724,8 +729,10 @@ import Utils from './utils.js';
    * 应用入口
    */
   function init() {
+    console.log('--- init called ---');
     // 缓存DOM元素
     cacheElements();
+    console.log('Elements cached:', Elements);
 
     // 初始化各模块
     initNavbar();
