@@ -35,7 +35,9 @@ import Utils from './utils.js';
     searchBtn: null,
     searchModal: null,
     backToTop: null,
-    carousel: null
+    carousel: null,
+    mobileSidebar: null,
+    fullscreenBtn: null
   };
 
   /**
@@ -50,6 +52,8 @@ import Utils from './utils.js';
     Elements.searchModal = document.getElementById('searchModal');
     Elements.backToTop = document.getElementById('backToTop');
     Elements.carousel = document.querySelector('.hero-carousel');
+    Elements.mobileSidebar = document.getElementById('mobileSidebar');
+    Elements.fullscreenBtn = document.getElementById('fullscreenBtn');
   }
 
   /**
@@ -102,12 +106,21 @@ import Utils from './utils.js';
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     // 移动端菜单切换
-    if (Elements.mobileMenuToggle && Elements.navMenu) {
+    if (Elements.mobileMenuToggle) {
       Elements.mobileMenuToggle.addEventListener('click', toggleMobileMenu);
     }
 
+    // 移动端侧边栏关闭按钮
+    if (Elements.mobileSidebar) {
+      const sidebarClose = Elements.mobileSidebar.querySelector('.sidebar-close');
+      const sidebarOverlay = Elements.mobileSidebar.querySelector('.sidebar-overlay');
+
+      sidebarClose?.addEventListener('click', closeMobileMenu);
+      sidebarOverlay?.addEventListener('click', closeMobileMenu);
+    }
+
     // 点击导航链接后关闭移动菜单
-    const navLinks = document.querySelectorAll('.nav-item');
+    const navLinks = document.querySelectorAll('.nav-item, .sidebar-link');
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         if (State.isMenuOpen) {
@@ -115,6 +128,11 @@ import Utils from './utils.js';
         }
       });
     });
+
+    // 全屏按钮
+    if (Elements.fullscreenBtn) {
+      Elements.fullscreenBtn.addEventListener('click', Utils.toggleFullscreen);
+    }
   }
 
   /**
@@ -123,8 +141,18 @@ import Utils from './utils.js';
   function toggleMobileMenu() {
     State.isMenuOpen = !State.isMenuOpen;
 
-    Elements.mobileMenuToggle.setAttribute('aria-expanded', State.isMenuOpen);
-    Elements.navMenu.classList.toggle('active', State.isMenuOpen);
+    if (Elements.mobileMenuToggle) {
+      Elements.mobileMenuToggle.setAttribute('aria-expanded', State.isMenuOpen);
+    }
+
+    if (Elements.mobileSidebar) {
+      Elements.mobileSidebar.setAttribute('aria-hidden', !State.isMenuOpen);
+    }
+
+    if (Elements.navMenu) {
+      Elements.navMenu.classList.toggle('active', State.isMenuOpen);
+    }
+
     document.body.classList.toggle('no-scroll', State.isMenuOpen);
   }
 
@@ -133,8 +161,19 @@ import Utils from './utils.js';
    */
   function closeMobileMenu() {
     State.isMenuOpen = false;
-    Elements.mobileMenuToggle.setAttribute('aria-expanded', 'false');
-    Elements.navMenu.classList.remove('active');
+
+    if (Elements.mobileMenuToggle) {
+      Elements.mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    if (Elements.mobileSidebar) {
+      Elements.mobileSidebar.setAttribute('aria-hidden', 'true');
+    }
+
+    if (Elements.navMenu) {
+      Elements.navMenu.classList.remove('active');
+    }
+
     document.body.classList.remove('no-scroll');
   }
 
@@ -708,6 +747,11 @@ import Utils from './utils.js';
     } else {
       window.addEventListener('load', handlePageLoad);
     }
+    setTimeout(() => {
+      if (State.isLoading) {
+        handlePageLoad();
+      }
+    }, 5000);
 
     console.log('🏛️ 廊坊非遗数字中心 - 初始化完成');
   }

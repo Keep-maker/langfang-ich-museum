@@ -355,6 +355,21 @@ const Utils = (function () {
     return element;
   }
 
+  /**
+   * 切换全屏模式
+   */
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.error(`无法进入全屏模式: ${err.message}`);
+      });
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  }
+
   // 公开API
   return {
     debounce,
@@ -377,7 +392,8 @@ const Utils = (function () {
     getStorage,
     copyToClipboard,
     sleep,
-    createElement
+    createElement,
+    toggleFullscreen
   };
 
 })();

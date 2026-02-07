@@ -6,7 +6,7 @@ export default defineConfig({
   // 如果你的仓库名是 'my-project'，则设置为 '/my-project/'
   base: '/langfang-ich-museum/',
   // 指定项目根目录为当前目录
-  root: './', 
+  root: './',
   build: {
     rollupOptions: {
       input: {
@@ -15,7 +15,8 @@ export default defineConfig({
         museum: resolve(__dirname, 'src/pages/museum.html'),
         quiz: resolve(__dirname, 'src/pages/quiz.html'),
         experience: resolve(__dirname, 'src/pages/experience.html'),
-        aiGuide: resolve(__dirname, 'src/pages/ai-guide.html')
+        aiGuide: resolve(__dirname, 'src/pages/ai-guide.html'),
+        culturalProducts: resolve(__dirname, 'src/pages/cultural-products.html')
       }
     }
   }

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文创转化 - 廊坊非遗数字中心</title>
+    <!-- 继承原项目所有样式，保持视觉统一 -->
+    <link rel="stylesheet" href="../css/cultural-products.css">
+    <!-- 引入图标库（购物车/关闭/加减），与原项目SVG图标风格统一 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- 文创商店核心板块 -->
+    <section class="culture-section" aria-labelledby="cultureTitle">
+        <div class="container">
+            <!-- 板块标题 -->
+            <header class="culture-header" id="cultureTitle">
+                <div class="decor"></div>
+                <h2>非遗文创转化</h2>
+                <p>把传统工艺之美带回家，让非遗融入日常</p>
+            </header>
+
+            <!-- 筛选栏：分类+搜索 -->
+            <div class="culture-filter">
+                <div class="filter-cate">
+                    <button class="cate-btn active" data-cate="all">全部文创</button>
+                    <button class="cate-btn" data-cate="filigree">花丝镶嵌</button>
+                    <button class="cate-btn" data-cate="cloisonne">景泰蓝</button>
+                    <button class="cate-btn" data-cate="embroidery">京绣系列</button>
+                    <button class="cate-btn" data-cate="daily">非遗日用</button>
+                    <button class="cate-btn" data-cate="art">工艺摆件</button>
+                </div>
+                <div class="filter-search">
+                    <input type="text" placeholder="搜索文创产品...">
+                    <button class="search-btn"><i class="fas fa-search"></i> 搜索</button>
+                </div>
+            </div>
+
+            <!-- 文创商品卡片网格 -->
+            <div class="culture-card-grid">
+                <!-- 商品卡片1：花丝镶嵌吊坠 -->
+                <article class="culture-card" data-id="1" data-name="花丝镶嵌莲花银镀金国风吊坠" data-price="299" data-orig="399"
+                    data-cate="filigree" data-img="filigree-pendant.jpg">
+                    <div class="card-badge">花丝镶嵌</div>
+                    <div class="card-img-wrapper">
+                        <img src="../assets/images/culture/filigree-pendant.jpg" alt="花丝镶嵌莲花吊坠" class="card-img"
+                            onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22200%22%3E%3Crect fill=%22%23D4AF37%22 width=%22280%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2220%22 fill=%22%23fff%22%3E花丝镶嵌吊坠%3C/text%3E%3C/svg%3E'">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">花丝镶嵌莲花银镀金国风吊坠</h3>
+                        <p class="card-desc">非遗大师手工打造，传统花丝工艺，镶嵌天然贝母，国风雅致设计</p>
+                        <div class="card-price">
+                            <span class="price-now">¥299</span>
+                            <span class="price-orig">¥399</span>
+                        </div>
+                        <button class="card-btn add-cart-btn"><i class="fas fa-shopping-cart"></i> 加入购物车</button>
+                        <a href="culture-detail.html?id=1" class="card-btn" style="margin-top: 10px;">查看详情</a>
+                    </div>
+                </article>
+
+                <!-- 商品卡片2：景泰蓝茶具 -->
+                <article class="culture-card" data-id="2" data-name="景泰蓝缠枝莲纹茶具套装" data-price="899" data-orig="1299"
+                    data-cate="cloisonne" data-img="cloisonne-tea.jpg">
+                    <div class="card-badge">景泰蓝</div>
+                    <div class="card-img-wrapper">
+                        <img src="../assets/images/culture/cloisonne-tea.jpg" alt="景泰蓝茶具套装" class="card-img"
+                            onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22200%22%3E%3Crect fill=%22%231E5A8C%22 width=%22280%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2220%22 fill=%22%23fff%22%3E景泰蓝茶具%3C/text%3E%3C/svg%3E'">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">景泰蓝缠枝莲纹茶具套装</h3>
+                        <p class="card-desc">铜胎掐丝点蓝，传统景泰蓝工艺，一壶四杯，家用送礼皆宜</p>
+                        <div class="card-price">
+                            <span class="price-now">¥899</span>
+                            <span class="price-orig">¥1299</span>
+                        </div>
+                        <button class="card-btn add-cart-btn"><i class="fas fa-shopping-cart"></i> 加入购物车</button>
+                        <a href="culture-detail.html?id=2" class="card-btn" style="margin-top: 10px;">查看详情</a>
+                    </div>
+                </article>
+
+                <!-- 商品卡片3：京绣书签 -->
+                <article class="culture-card" data-id="3" data-name="京绣手工花鸟书签礼盒装" data-price="59" data-orig="89"
+                    data-cate="embroidery" data-img="embroidery-bookmark.jpg">
+                    <div class="card-badge">京绣系列</div>
+                    <div class="card-img-wrapper">
+                        <img src="../assets/images/culture/embroidery-bookmark.jpg" alt="京绣花鸟书签" class="card-img"
+                            onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22200%22%3E%3Crect fill=%22%239D2933%22 width=%22280%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2220%22 fill=%22%23fff%22%3E京绣书签%3C/text%3E%3C/svg%3E'">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">京绣手工花鸟书签礼盒装</h3>
+                        <p class="card-desc">非遗京绣工艺，双面刺绣，精选桑蚕丝线，四款纹样可选</p>
+                        <div class="card-price">
+                            <span class="price-now">¥59</span>
+                            <span class="price-orig">¥89</span>
+                        </div>
+                        <button class="card-btn add-cart-btn"><i class="fas fa-shopping-cart"></i> 加入购物车</button>
+                        <a href="culture-detail.html?id=3" class="card-btn" style="margin-top: 10px;">查看详情</a>
+                    </div>
+                </article>
+
+                <!-- 商品卡片4：花丝镶嵌胸针 -->
+                <article class="culture-card" data-id="4" data-name="花丝镶嵌梅花胸针" data-price="159" data-orig="219"
+                    data-cate="filigree" data-img="filigree-brooch.jpg">
+                    <div class="card-badge">花丝镶嵌</div>
+                    <div class="card-img-wrapper">
+                        <img src="../assets/images/culture/filigree-brooch.jpg" alt="花丝镶嵌梅花胸针" class="card-img"
+                            onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22200%22%3E%3Crect fill=%22%23D4AF37%22 width=%22280%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2220%22 fill=%22%23fff%22%3E花丝胸针%3C/text%3E%3C/svg%3E'">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">花丝镶嵌梅花胸针</h3>
+                        <p class="card-desc">精致梅花造型，纯手工掐丝，点缀天然淡水珍珠，优雅大方</p>
+                        <div class="card-price">
+                            <span class="price-now">¥159</span>
+                            <span class="price-orig">¥219</span>
+                        </div>
+                        <button class="card-btn add-cart-btn"><i class="fas fa-shopping-cart"></i> 加入购物车</button>
+                        <a href="culture-detail.html?id=4" class="card-btn" style="margin-top: 10px;">查看详情</a>
+                    </div>
+                </article>
+
+                <!-- 商品卡片5：景泰蓝摆件 -->
+                <article class="culture-card" data-id="5" data-name="景泰蓝吉祥如意摆件" data-price="1280" data-orig="1580"
+                    data-cate="cloisonne" data-img="cloisonne-ornament.jpg">
+                    <div class="card-badge">景泰蓝</div>
+                    <div class="card-img-wrapper">
+                        <img src="../assets/images/culture/cloisonne-ornament.jpg" alt="景泰蓝吉祥如意摆件" class="card-img"
+                            onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22200%22%3E%3Crect fill=%22%231E5A8C%22 width=%22280%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2220%22 fill=%22%23fff%22%3E景泰蓝摆件%3C/text%3E%3C/svg%3E'">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">景泰蓝吉祥如意摆件</h3>
+                        <p class="card-desc">传统如意造型，掐丝细腻，釉色温润，寓意吉祥如意</p>
+                        <div class="card-price">
+                            <span class="price-now">¥1280</span>
+                            <span class="price-orig">¥1580</span>
+                        </div>
+                        <button class="card-btn add-cart-btn"><i class="fas fa-shopping-cart"></i> 加入购物车</button>
+                        <a href="culture-detail.html?id=5" class="card-btn" style="margin-top: 10px;">查看详情</a>
+                    </div>
+                </article>
+
+                <!-- 商品卡片6：非遗帆布包 -->
+                <article class="culture-card" data-id="6" data-name="非遗纹样帆布包" data-price="39" data-orig="59"
+                    data-cate="daily" data-img="non-heritage-bag.jpg">
+                    <div class="card-badge">非遗日用</div>
+                    <div class="card-img-wrapper">
+                        <img src="../assets/images/culture/non-heritage-bag.jpg" alt="非遗纹样帆布包" class="card-img"
+                            onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22200%22%3E%3Crect fill=%22%239D2933%22 width=%22280%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2220%22 fill=%22%23fff%22%3E非遗帆布包%3C/text%3E%3C/svg%3E'">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">非遗纹样帆布包</h3>
+                        <p class="card-desc">简约设计，印有大厂花丝镶嵌纹样，实用百搭，传递非遗文化</p>
+                        <div class="card-price">
+                            <span class="price-now">¥39</span>
+                            <span class="price-orig">¥59</span>
+                        </div>
+                        <button class="card-btn add-cart-btn"><i class="fas fa-shopping-cart"></i> 加入购物车</button>
+                        <a href="culture-detail.html?id=6" class="card-btn" style="margin-top: 10px;">查看详情</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- 分页控件 -->
+            <div class="culture-pagination">
+                <!-- JS动态生成分页 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 悬浮购物车按钮 -->
+    <div class="cart-float" id="cartFloat">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartBadge">0</span>
+    </div>
+
+    <!-- 购物车弹窗 -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3><i class="fas fa-shopping-cart"></i> 我的非遗购物车</h3>
+                <div class="cart-close" id="cartClose"><i class="fas fa-times"></i></div>
+            </div>
+            <!-- 购物车空状态 -->
+            <div class="cart-empty" id="cartEmpty">
+                <i class="fas fa-shopping-cart"></i>
+                <p>购物车还是空的哦~</p>
+                <a href="javascript:;" class="back-shop">返回挑选文创</a>
+            </div>
+            <!-- 购物车商品列表 -->
+            <div class="cart-list" id="cartList" style="display: none;"></div>
+            <!-- 购物车底部结算 -->
+            <div class="cart-footer" id="cartFooter" style="display: none;">
+                <div class="cart-total">
+                    <label>合计：</label>
+                    <span class="cart-total-price" id="cartTotalPrice">¥0</span>
+                </div>
+                <button class="cart-settle" id="cartSettle">立即结算</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加入购物车成功提示 -->
+    <div class="cart-toast" id="cartToast">加入购物车成功！</div>
+
+    <!-- 购物车核心JS逻辑 - 本地存储，刷新不丢失 -->
+    <script type="module" src="../js/cultural-products.js"></script>
+</body>
+
+</html>

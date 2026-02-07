@@ -102,14 +102,15 @@
           <span class="nav-icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
-              <path d="M9 9C9 7.5 10.5 6 12 6C13.5 6 15 7.5 15 9C15 10.5 13.5 11.5 12 12V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <path d="M9 9C9 7.5 10.5 6 12 6C13.5 6 15 7.5 15 9C15 10.5 13.5 11.5 12 12V14" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" />
               <circle cx="12" cy="17" r="1" fill="currentColor" />
             </svg>
           </span>
           <span class="nav-text">非遗答题</span>
           <span class="nav-underline"></span>
         </a>
-        <a href="src/pages/ai-guide.html" class="nav-item active" data-section="culture">
+        <a href="src/pages/ai-guide.html" class="nav-item" data-section="culture">
           <span class="nav-icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2"
@@ -119,12 +120,12 @@
           <span class="nav-text">智能导览</span>
           <span class="nav-underline"></span>
         </a>
-        </nav>
+      </nav>
 
       <!-- 右侧功能区 -->
       <div class="nav-actions">
         <!-- 搜索按钮 -->
-        <button class="action-btn search-btn" aria-label="搜索" data-action="search">
+        <button class="action-btn search-btn" aria-label="搜索" id="searchBtn">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
             <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="2" />
             <path d="M14 14L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
@@ -153,6 +154,14 @@
             <li role="option" aria-selected="false" data-lang="ja">日本語</li>
           </ul>
         </div>
+
+        <!-- 全屏切换 -->
+        <button class="action-btn" aria-label="全屏" id="fullscreenBtn" title="全屏模式">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M2 6V2H6M14 2H18V6M18 14V18H14M6 18H2V14" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
 
         <!-- 移动端菜单按钮 -->
         <button class="mobile-menu-toggle" aria-label="打开菜单" aria-expanded="false" id="mobileMenuToggle">
@@ -203,15 +212,15 @@
           <span class="link-text">互动体验</span>
           <span class="link-desc">亲手体验非遗工艺</span>
         </a>
-        <a href="src/pages/cultural-products.html" class="sidebar-link">
-          <span class="link-icon">🎨</span>
-          <span class="link-text">文创转化</span>
-          <span class="link-desc">把非遗带回家</span>
-        </a>
         <a href="src/pages/quiz.html" class="sidebar-link">
           <span class="link-icon">🎯</span>
           <span class="link-text">非遗答题</span>
           <span class="link-desc">测测你的非遗知识</span>
+        </a>
+        <a href="src/pages/ai-guide.html" class="sidebar-link">
+          <span class="link-icon">🤖</span>
+          <span class="link-text">智能导览</span>
+          <span class="link-desc">AI导游带您看展</span>
         </a>
       </nav>
       <div class="sidebar-footer">
@@ -822,7 +831,8 @@
               <div class="card-icon">
                 <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
                   <circle cx="32" cy="32" r="24" stroke="currentColor" stroke-width="3" />
-                  <path d="M24 24C24 20 28 16 32 16C36 16 40 20 40 24C40 28 36 30 32 32V36" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                  <path d="M24 24C24 20 28 16 32 16C36 16 40 20 40 24C40 28 36 30 32 32V36" stroke="currentColor"
+                    stroke-width="3" stroke-linecap="round" />
                   <circle cx="32" cy="44" r="2" fill="currentColor" />
                 </svg>
               </div>
@@ -920,9 +930,8 @@
             <ul>
               <li><a href="src/pages/museum.html">虚拟博物馆</a></li>
               <li><a href="src/pages/experience.html">互动体验</a></li>
-              <li><a href="src/pages/cultural-products.html">文创商城</a></li>
               <li><a href="src/pages/quiz.html">非遗答题</a></li>
-              <li><a href="src/pages/inheritors.html">传承人名录</a></li>
+              <li><a href="src/pages/ai-guide.html">智能导览</a></li>
             </ul>
           </div>
 
@@ -979,10 +988,8 @@
             <a href="#">冀ICP备XXXXXXXX号</a>
           </p>
           <div class="footer-bottom-links">
-            <a href="src/pages/privacy.html">隐私政策</a>
-            <a href="src/pages/terms.html">使用条款</a>
-            <a href="src/pages/accessibility.html">无障碍声明</a>
-            <a href="src/pages/sitemap.html">网站地图</a>
+            <a href="#">隐私政策</a>
+            <a href="#">使用条款</a>
           </div>
         </div>
       </div>

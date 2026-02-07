@@ -117,7 +117,7 @@ import Utils from './utils.js';
 
     // 全屏按钮
     const fullscreenBtn = document.getElementById('fullscreenBtn');
-    fullscreenBtn?.addEventListener('click', toggleFullscreen);
+    fullscreenBtn?.addEventListener('click', Utils.toggleFullscreen);
 
     // 键盘控制
     document.addEventListener('keydown', handleKeyboard);
@@ -137,7 +137,7 @@ import Utils from './utils.js';
 
         const touchEndX = e.touches[0].clientX;
         const touchEndY = e.touches[0].clientY;
-        
+
         const diffX = touchStartX - touchEndX;
         const diffY = touchStartY - touchEndY;
 
@@ -421,19 +421,6 @@ import Utils from './utils.js';
     if (infoPanel) {
       infoPanel.classList.remove('show');
       State.infoVisible = false;
-    }
-  }
-
-  /**
-   * 切换全屏
-   */
-  function toggleFullscreen() {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen?.() ||
-        document.documentElement.webkitRequestFullscreen?.();
-    } else {
-      document.exitFullscreen?.() ||
-        document.webkitExitFullscreen?.();
     }
   }
 
