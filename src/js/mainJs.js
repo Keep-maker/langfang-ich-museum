@@ -9,6 +9,16 @@ import Utils from './utils.js';
 (function () {
   'use strict';
 
+  // 全局错误捕获，方便调试
+  window.onerror = function (message, source, lineno, colno, error) {
+    console.error('Global Error caught:', message, 'at', source, ':', lineno, ':', colno);
+    // 如果报错导致加载器没隐藏，尝试隐藏它
+    if (typeof handlePageLoad === 'function') {
+      handlePageLoad();
+    }
+    return false;
+  };
+
   // ========== 配置 ==========
   const CONFIG = {
     scrollOffset: 80,
@@ -730,37 +740,59 @@ import Utils from './utils.js';
    */
   function init() {
     console.log('--- init called ---');
-    // 缓存DOM元素
-    cacheElements();
-    console.log('Elements cached:', Elements);
+    try {
+      // 缓存DOM元素
+      cacheElements();
+      console.log('Elements cached:', Elements);
 
-    // 初始化各模块
-    initNavbar();
-    initSearch();
-    initBackToTop();
-    initLazyLoading();
-    initScrollAnimations();
-    initSmoothAnchors();
-    initKeyboardAccessibility();
-    initLanguageSelector();
-    initParallax();
-    initCardEffects();
-    initThemeToggle();
-    initFormValidation();
+      // 初始化各模块
+      initNavbar();
+      initSearch();
+      initBackToTop();
+      initLazyLoading();
+      initScrollAnimations();
+      initSmoothAnchors();
+      initKeyboardAccessibility();
+      initLanguageSelector();
+      initParallax();
+      initCardEffects();
+      initThemeToggle();
+      initFormValidation();
 
-    // 页面加载完成
+      console.log('Modules initialized successfully');
+    } catch (error) {
+      console.error('Initialization error:', error);
+      // 即便初始化报错，也要尝试隐藏加载器
+      handlePageLoad();
+    }
+
+    // 页面加载完成处理
     if (document.readyState === 'complete') {
       handlePageLoad();
     } else {
       window.addEventListener('load', handlePageLoad);
+      // 增加 DOMContentLoaded 作为备份，通常此时 DOM 已经可用，可以提前隐藏或确保隐藏
+      document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOMContentLoaded fired');
+        // 如果 3 秒后还没加载完，强制隐藏
+        setTimeout(() => {
+          if (State.isLoading) {
+            console.log('Forcing loader hide after timeout');
+            handlePageLoad();
+          }
+        }, 3000);
+      });
     }
+
+    // 终极兜底：无论如何，5秒内必须关闭加载器
     setTimeout(() => {
       if (State.isLoading) {
+        console.log('Ultimate fallback: hiding loader');
         handlePageLoad();
       }
     }, 5000);
 
-    console.log('🏛️ 廊坊非遗数字中心 - 初始化完成');
+    console.log('🏛️ 廊坊非遗数字中心 - 初始化逻辑设置完成');
   }
 
   // 暴露全局API
