@@ -1,3 +1,5 @@
+import { productList } from './products-data.js';
+
 // 获取DOM元素
 const cartFloat = document.getElementById('cartFloat');
 const cartModal = document.getElementById('cartModal');
@@ -9,52 +11,20 @@ const cartFooter = document.getElementById('cartFooter');
 const cartTotalPrice = document.getElementById('cartTotalPrice');
 const cartToast = document.getElementById('cartToast');
 const backShop = document.querySelector('.back-shop');
-const addCartBtns = document.querySelectorAll('.add-cart-btn');
 const cartSettle = document.getElementById('cartSettle');
 
 // 购物车数据（本地存储）
 let cartData = JSON.parse(localStorage.getItem('lfichCart')) || [];
 
-// 页面加载渲染购物车
+// 页面加载渲染
 window.onload = function () {
+    productLogic.init();
     renderCart();
     updateCartBadge();
     calculateTotal();
 };
 
-// 加入购物车
-addCartBtns.forEach(btn => {
-    btn.addEventListener('click', function () {
-        const card = this.closest('.culture-card');
-        const id = card.dataset.id;
-        const name = card.dataset.name;
-        const price = Number(card.dataset.price);
-        const orig = card.dataset.orig;
-        const cate = card.dataset.cate;
-        const img = card.dataset.img;
-
-        // 判断是否已加入购物车
-        const existIndex = cartData.findIndex(item => item.id === id);
-        if (existIndex > -1) {
-            cartData[existIndex].count++;
-        } else {
-            cartData.push({
-                id, name, price, orig, cate, img, count: 1
-            });
-        }
-
-        // 保存到本地存储
-        localStorage.setItem('lfichCart', JSON.stringify(cartData));
-        // 更新视图
-        renderCart();
-        updateCartBadge();
-        calculateTotal();
-        // 显示成功提示
-        showToast();
-    });
-});
-
-// 渲染购物车列表
+// 渲染购物车
 function renderCart() {
     if (cartData.length === 0) {
         cartEmpty.style.display = 'block';
@@ -66,94 +36,88 @@ function renderCart() {
     cartEmpty.style.display = 'none';
     cartList.style.display = 'block';
     cartFooter.style.display = 'flex';
-    cartList.innerHTML = '';
 
+    cartList.innerHTML = '';
     cartData.forEach((item, index) => {
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
         cartItem.innerHTML = `
-          <div class="cart-item-img">
-            <img src="assets/images/culture/${item.img}" alt="${item.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2280%22%3E%3Crect fill=%22%23D4AF37%22 width=%2280%22 height=%2280%22/%3E%3Ctext x=%2250%25%22 y=%250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2212%22 fill=%22%23fff%22%3E非遗文创%3C/text%3E%3C/svg%3E'">
-          </div>
-          <div class="cart-item-info">
-            <h4 class="cart-item-title">${item.name}</h4>
-            <span class="cart-item-badge">${item.cate === 'filigree' ? '花丝镶嵌' : item.cate === 'cloisonne' ? '景泰蓝' : item.cate === 'embroidery' ? '京绣系列' : item.cate === 'daily' ? '非遗日用' : '工艺摆件'}</span>
-            <p class="cart-item-price">¥${item.price}</p>
-          </div>
-          <div class="cart-item-count">
-            <button class="count-btn minus" data-index="${index}">-</button>
-            <input type="number" class="count-input" value="${item.count}" min="1" data-index="${index}">
-            <button class="count-btn plus" data-index="${index}">+</button>
-          </div>
-          <div class="cart-item-del" data-index="${index}"><i class="fas fa-trash"></i></div>
+            <img src="${item.img}" alt="${item.name}" class="cart-item-img"
+                 onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%239D2933%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2212%22 fill=%22%23F5F0E8%22%3E${encodeURIComponent(item.name.substring(0,4))}%3C/text%3E%3C/svg%3E'">
+            <div class="cart-item-info">
+                <h4 class="cart-item-title">${item.name}</h4>
+                <div class="cart-item-price">¥${item.price}</div>
+            </div>
+            <div class="cart-item-ctrl">
+                <button class="count-btn minus" data-index="${index}">-</button>
+                <input type="number" class="count-input" value="${item.count}" min="1" data-index="${index}">
+                <button class="count-btn plus" data-index="${index}">+</button>
+            </div>
+            <div class="cart-item-del" data-index="${index}"><i class="fas fa-trash"></i></div>
         `;
         cartList.appendChild(cartItem);
     });
 
-    // 绑定数量增减事件
     bindCountEvent();
-    // 绑定删除事件
     bindDelEvent();
 }
 
-// 数量增减事件
+// 绑定数量增减事件
 function bindCountEvent() {
-    const minusBtns = document.querySelectorAll('.count-btn.minus');
-    const plusBtns = document.querySelectorAll('.count-btn.plus');
-    const countInputs = document.querySelectorAll('.count-input');
+    const inputs = document.querySelectorAll('.count-input');
+    const plusBtns = document.querySelectorAll('.plus');
+    const minusBtns = document.querySelectorAll('.minus');
 
-    // 减数量
+    plusBtns.forEach(btn => {
+        btn.onclick = function () {
+            const index = this.dataset.index;
+            cartData[index].count++;
+            updateCart(index, cartData[index].count);
+        }
+    });
+
     minusBtns.forEach(btn => {
-        btn.addEventListener('click', function () {
+        btn.onclick = function () {
             const index = this.dataset.index;
             if (cartData[index].count > 1) {
                 cartData[index].count--;
                 updateCart(index, cartData[index].count);
             }
-        });
+        }
     });
 
-    // 加数量
-    plusBtns.forEach(btn => {
-        btn.addEventListener('click', function () {
+    inputs.forEach(input => {
+        input.onchange = function () {
             const index = this.dataset.index;
-            cartData[index].count++;
-            updateCart(index, cartData[index].count);
-        });
-    });
-
-    // 输入数量
-    countInputs.forEach(input => {
-        input.addEventListener('blur', function () {
-            const index = this.dataset.index;
-            let count = Number(this.value);
-            if (isNaN(count) || count < 1) count = 1;
-            this.value = count;
-            cartData[index].count = count;
-            updateCart(index, count);
-        });
+            let val = parseInt(this.value);
+            if (isNaN(val) || val < 1) val = 1;
+            cartData[index].count = val;
+            updateCart(index, val);
+        }
     });
 }
 
-// 删除商品事件
+// 绑定删除事件
 function bindDelEvent() {
     const delBtns = document.querySelectorAll('.cart-item-del');
     delBtns.forEach(btn => {
-        btn.addEventListener('click', function () {
+        btn.onclick = function () {
             const index = this.dataset.index;
             cartData.splice(index, 1);
             localStorage.setItem('lfichCart', JSON.stringify(cartData));
             renderCart();
             updateCartBadge();
             calculateTotal();
-        });
+        }
     });
 }
 
 // 更新购物车单个商品数量
 function updateCart(index, count) {
     localStorage.setItem('lfichCart', JSON.stringify(cartData));
-    document.querySelectorAll('.count-input')[index].value = count;
+    const inputs = document.querySelectorAll('.count-input');
+    if (inputs[index]) inputs[index].value = count;
+    updateCartBadge();
     calculateTotal();
 }
 
@@ -163,7 +127,7 @@ function updateCartBadge() {
     cartData.forEach(item => {
         totalCount += item.count;
     });
-    cartBadge.innerText = totalCount;
+    if (cartBadge) cartBadge.innerText = totalCount;
 }
 
 // 计算总价
@@ -172,109 +136,114 @@ function calculateTotal() {
     cartData.forEach(item => {
         total += item.price * item.count;
     });
-    cartTotalPrice.innerText = `¥${total.toFixed(2)}`;
+    if (cartTotalPrice) cartTotalPrice.innerText = `¥${total.toFixed(2)}`;
 }
 
 // 显示购物车弹窗
-cartFloat.addEventListener('click', function () {
-    cartModal.classList.add('show');
-    document.body.style.overflow = 'hidden';
-});
+if (cartFloat) {
+    cartFloat.addEventListener('click', function () {
+        if (cartModal) {
+            cartModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+}
 
 // 关闭购物车弹窗
-cartClose.addEventListener('click', function () {
-    cartModal.classList.remove('show');
-    document.body.style.overflow = 'auto';
-});
+if (cartClose) {
+    cartClose.addEventListener('click', function () {
+        if (cartModal) {
+            cartModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
 
 // 点击遮罩关闭购物车
-cartModal.addEventListener('click', function (e) {
-    if (e.target === this) {
-        cartModal.classList.remove('show');
-        document.body.style.overflow = 'auto';
-    }
-});
+if (cartModal) {
+    cartModal.addEventListener('click', function (e) {
+        if (e.target === this) {
+            cartModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
 
 // 返回挑选文创
-backShop.addEventListener('click', function () {
-    cartModal.classList.remove('show');
-    document.body.style.overflow = 'auto';
-});
+if (backShop) {
+    backShop.addEventListener('click', function () {
+        if (cartModal) {
+            cartModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
 
 // 加入购物车成功提示
-function showToast() {
+function showToast(msg = '加入购物车成功！') {
+    cartToast.innerText = msg;
     cartToast.classList.add('show');
     setTimeout(() => {
         cartToast.classList.remove('show');
     }, 1500);
 }
 
-// 立即结算（可自行对接后端接口）
-cartSettle.addEventListener('click', function () {
-    alert('非遗文创结算中，敬请期待！');
-    // 对接后端结算接口可写在这里
-    // cartModal.classList.remove('show');
-    // document.body.style.overflow = 'auto';
+// 立即结算
+if (cartSettle) cartSettle.addEventListener('click', function () {
+    if (cartData.length === 0) return;
+
+    // 模拟结算过程
+    cartSettle.innerText = '正在处理...';
+    cartSettle.disabled = true;
+
+    setTimeout(() => {
+        alert('支付成功！感谢您对非遗文化的支持。');
+        cartData = [];
+        localStorage.setItem('lfichCart', JSON.stringify(cartData));
+        renderCart();
+        updateCartBadge();
+        calculateTotal();
+        cartModal.classList.remove('show');
+        document.body.style.overflow = 'auto';
+        cartSettle.innerText = '立即结算';
+        cartSettle.disabled = false;
+    }, 1500);
 });
 
-// 搜索和分页逻辑优化
+// 搜索和分页逻辑
 const productLogic = {
-    data: [],
+    data: productList,
     state: {
         category: 'all',
         keyword: '',
         page: 1,
-        pageSize: 6 // 每页显示数量
+        pageSize: 6  // 2行 × 3列 = 6个商品/页
     },
 
     init() {
-        // 1. 提取数据
-        const cards = document.querySelectorAll('.culture-card');
-        cards.forEach(card => {
-            // 获取描述文本，注意处理可能为空的情况
-            const descEl = card.querySelector('.card-desc');
-            const desc = descEl ? descEl.textContent.trim().toLowerCase() : '';
-            const name = card.dataset.name ? card.dataset.name.toLowerCase() : '';
-
-            this.data.push({
-                element: card,
-                id: card.dataset.id,
-                name: name,
-                cate: card.dataset.cate,
-                desc: desc
-            });
-        });
-
-        // 2. 绑定事件
         this.bindEvents();
-
-        // 3. 初始渲染
         this.updateDisplay();
     },
 
     bindEvents() {
-        // 分类筛选
+        // 分类点击
         const cateBtns = document.querySelectorAll('.cate-btn');
         cateBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                // 更新按钮样式
+            btn.addEventListener('click', () => {
                 cateBtns.forEach(b => b.classList.remove('active'));
-                e.target.classList.add('active');
-
-                // 更新状态
-                this.state.category = e.target.dataset.cate;
-                this.state.page = 1; // 切换分类重置为第一页
+                btn.classList.add('active');
+                this.state.category = btn.dataset.cate;
+                this.state.page = 1;
                 this.updateDisplay();
             });
         });
 
         // 搜索功能
-        const searchInput = document.querySelector('.filter-search input');
-        const searchBtn = document.querySelector('.search-btn');
-
+        const searchBtn = document.getElementById('productSearchBtn');
+        const searchInput = document.getElementById('searchInput');
         const handleSearch = () => {
             this.state.keyword = searchInput.value.trim().toLowerCase();
-            this.state.page = 1; // 搜索重置为第一页
+            this.state.page = 1;
             this.updateDisplay();
         };
 
@@ -285,7 +254,7 @@ const productLogic = {
             });
         }
 
-        // 分页点击 (事件委托)
+        // 分页点击
         const pagination = document.querySelector('.culture-pagination');
         if (pagination) {
             pagination.addEventListener('click', (e) => {
@@ -301,7 +270,6 @@ const productLogic = {
                 }
 
                 this.updateDisplay();
-                // 滚动到商品列表顶部
                 const filterBar = document.querySelector('.culture-filter');
                 if (filterBar) {
                     filterBar.scrollIntoView({ behavior: 'smooth' });
@@ -311,18 +279,18 @@ const productLogic = {
     },
 
     updateDisplay() {
-        // 1. 过滤数据（模糊匹配：名称或描述包含关键词）
+        // 过滤
         const filtered = this.data.filter(item => {
             const matchCate = this.state.category === 'all' || item.cate === this.state.category;
-            const matchSearch = item.name.includes(this.state.keyword) || item.desc.includes(this.state.keyword);
+            const matchSearch = item.name.toLowerCase().includes(this.state.keyword) ||
+                item.detail.toLowerCase().includes(this.state.keyword);
             return matchCate && matchSearch;
         });
 
-        // 2. 分页计算
+        // 分页
         const total = filtered.length;
         const totalPages = Math.ceil(total / this.state.pageSize);
 
-        // 修正当前页码
         if (this.state.page > totalPages) this.state.page = totalPages || 1;
         if (this.state.page < 1) this.state.page = 1;
 
@@ -330,32 +298,22 @@ const productLogic = {
         const end = start + this.state.pageSize;
         const currentItems = filtered.slice(start, end);
 
-        // 3. 更新卡片显示
-        // 先隐藏所有
-        this.data.forEach(item => {
-            item.element.style.display = 'none';
-        });
-        // 显示当前页
-        currentItems.forEach(item => {
-            item.element.style.display = 'block';
-        });
-
-        // 4. 更新分页控件
+        // 渲染商品列表
+        this.renderProductList(currentItems);
         this.renderPagination(totalPages);
 
-        // 5. 无结果提示
+        // 无结果提示
         const grid = document.querySelector('.culture-card-grid');
         let noResult = document.getElementById('no-result-msg');
         if (total === 0) {
             if (!noResult) {
                 noResult = document.createElement('div');
                 noResult.id = 'no-result-msg';
-                noResult.style.textAlign = 'center';
-                noResult.style.padding = '60px 0';
-                noResult.style.color = '#999';
-                noResult.style.width = '100%';
-                noResult.style.gridColumn = '1 / -1';
-                noResult.innerHTML = '<i class="fas fa-search" style="font-size: 48px; margin-bottom: 20px; display: block;"></i><p>未找到相关文创产品，换个关键词试试吧~</p>';
+                noResult.className = 'no-result';
+                noResult.innerHTML = `
+                    <i class="fas fa-search"></i>
+                    <p>未找到相关文创产品，换个关键词试试吧~</p>
+                `;
                 grid.appendChild(noResult);
             }
             noResult.style.display = 'block';
@@ -364,12 +322,90 @@ const productLogic = {
         }
     },
 
+    renderProductList(items) {
+        const grid = document.querySelector('.culture-card-grid');
+        if (!grid) return;
+
+        grid.innerHTML = '';
+        items.forEach(item => {
+            const article = document.createElement('article');
+            article.className = 'culture-card';
+            article.setAttribute('data-id', item.id);
+            article.onclick = () => location.href = `cultural-detail.html?id=${item.id}`;
+
+            article.innerHTML = `
+                <div class="card-badge">${this.getCategoryName(item.cate)}</div>
+                <div class="card-img-wrapper">
+                    <img src="${item.img}" alt="${item.name}" class="card-img"
+                         onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Crect fill=%22%239D2933%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22%23F5F0E8%22 font-family=%22serif%22%3E${encodeURIComponent(item.name)}%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">${item.name}</h3>
+                    <p class="card-desc">${item.detail.substring(0, 35)}...</p>
+                    <div class="card-price">
+                        <span class="price-now">¥${item.price}</span>
+                        <span class="price-orig">¥${item.orig}</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="card-btn add-cart-btn">加入购物车</button>
+                        <a href="cultural-detail.html?id=${item.id}" class="card-btn secondary">详情</a>
+                    </div>
+                </div>
+            `;
+
+            // 阻止按钮冒泡
+            const addBtn = article.querySelector('.add-cart-btn');
+            const detailBtn = article.querySelector('.secondary');
+
+            addBtn.onclick = (e) => {
+                e.stopPropagation();
+                this.addToCart(item);
+            };
+            detailBtn.onclick = (e) => {
+                e.stopPropagation();
+            };
+
+            grid.appendChild(article);
+        });
+    },
+
+    getCategoryName(cate) {
+        const names = {
+            'filigree': '花丝镶嵌',
+            'cloisonne': '景泰蓝',
+            'embroidery': '京绣',
+            'kites': '风筝',
+            'ceramics': '陶瓷',
+            'lacquer': '漆器'
+        };
+        return names[cate] || '非遗文创';
+    },
+
+    addToCart(product) {
+        const existIndex = cartData.findIndex(item => item.id === product.id);
+        if (existIndex > -1) {
+            cartData[existIndex].count++;
+        } else {
+            cartData.push({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                img: product.img,
+                count: 1
+            });
+        }
+
+        localStorage.setItem('lfichCart', JSON.stringify(cartData));
+        renderCart();
+        updateCartBadge();
+        calculateTotal();
+        showToast();
+    },
+
     renderPagination(totalPages) {
         const container = document.querySelector('.culture-pagination');
         if (!container) return;
 
-        // 如果没有数据或只有1页且少于每页数量，是否隐藏分页？
-        // 这里选择：如果有数据且只有1页，隐藏分页；如果没有数据，也隐藏分页。
         if (totalPages <= 1) {
             container.style.display = 'none';
             return;
@@ -377,25 +413,17 @@ const productLogic = {
         container.style.display = 'flex';
 
         let html = '';
-
-        // 上一页
         const prevDisabled = this.state.page === 1 ? 'disabled' : '';
         html += `<button class="page-btn ${prevDisabled}" data-page="prev"><i class="fas fa-chevron-left"></i></button>`;
 
-        // 页码生成逻辑 (简单的全部显示，如果页数多可以优化为 1 2 ... 5 6)
-        // 这里由于总数不多，直接显示所有页码
         for (let i = 1; i <= totalPages; i++) {
             const active = i === this.state.page ? 'active' : '';
             html += `<button class="page-btn ${active}" data-page="${i}">${i}</button>`;
         }
 
-        // 下一页
         const nextDisabled = this.state.page === totalPages ? 'disabled' : '';
         html += `<button class="page-btn ${nextDisabled}" data-page="next"><i class="fas fa-chevron-right"></i></button>`;
 
         container.innerHTML = html;
     }
 };
-
-// 初始化搜索和分页
-productLogic.init();
