@@ -97,7 +97,7 @@ langfang-ich-museum/
 
 ```bash
 # 克隆项目
-git clone https://github.com/Keep-maker/langfang-ich-museum.git
+git clone https://gitee.com/keep-maker/langfang-ich-museum.git
 cd langfang-ich-museum
 
 # 安装依赖
