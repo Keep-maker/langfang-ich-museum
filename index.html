@@ -78,6 +78,18 @@
 
       <!-- 主导航菜单 -->
       <nav class="nav-menu" role="navigation" aria-label="主导航">
+        <a href="index.html" class="nav-item" data-section="home">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+              <polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="nav-text">首页</span>
+          <span class="nav-underline"></span>
+        </a>
         <a href="src/pages/museum.html" class="nav-item" data-section="museum">
           <span class="nav-icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -110,7 +122,7 @@
           <span class="nav-text">非遗答题</span>
           <span class="nav-underline"></span>
         </a>
-        <a href="src/pages/ai-guide.html" class="nav-item" data-section="culture">
+        <a href="src/pages/ai-guide.html" class="nav-item" data-section="ai-guide">
           <span class="nav-icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2"
@@ -142,7 +154,7 @@
 
         <!-- 语言切换 -->
         <div class="language-selector">
-          <button class="language-btn" aria-expanded="false" aria-haspopup="listbox">
+          <button class="language-btn" id="langBtn" aria-expanded="false" aria-haspopup="listbox">
             <span>中文</span>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
               <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
@@ -381,7 +393,7 @@
                   </span>
                 </div>
                 <div class="slide-actions" data-aos="fade-up" data-aos-delay="400">
-                  <a href="src/pages/craft-detail.html" class="mortise-btn primary">
+                  <a href="src/pages/craft-detail.html?craft=filigree" class="mortise-btn primary">
                     <span class="btn-text">探索工艺</span>
                     <span class="btn-icon">
                       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -593,7 +605,7 @@
         <div class="inheritor-cards-grid">
 
           <!-- 传承人卡片1 -->
-          <article class="inheritor-card" data-aos="fade-up" data-aos-delay="0">
+          <article class="inheritor-card" data-aos="fade-up">
             <div class="card-inner">
               <!-- 卡片图片区 -->
               <div class="card-image-wrapper">
@@ -647,7 +659,7 @@
           </article>
 
           <!-- 传承人卡片2 -->
-          <article class="inheritor-card" data-aos="fade-up" data-aos-delay="100">
+          <article class="inheritor-card" data-aos="fade-up">
             <div class="card-inner">
               <div class="card-image-wrapper">
                 <div class="card-image">
@@ -697,7 +709,7 @@
           </article>
 
           <!-- 传承人卡片3 -->
-          <article class="inheritor-card" data-aos="fade-up" data-aos-delay="200">
+          <article class="inheritor-card" data-aos="fade-up">
             <div class="card-inner">
               <div class="card-image-wrapper">
                 <div class="card-image">
@@ -750,7 +762,7 @@
 
         <!-- 查看更多按钮 -->
         <div class="section-footer" data-aos="fade-up">
-          <a href="src/pages/inheritors.html" class="view-more-btn">
+          <a href="src/pages/museum.html#inheritors" class="view-more-btn">
             <span>查看全部传承人</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M4 10H16M12 6L16 10L12 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
@@ -779,7 +791,7 @@
         <div class="access-grid">
 
           <!-- 虚拟博物馆入口 -->
-          <a href="src/pages/museum.html" class="access-card" data-aos="fade-up" data-aos-delay="0">
+          <a href="src/pages/museum.html" class="access-card" data-aos="fade-up">
             <div class="card-bg museum-bg"></div>
             <div class="card-content">
               <div class="card-icon">
@@ -802,7 +814,7 @@
           </a>
 
           <!-- 互动体验入口 -->
-          <a href="src/pages/experience.html" class="access-card" data-aos="fade-up" data-aos-delay="100">
+          <a href="src/pages/experience.html" class="access-card" data-aos="fade-up">
             <div class="card-bg experience-bg"></div>
             <div class="card-content">
               <div class="card-icon">
@@ -825,7 +837,7 @@
           </a>
 
           <!-- 非遗答题入口 -->
-          <a href="src/pages/quiz.html" class="access-card" data-aos="fade-up" data-aos-delay="200">
+          <a href="src/pages/quiz.html" class="access-card" data-aos="fade-up">
             <div class="card-bg quiz-bg"></div>
             <div class="card-content">
               <div class="card-icon">
@@ -849,7 +861,7 @@
           </a>
 
           <!-- 文创转化入口 -->
-          <a href="src/pages/cultural-products.html" class="access-card" data-aos="fade-up" data-aos-delay="300">
+          <a href="src/pages/cultural-products.html" class="access-card" data-aos="fade-up">
             <div class="card-bg culture-bg"></div>
             <div class="card-content">
               <div class="card-icon">
@@ -859,7 +871,7 @@
                   <circle cx="32" cy="38" r="8" stroke="currentColor" stroke-width="2" />
                 </svg>
               </div>
-              <h3 class="card-title">文创转化</h3>
+              <h3 class="card-title">文创商店</h3>
               <p class="card-desc">精选非遗文创产品，把传统工艺之美带回家</p>
               <span class="card-action">
                 浏览商城

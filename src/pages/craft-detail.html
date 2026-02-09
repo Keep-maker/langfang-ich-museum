@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>花丝镶嵌工艺探索 - 千年技艺</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/cards.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/craft-detail.css">
+    <!-- AOS动画库 -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- 加载动画 -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <svg class="loader-icon" width="80" height="80" viewBox="0 0 80 80">
+                <circle class="loader-circle" cx="40" cy="40" r="35" fill="none" stroke="#D4AF37" stroke-width="2" />
+                <path class="loader-pattern" d="M40 10 L60 25 L60 55 L40 70 L20 55 L20 25 Z" fill="none"
+                    stroke="#9D2933" stroke-width="2" />
+            </svg>
+            <p class="loader-text">数脉非遗 · 加载中</p>
+        </div>
+    </div>
+
+    <!-- ========== 顶部导航栏 ========== -->
+    <header class="navbar" id="navbar" role="banner">
+        <div class="container">
+            <!-- Logo区域 -->
+            <a href="../../index.html" class="logo-group" aria-label="廊坊非遗数字中心首页">
+                <svg class="logo-icon" width="50" height="50" viewBox="0 0 50 50" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#D4AF37" />
+                            <stop offset="100%" stop-color="#F0D98C" />
+                        </linearGradient>
+                    </defs>
+                    <polygon class="logo-outer" points="25,2 47,14 47,36 25,48 3,36 3,14" fill="none"
+                        stroke="url(#goldGradient)" stroke-width="2" />
+                    <polygon class="logo-inner" points="25,10 40,18 40,32 25,40 10,32 10,18" fill="none"
+                        stroke="#9D2933" stroke-width="1.5" />
+                    <circle cx="25" cy="25" r="6" fill="none" stroke="url(#goldGradient)" stroke-width="1" />
+                    <circle cx="25" cy="25" r="2" fill="#9D2933" />
+                </svg>
+                <div class="logo-text">
+                    <h1>廊坊非遗数字中心</h1>
+                    <span class="logo-subtitle" lang="en">Langfang ICH Digital Center</span>
+                </div>
+            </a>
+
+            <!-- 主导航菜单 -->
+            <nav class="nav-menu" role="navigation" aria-label="主导航">
+                <a href="../../index.html" class="nav-item" data-section="home">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <span class="nav-text">首页</span>
+                    <span class="nav-underline"></span>
+                </a>
+                <a href="museum.html" class="nav-item" data-section="museum">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 21H21M5 21V7L12 3L19 7V21M9 21V13H15V21" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <span class="nav-text">虚拟博物馆</span>
+                    <span class="nav-underline"></span>
+                </a>
+                <a href="experience.html" class="nav-item" data-section="experience">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <span class="nav-text">互动体验</span>
+                    <span class="nav-underline"></span>
+                </a>
+                <a href="quiz.html" class="nav-item" data-section="quiz">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
+                            <path d="M9 9C9 7.5 10.5 6 12 6C13.5 6 15 7.5 15 9C15 10.5 13.5 11.5 12 12V14"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            <circle cx="12" cy="17" r="1" fill="currentColor" />
+                        </svg>
+                    </span>
+                    <span class="nav-text">非遗答题</span>
+                    <span class="nav-underline"></span>
+                </a>
+                <a href="ai-guide.html" class="nav-item" data-section="ai-guide">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <span class="nav-text">智能导览</span>
+                    <span class="nav-underline"></span>
+                </a>
+            </nav>
+
+            <!-- 右侧功能区 -->
+            <div class="nav-actions">
+                <!-- 搜索按钮 -->
+                <button class="action-btn search-btn" aria-label="搜索" id="searchBtn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="2" />
+                        <path d="M14 14L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </button>
+
+                <!-- 无障碍切换 -->
+                <button class="action-btn accessibility-btn" aria-label="无障碍选项" data-action="accessibility">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="4" r="2" stroke="currentColor" stroke-width="2" />
+                        <path d="M4 8H16M10 8V18M7 18L10 13L13 18" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                    </svg>
+                </button>
+
+                <!-- 语言切换 -->
+                <div class="language-selector">
+                    <button class="language-btn" id="langBtn" aria-expanded="false" aria-haspopup="listbox">
+                        <span>中文</span>
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                            <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                    </button>
+                    <ul class="language-dropdown" role="listbox">
+                        <li role="option" aria-selected="true" data-lang="zh">中文</li>
+                        <li role="option" aria-selected="false" data-lang="en">English</li>
+                        <li role="option" aria-selected="false" data-lang="ja">日本語</li>
+                    </ul>
+                </div>
+
+                <button class="action-btn" aria-label="全屏" id="fullscreenBtn" title="全屏模式">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M2 6V2H6M14 2H18V6M18 14V18H14M6 18H2V14" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+
+                <!-- 移动端菜单切换 -->
+                <button class="mobile-menu-toggle" aria-label="打开菜单" id="mobileMenuToggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 导航底部装饰线 -->
+        <div class="nav-border-decoration">
+            <svg class="border-pattern" width="100%" height="4" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="transparent" />
+                        <stop offset="20%" stop-color="#D4AF37" />
+                        <stop offset="50%" stop-color="#D4AF37" />
+                        <stop offset="80%" stop-color="#D4AF37" />
+                        <stop offset="100%" stop-color="transparent" />
+                    </linearGradient>
+                </defs>
+                <rect width="100%" height="1" fill="url(#borderGradient)" />
+            </svg>
+        </div>
+    </header>
+
+    <!-- ========== 移动端侧边栏 ========== -->
+    <aside class="mobile-sidebar" id="mobileSidebar">
+        <div class="sidebar-overlay"></div>
+        <div class="sidebar-content">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">廊坊非遗数字中心</div>
+                <button class="sidebar-close" aria-label="关闭菜单">&times;</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="../../index.html" class="sidebar-link">
+                    <span class="link-icon">🏠</span>
+                    <span class="link-text">首页</span>
+                    <span class="link-desc">返回中心主页</span>
+                </a>
+                <a href="museum.html" class="sidebar-link">
+                    <span class="link-icon">🏛️</span>
+                    <span class="link-text">虚拟博物馆</span>
+                    <span class="link-desc">沉浸式3D展厅体验</span>
+                </a>
+                <a href="experience.html" class="sidebar-link">
+                    <span class="link-icon">✨</span>
+                    <span class="link-text">互动体验</span>
+                    <span class="link-desc">亲手体验非遗工艺</span>
+                </a>
+                <a href="quiz.html" class="sidebar-link">
+                    <span class="link-icon">🎯</span>
+                    <span class="link-text">非遗答题</span>
+                    <span class="link-desc">测测你的非遗知识</span>
+                </a>
+                <a href="ai-guide.html" class="sidebar-link">
+                    <span class="link-icon">🤖</span>
+                    <span class="link-text">智能导览</span>
+                    <span class="link-desc">AI导游带您看展</span>
+                </a>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- ========== 搜索模态框 ========== -->
+    <div class="search-modal" id="searchModal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="search-modal-content">
+            <form class="search-form" role="search">
+                <input type="search" class="search-input" placeholder="搜索非遗工艺、传承人、展品..." aria-label="搜索内容">
+                <button type="submit" class="search-submit" aria-label="开始搜索">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" />
+                        <path d="M16 16L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </button>
+            </form>
+            <button class="search-close" aria-label="关闭搜索">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
+            <div class="search-suggestions">
+                <h3>热门搜索</h3>
+                <div class="suggestion-tags">
+                    <button class="suggestion-tag">花丝镶嵌</button>
+                    <button class="suggestion-tag">景泰蓝</button>
+                    <button class="suggestion-tag">传承人故事</button>
+                    <button class="suggestion-tag">非遗文创</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main id="mainContent" class="craft-detail-page">
+        <div class="container">
+            <header class="header" data-aos="fade-down">
+                <div class="national-label">国家级非物质文化遗产</div>
+
+                <div class="main-title-container">
+                    <div class="pinyin">HUĀ SĪ XIANG QIÀN</div>
+                    <h1 class="main-title">花丝镶嵌</h1>
+                    <div class="subtitle">THE ART OF FILIGREE AND INLAY</div>
+                    <p class="intro-text">
+                        花丝镶嵌，又称“细金工艺”，是一门传承千年的宫廷绝艺。它将金、银、铜等抽成细丝，通过掐、填、攒、焊、编、织等技法，钩勒出精妙绝伦的图案，再镶嵌以璀璨夺目的珠宝。</p>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="feature-tags">
+                    <span class="feature-tag"><i>✦</i> 两千余年历史传承</span>
+                    <span class="feature-tag"><i>✦</i> 皇家宫廷御用工艺</span>
+                    <span class="feature-tag"><i>✦</i> 金银细金工艺之冠</span>
+                </div>
+
+                <div class="button-group">
+                    <a href="#craftsmanship" class="btn btn-primary">探索工艺</a>
+                    <a href="#history" class="btn btn-outline">历史传承</a>
+                    <a href="#collection" class="btn btn-outline">典藏作品</a>
+                </div>
+
+                <div class="scroll-hint">
+                    <div class="scroll-text">探索千年皇家工艺之美</div>
+                    <div class="scroll-indicator"></div>
+                </div>
+            </header>
+
+            <section class="section" id="craftsmanship" data-aos="fade-up">
+                <h2 class="section-title">匠艺精粹</h2>
+
+                <div class="tools-grid">
+                    <div class="tool-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="1" opacity="0.3" />
+                                <!-- 传统镊子 -->
+                                <path d="M25 48L22 12C22 12 25 10 32 10C39 10 42 12 42 12L39 48" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" opacity="0.4" />
+                                <!-- 掐制的卷草纹金丝 -->
+                                <path
+                                    d="M22 15C22 15 28 12 32 18C36 24 42 22 42 22M22 25C22 25 28 22 32 28C36 34 42 32 42 32"
+                                    stroke="var(--accent-red)" stroke-width="2" stroke-linecap="round" />
+                                <circle cx="32" cy="18" r="4" fill="var(--color-gold)" />
+                                <circle cx="32" cy="28" r="3" fill="var(--color-gold)" opacity="0.6" />
+                            </svg>
+                        </div>
+                        <h3 class="tool-name">掐丝</h3>
+                        <p class="tool-description">将细如发丝的金银丝，用镊子掐成各种纹样，是花丝工艺中最精妙的技法，要求匠人有着超凡的耐心与精准度。</p>
+                    </div>
+
+                    <div class="tool-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="1" opacity="0.3" />
+                                <!-- 编织肌理背景 -->
+                                <path d="M15 25H49M15 32H49M15 39H49M25 15V49M32 15V49M39 15V49" stroke="currentColor"
+                                    stroke-width="0.5" opacity="0.2" />
+                                <!-- 填丝纹样：如意云纹 -->
+                                <path d="M24 32C24 28 28 26 32 30C36 34 40 32 40 28" stroke="var(--accent-red)"
+                                    stroke-width="2" stroke-linecap="round" />
+                                <path d="M24 32C24 36 28 38 32 34C36 30 40 32 40 36" stroke="var(--accent-red)"
+                                    stroke-width="2" stroke-linecap="round" />
+                                <!-- 细密填丝 -->
+                                <path d="M28 28L36 36M28 36L36 28" stroke="var(--color-gold)" stroke-width="1"
+                                    opacity="0.6" />
+                                <circle cx="32" cy="32" r="4" fill="var(--color-gold)" />
+                            </svg>
+                        </div>
+                        <h3 class="tool-name">填丝</h3>
+                        <p class="tool-description">在掐制好的轮廓内填入细密的丝线，形成丰富的肌理效果，如同在金属上"编织"出璀璨图案。</p>
+                    </div>
+
+                    <div class="tool-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="1" opacity="0.3" />
+                                <!-- 传统火焰：灵动造型 -->
+                                <path
+                                    d="M32 48C32 48 44 38 44 28C44 20 38 14 32 14C26 14 20 20 20 28C20 38 32 48 32 48Z"
+                                    fill="var(--accent-red)" opacity="0.1" />
+                                <path
+                                    d="M32 44C32 44 40 36 40 28C40 22 36 18 32 18C28 18 24 22 24 28C24 36 32 44 32 44Z"
+                                    stroke="var(--accent-red)" stroke-width="1.5" stroke-linecap="round" />
+                                <path
+                                    d="M32 40C32 40 36 34 36 30C36 28 34 26 32 26C30 26 28 28 28 30C28 34 32 40 32 40Z"
+                                    fill="var(--accent-red)" />
+                                <!-- 炭火星芒 -->
+                                <circle cx="25" cy="22" r="1" fill="var(--color-gold)" />
+                                <circle cx="39" cy="22" r="1" fill="var(--color-gold)" />
+                                <!-- 焊接基座 -->
+                                <rect x="18" y="46" width="28" height="4" rx="1" fill="var(--color-gold)" />
+                            </svg>
+                        </div>
+                        <h3 class="tool-name">焊接</h3>
+                        <p class="tool-description">使用秘制焊药，在特制炭火上将金银丝纹样焊接固定，火候掌控全凭匠人数十年经验，丝毫差错便前功尽弃。</p>
+                    </div>
+
+                    <div class="tool-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="1" opacity="0.3" />
+                                <!-- 宝石镶嵌座：宫廷八角 -->
+                                <path d="M32 10L44 18V34L32 42L20 34V18L32 10Z" stroke="var(--color-gold)"
+                                    stroke-width="1.5" />
+                                <!-- 核心宝石 -->
+                                <path d="M32 16L40 26L32 36L24 26L32 16Z" fill="var(--accent-red)" />
+                                <path d="M32 16V36M40 26H24" stroke="white" stroke-width="0.5" opacity="0.3" />
+                                <!-- 镶嵌爪 -->
+                                <path d="M20 18L25 22M44 18L39 22M20 34L25 30M44 34L39 30" stroke="var(--color-gold)"
+                                    stroke-width="2.5" stroke-linecap="round" />
+                                <!-- 装饰点缀 -->
+                                <circle cx="32" cy="10" r="1.5" fill="var(--color-gold)" />
+                                <circle cx="32" cy="42" r="1.5" fill="var(--color-gold)" />
+                            </svg>
+                        </div>
+                        <h3 class="tool-name">镶嵌</h3>
+                        <p class="tool-description">将宝石、珍珠、翡翠等珍贵材料镶嵌于花丝底座之上，需精确计算每粒宝石的角度与受力，方能使光芒交相辉映。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="materials" data-aos="fade-up">
+                <h2 class="section-title">珍材宝料</h2>
+
+                <div class="materials-comparison">
+                    <div class="material-category" data-aos="fade-right">
+                        <h3 class="material-title">贵金属材料</h3>
+                        <div class="material-items">
+                            <div class="material-item">
+                                <div class="material-icon-circle">
+                                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="0.5"
+                                            opacity="0.1" />
+                                        <!-- 线轴：带有卷草纹装饰 -->
+                                        <path d="M14 10H26M14 30H26M16 8V32M24 8V32" stroke="currentColor"
+                                            stroke-width="1" opacity="0.2" />
+                                        <path d="M14 12C14 10 16 8 20 8C24 8 26 10 26 12" stroke="var(--color-gold)"
+                                            stroke-width="0.8" opacity="0.4" />
+                                        <!-- 金丝缠绕：螺旋质感 -->
+                                        <path d="M16 14L24 15M16 17L24 18M16 20L24 21M16 23L24 24M16 26L24 27"
+                                            stroke="var(--color-gold)" stroke-width="1.5" stroke-linecap="round" />
+                                        <path d="M24 12C28 15 28 25 24 28" stroke="var(--color-gold)" stroke-width="2.5"
+                                            stroke-linecap="round" />
+                                        <!-- 卷草纹点缀 -->
+                                        <path d="M18 10C18 10 19 8 20 9C21 10 22 10 22 10" stroke="var(--color-gold)"
+                                            stroke-width="0.5" />
+                                        <circle cx="20" cy="20" r="1.5" fill="var(--accent-red)" />
+                                    </svg>
+                                </div>
+                                <div class="material-info">
+                                    <div class="material-name">足金丝线</div>
+                                    <div class="material-desc">采用99.9%纯金拉制成0.15-0.3毫米细丝，柔韧延展，色泽温润，经千年不褪色。</div>
+                                </div>
+                            </div>
+
+                            <div class="material-item">
+                                <div class="material-icon-circle">
+                                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="0.5"
+                                            opacity="0.1" />
+                                        <!-- 银丝交织：双如意纹结构 -->
+                                        <path
+                                            d="M12 20C12 16 16 12 20 12C24 12 28 16 28 20C28 24 24 28 20 28C16 28 12 24 12 20Z"
+                                            stroke="var(--color-gold-light)" stroke-width="0.5" opacity="0.2" />
+                                        <!-- 如意头纹样 -->
+                                        <path d="M16 20C16 18 18 17 20 19C22 21 24 20 24 18"
+                                            stroke="var(--color-gold-light)" stroke-width="1.5"
+                                            stroke-linecap="round" />
+                                        <path d="M16 20C16 22 18 23 20 21C22 19 24 20 24 22"
+                                            stroke="var(--color-gold-light)" stroke-width="1.5"
+                                            stroke-linecap="round" />
+                                        <!-- 细密银丝感 -->
+                                        <circle cx="20" cy="20" r="8" stroke="var(--color-gold-light)"
+                                            stroke-width="0.5" stroke-dasharray="2 2" />
+                                        <circle cx="20" cy="20" r="2" fill="white" />
+                                    </svg>
+                                </div>
+                                <div class="material-info">
+                                    <div class="material-name">银丝</div>
+                                    <div class="material-desc">以高纯度银反复拉丝至发丝细度，经特殊处理后呈现如月光般清冷光泽，多用于制作底胎。</div>
+                                </div>
+                            </div>
+
+                            <div class="material-item">
+                                <div class="material-icon-circle">
+                                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="0.5"
+                                            opacity="0.1" />
+                                        <!-- 合金宫廷菱格纹 -->
+                                        <path d="M20 6L34 20L20 34L6 20L20 6Z" stroke="var(--color-gold)"
+                                            stroke-width="1.2" />
+                                        <path d="M12 12L28 28M28 12L12 28" stroke="var(--color-gold)" stroke-width="0.8"
+                                            opacity="0.4" />
+                                        <!-- 万字纹局部变形 -->
+                                        <path d="M16 20H24M20 16V24" stroke="var(--color-gold)" stroke-width="1.5" />
+                                        <!-- 宫廷点缀 -->
+                                        <circle cx="20" cy="6" r="1" fill="var(--color-gold)" />
+                                        <circle cx="20" cy="34" r="1" fill="var(--color-gold)" />
+                                        <circle cx="6" cy="20" r="1" fill="var(--color-gold)" />
+                                        <circle cx="34" cy="20" r="1" fill="var(--color-gold)" />
+                                        <!-- 中心红宝 -->
+                                        <rect x="18" y="18" width="4" height="4" transform="rotate(45 20 20)"
+                                            fill="var(--accent-red)" />
+                                    </svg>
+                                </div>
+                                <div class="material-info">
+                                    <div class="material-name">金银合金</div>
+                                    <div class="material-desc">按古法比例调制金银合金，兼顾硬度与延展性，可制作出更为繁复精细的立体结构。</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="material-category" data-aos="fade-left">
+                        <h3 class="material-title">镶嵌宝料</h3>
+                        <div class="material-items">
+                            <div class="material-item">
+                                <div class="material-icon-circle">
+                                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="0.5"
+                                            opacity="0.1" />
+                                        <!-- 莲花宝座 -->
+                                        <path d="M12 26C12 26 14 32 20 32C26 32 28 26 28 26" stroke="var(--color-gold)"
+                                            stroke-width="1" />
+                                        <!-- 刻面宝石 -->
+                                        <path d="M20 8L30 15L28 28H12L10 15L20 8Z" fill="var(--accent-red)" />
+                                        <path d="M20 8V28M10 15H30M15 11L25 11M13 22L27 22" stroke="white"
+                                            stroke-width="0.5" opacity="0.3" />
+                                        <!-- 璀璨星光 -->
+                                        <path d="M15 12L17 14M25 12L23 14" stroke="white" stroke-width="1"
+                                            stroke-linecap="round" />
+                                    </svg>
+                                </div>
+                                <div class="material-info">
+                                    <div class="material-name">天然宝石</div>
+                                    <div class="material-desc">精选红蓝宝石、祖母绿、碧玺等天然宝石，经切割打磨后与花丝纹样完美契合，彰显皇家气度。</div>
+                                </div>
+                            </div>
+
+                            <div class="material-item">
+                                <div class="material-icon-circle">
+                                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="0.5"
+                                            opacity="0.1" />
+                                        <!-- 祥云底托 -->
+                                        <path d="M14 28C14 28 16 30 20 30C24 30 26 28 26 28" stroke="var(--color-gold)"
+                                            stroke-width="1.2" opacity="0.4" />
+                                        <!-- 珠圆玉润 -->
+                                        <circle cx="20" cy="18" r="10" fill="white" />
+                                        <circle cx="20" cy="18" r="10" stroke="var(--color-gold)" stroke-width="0.5"
+                                            opacity="0.2" />
+                                        <!-- 柔和高光 -->
+                                        <path d="M16 14C17 13 19 13 20 14" stroke="var(--color-gold-light)"
+                                            stroke-width="2" stroke-linecap="round" opacity="0.6" />
+                                        <!-- 玉质纹理 -->
+                                        <path d="M22 22C23 23 25 23 26 22" stroke="var(--color-gold)" stroke-width="0.5"
+                                            opacity="0.2" />
+                                    </svg>
+                                </div>
+                                <div class="material-info">
+                                    <div class="material-name">珍珠玉石</div>
+                                    <div class="material-desc">采用东珠、南珠及和田玉、翡翠等东方珍宝，温润质地与金属光泽相得益彰，体现东方美学精髓。</div>
+                                </div>
+                            </div>
+
+                            <div class="material-item">
+                                <div class="material-icon-circle">
+                                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="0.5"
+                                            opacity="0.1" />
+                                        <!-- 珐琅釉罐：梅瓶造型 -->
+                                        <path
+                                            d="M20 8C17 8 15 10 15 13C15 15 13 18 13 22C13 26 15 32 20 32C25 32 27 26 27 22C27 18 25 15 25 13C25 10 23 8 20 8Z"
+                                            fill="var(--accent-red)" opacity="0.15" />
+                                        <path d="M15 13C15 13 17 15 20 15C23 15 25 13 25 13" stroke="var(--accent-red)"
+                                            stroke-width="1" opacity="0.3" />
+                                        <!-- 釉料流动：云水纹 -->
+                                        <path d="M16 20C18 22 22 22 24 20" stroke="var(--accent-red)" stroke-width="1.5"
+                                            stroke-linecap="round" />
+                                        <path d="M17 24C19 26 21 26 23 24" stroke="var(--accent-red)" stroke-width="1"
+                                            opacity="0.6" />
+                                        <!-- 罐盖点缀 -->
+                                        <circle cx="20" cy="7" r="2" fill="var(--accent-red)" />
+                                    </svg>
+                                </div>
+                                <div class="material-info">
+                                    <div class="material-name">珐琅釉料</div>
+                                    <div class="material-desc">宫廷御用珐琅釉料，经800℃高温烧制后呈现宝石般通透质感，与花丝工艺结合形成"金银珐琅"绝技。</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="section artworks-showcase" id="collection" data-aos="fade-up">
+                <h2 class="section-title">典藏华章</h2>
+
+                <div class="artworks-grid">
+                    <div class="artwork-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="artwork-content">
+                            <h3 class="artwork-title">万寿无疆捧盒</h3>
+                            <p class="artwork-description">仿清乾隆时期宫廷御用捧盒，通体采用累丝工艺，盒盖中心镶嵌碧玺寿字，四周环绕八宝纹饰，共使用金丝1860米，历时两年完成。
+                            </p>
+                            <div class="artwork-meta">
+                                <span>清乾隆风格</span>
+                                <span>直径28cm</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artwork-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="artwork-content">
+                            <h3 class="artwork-title">凤穿牡丹香薰</h3>
+                            <p class="artwork-description">
+                                以明代宫廷香薰为原型复原，双凤环绕牡丹纹样采用"掐丝填丝"结合技法，凤羽每片独立制作，共镶嵌红宝石47颗，可开合顶盖内藏精巧机关。
+                            </p>
+                            <div class="artwork-meta">
+                                <span>明式风格</span>
+                                <span>高35cm</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artwork-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="artwork-content">
+                            <h3 class="artwork-title">九龙戏珠冠饰</h3>
+                            <p class="artwork-description">
+                                复原清宫皇后朝冠核心部件，九条金龙各具神态，龙身采用"螺旋丝"技法，龙睛镶嵌东珠，冠顶宝珠由280片金丝花瓣托起，总重达680克，尽显皇家威仪。</p>
+                            <div class="artwork-meta">
+                                <span>清宫复原</span>
+                                <span>宽24cm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section timeline-section" id="history" data-aos="fade-up">
+                <h2 class="section-title">千年传承</h2>
+
+                <div class="timeline">
+                    <!-- 时间轴装饰：顶部如意纹 -->
+                    <div class="timeline-decorator top">
+                        <svg viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 30C20 20 35 15 50 15C65 15 80 20 80 30" stroke="var(--color-gold)"
+                                stroke-width="2" opacity="0.4" />
+                            <path d="M50 5V25" stroke="var(--color-gold)" stroke-width="1" stroke-dasharray="2 2" />
+                            <circle cx="50" cy="5" r="3" fill="var(--accent-red)" />
+                        </svg>
+                    </div>
+
+                    <div class="timeline-item" data-aos="fade-left" data-aos-delay="100">
+                        <div class="timeline-content">
+                            <div class="timeline-year">战国</div>
+                            <h3 class="timeline-title">工艺雏形</h3>
+                            <p class="timeline-text">考古发现战国时期的金银丝制品，证明花丝工艺的早期形态已出现在贵族首饰中，主要为简单的扭丝技法。</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
+                        <div class="timeline-content">
+                            <div class="timeline-year">唐宋</div>
+                            <h3 class="timeline-title">技艺成熟</h3>
+                            <p class="timeline-text">唐代金银平脱与宋代"累丝"工艺高度发展，出现立体花丝器皿，宫廷设立"文思院"专司细金制作，技艺体系趋于完善。</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-aos="fade-left" data-aos-delay="300">
+                        <div class="timeline-content">
+                            <div class="timeline-year">明清</div>
+                            <h3 class="timeline-title">皇家御用</h3>
+                            <p class="timeline-text">明代设立"银作局"，清代造办处"金玉作"将花丝镶嵌推向巅峰，成为宫廷御用工艺，专为皇室制作礼器与首饰，工艺秘不外传。</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="400">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2008</div>
+                            <h3 class="timeline-title">非遗保护</h3>
+                            <p class="timeline-text">花丝镶嵌技艺被列入国家级非物质文化遗产名录，当代大师们致力于技艺传承与创新，让千年绝艺重焕生机。</p>
+                        </div>
+                    </div>
+
+                    <!-- 时间轴装饰：底部卷草纹 -->
+                    <div class="timeline-decorator bottom">
+                        <svg viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 10C20 20 35 25 50 25C65 25 80 20 80 10" stroke="var(--color-gold)"
+                                stroke-width="2" opacity="0.4" />
+                            <path d="M50 15V35" stroke="var(--color-gold)" stroke-width="1" stroke-dasharray="2 2" />
+                            <circle cx="50" cy="35" r="3" fill="var(--accent-red)" />
+                        </svg>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ========== 页脚 ========== -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-grid">
+                    <!-- 品牌信息 -->
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <svg width="40" height="40" viewBox="0 0 50 50">
+                                <polygon points="25,2 47,14 47,36 25,48 3,36 3,14" fill="none" stroke="#D4AF37"
+                                    stroke-width="2" />
+                                <circle cx="25" cy="25" r="6" fill="#9D2933" />
+                            </svg>
+                            <span>廊坊非遗数字中心</span>
+                        </div>
+                        <p class="footer-desc">
+                            以数字之笔，复刻花丝镶嵌的指尖乾坤。致力于非物质文化遗产的数字化保护与传承创新。
+                        </p>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="微信公众号">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M8.5 11a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM15.5 11a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM12 2C6.477 2 2 6.477 2 12c0 1.82.487 3.53 1.338 5L2 22l5-1.338A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" />
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="微博">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M20.194 14.197c0 3.26-4.063 5.907-9.073 5.907-5.01 0-9.074-2.647-9.074-5.907 0-3.259 4.064-5.906 9.074-5.906 5.01 0 9.073 2.647 9.073 5.906z" />
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="抖音">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" />
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Bilibili">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 01-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 01.16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 快速链接 -->
+                    <div class="footer-links">
+                        <h3>快速导航</h3>
+                        <ul>
+                            <li><a href="../museum.html">虚拟博物馆</a></li>
+                            <li><a href="../experience.html">互动体验</a></li>
+                            <li><a href="../quiz.html">非遗答题</a></li>
+                            <li><a href="../ai-guide.html">智能导览</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- 非遗项目 -->
+                    <div class="footer-links">
+                        <h3>非遗项目</h3>
+                        <ul>
+                            <li><a href="craft-detail.html?craft=filigree">花丝镶嵌</a></li>
+                            <li><a href="craft-detail.html?craft=cloisonne">景泰蓝</a></li>
+                            <li><a href="craft-detail.html?craft=embroidery">京绣</a></li>
+                            <li><a href="craft-detail.html?craft=lacquer">雕漆</a></li>
+                            <li><a href="../crafts.html">更多项目</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- 联系我们 -->
+                    <div class="footer-contact">
+                        <h3>联系我们</h3>
+                        <ul>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M8 1C4.686 1 2 3.686 2 7c0 4.5 6 8 6 8s6-3.5 6-8c0-3.314-2.686-6-6-6z"
+                                        stroke="currentColor" stroke-width="1.5" />
+                                    <circle cx="8" cy="7" r="2" stroke="currentColor" stroke-width="1.5" />
+                                </svg>
+                                <span>河北省廊坊市大厂回族自治县</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M2 4l6 4 6-4M2 4h12v8H2V4z" stroke="currentColor" stroke-width="1.5" />
+                                </svg>
+                                <a href="mailto:contact@lfich.cn">contact@lfich.cn</a>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path
+                                        d="M14.5 11.5v2a1 1 0 01-1 1h-2a10 10 0 01-10-10v-2a1 1 0 011-1h2l1.5 3-2 1.5a7 7 0 004 4l1.5-2 3 1.5z"
+                                        stroke="currentColor" stroke-width="1.5" />
+                                </svg>
+                                <a href="tel:+86-316-8888888">0316-8888888</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页脚底部 -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p class="copyright">
+                        &copy; 2026 廊坊非遗数字中心 版权所有 |
+                        <a href="#">冀ICP备XXXXXXXX号</a>
+                    </p>
+                    <div class="footer-bottom-links">
+                        <a href="#">隐私政策</a>
+                        <a href="#">使用条款</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页脚装饰 -->
+        <div class="footer-decoration">
+            <svg class="wave-pattern" viewBox="0 0 1920 100" preserveAspectRatio="none">
+                <path d="M0 50 Q480 0 960 50 Q1440 100 1920 50 V100 H0 Z" fill="rgba(157,41,51,0.1)" />
+            </svg>
+        </div>
+    </footer>
+
+    <!-- ========== 返回顶部按钮 ========== -->
+    <button class="back-to-top" id="backToTop" aria-label="返回顶部" hidden>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+        <span class="progress-ring">
+            <svg width="44" height="44">
+                <circle cx="22" cy="22" r="20" fill="none" stroke="currentColor" stroke-width="2" opacity="0.2" />
+                <circle class="progress-circle" cx="22" cy="22" r="20" fill="none" stroke="currentColor"
+                    stroke-width="2" />
+            </svg>
+        </span>
+    </button>
+
+    <!-- AOS动画库脚本 -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- 全局动画脚本 -->
+    <script type="module" src="../js/animations.js"></script>
+    <script type="module" src="../js/craft-detail.js"></script>
+</body>
+
+</html>

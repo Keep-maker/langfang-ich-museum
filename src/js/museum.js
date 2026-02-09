@@ -17,6 +17,90 @@ import Utils from './utils.js';
     sceneChangeDelay: 5000
   };
 
+  // ========== 展品数据 ==========
+  const EXHIBITS_DATA = {
+    'filigree': [
+      {
+        id: 'f1',
+        title: '花丝镶嵌凤冠',
+        era: '清代',
+        craft: '花丝镶嵌、点翠、累丝',
+        desc: '这件凤冠采用传统花丝镶嵌工艺制作，以金银为基材，运用掐、填、攒、焊等技法，镶嵌珍珠、宝石，展现了中国传统金工技艺的精湛水平。',
+        unit: '故宫博物院',
+        badge: '国宝级',
+        image: 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 440\'%3E%3Cdefs%3E%3ClinearGradient id=\'grad1\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' style=\'stop-color:%239D2933;stop-opacity:1\' /%3E%3Cstop offset=\'100%25\' style=\'stop-color:%237A1D25;stop-opacity:1\' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=\'url(%23grad1)\' width=\'400\' height=\'440\'/%3E%3Cg opacity=\'0.08\'%3E%3Cpath d=\'M0 20 L400 20 M0 40 L400 40 M0 60 L400 60\' stroke=\'%23D4AF37\' stroke-width=\'1\'/%3E%3C/g%3E%3Cg transform=\'translate(200, 200)\'%3E%3Cpath d=\'M-100 100 Q0 120 100 100 L110 120 Q0 140 -110 120 Z\' fill=\'%23D4AF37\' opacity=\'0.8\'/%3E%3Cpath d=\'M-40 0 Q0 -100 40 0 T-40 0\' fill=\'none\' stroke=\'%23D4AF37\' stroke-width=\'3\'/%3E%3Ccircle cx=\'0\' cy=\'-40\' r=\'7\' fill=\'%23E63946\' /%3E%3C/g%3E%3Ctext x=\'200\' y=\'370\' text-anchor=\'middle\' font-size=\'32\' fill=\'%23F5F0E8\' font-family=\'serif\' font-weight=\'bold\' opacity=\'0.9\'%3E花丝镶嵌凤冠%3C/text%3E%3C/svg%3E'
+      },
+      {
+        id: 'f2',
+        title: '金累丝嵌宝石香囊',
+        era: '明代',
+        craft: '累丝、镶嵌',
+        desc: '此香囊通体以细如发丝的金丝累织而成，呈如意形，两面镂空，镶嵌红绿宝石，工艺极其精细，体现了明代宫廷审美的华贵与细腻。',
+        unit: '国家博物馆',
+        badge: '一级文物',
+        image: 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 440\'%3E%3Cdefs%3E%3ClinearGradient id=\'grad2\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' style=\'stop-color:%231a3a3a;stop-opacity:1\' /%3E%3Cstop offset=\'100%25\' style=\'stop-color:%230d1d1d;stop-opacity:1\' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=\'url(%23grad2)\' width=\'400\' height=\'440\'/%3E%3Cg transform=\'translate(200, 200)\'%3E%3Cpath d=\'M-60 0 Q0 -80 60 0 T-60 0\' fill=\'none\' stroke=\'%23D4AF37\' stroke-width=\'2\'/%3E%3Ccircle cx=\'0\' cy=\'0\' r=\'10\' fill=\'%23E63946\' /%3E%3C/g%3E%3Ctext x=\'200\' y=\'370\' text-anchor=\'middle\' font-size=\'32\' fill=\'%23F5F0E8\' font-family=\'serif\' font-weight=\'bold\' opacity=\'0.9\'%3E金累丝嵌宝石香囊%3C/text%3E%3C/svg%3E'
+      }
+    ],
+    'cloisonne': [
+      {
+        id: 'c1',
+        title: '景泰蓝缠枝莲纹鼎炉',
+        era: '元代',
+        craft: '景泰蓝、掐丝、点蓝',
+        desc: '元代景泰蓝精品，釉色深沉稳重，掐丝豪放，缠枝莲纹饰饱满，是研究早期景泰蓝工艺的重要实物资料。',
+        unit: '廊坊博物馆',
+        badge: '镇馆之宝',
+        image: 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 440\'%3E%3Cdefs%3E%3ClinearGradient id=\'grad3\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' style=\'stop-color:%231e2a4a;stop-opacity:1\' /%3E%3Cstop offset=\'100%25\' style=\'stop-color:%2316213e;stop-opacity:1\' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=\'url(%23grad3)\' width=\'400\' height=\'440\'/%3E%3Cg transform=\'translate(200, 200)\'%3E%3Cpath d=\'M-80 40 Q0 80 80 40 L60 -60 Q0 -100 -60 -60 Z\' fill=\'%23D4AF37\' opacity=\'0.8\'/%3E%3Ccircle cx=\'0\' cy=\'0\' r=\'30\' fill=\'%23457B9D\' stroke=\'%23D4AF37\' stroke-width=\'2\'/%3E%3C/g%3E%3Ctext x=\'200\' y=\'370\' text-anchor=\'middle\' font-size=\'32\' fill=\'%23F5F0E8\' font-family=\'serif\' font-weight=\'bold\' opacity=\'0.9\'%3E景泰蓝鼎炉%3C/text%3E%3C/svg%3E'
+      },
+      {
+        id: 'c2',
+        title: '铜胎掐丝珐琅麒麟',
+        era: '清代',
+        craft: '掐丝珐琅、镀金',
+        desc: '这对麒麟造型雄健，色彩斑斓，珐琅质地细腻，镀金厚重，是清代宫廷陈设佳品。',
+        unit: '廊坊文化馆',
+        badge: '珍贵文物',
+        image: 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 440\'%3E%3Cdefs%3E%3ClinearGradient id=\'grad4\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' style=\'stop-color:%234a1e4a;stop-opacity:1\' /%3E%3Cstop offset=\'100%25\' style=\'stop-color:%232e162e;stop-opacity:1\' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=\'url(%23grad4)\' width=\'400\' height=\'440\'/%3E%3Cg transform=\'translate(200, 200)\'%3E%3Ccircle cx=\'0\' cy=\'0\' r=\'50\' fill=\'%23D4AF37\' opacity=\'0.8\'/%3E%3Cpath d=\'M-30 -30 L30 30 M-30 30 L30 -30\' stroke=\'white\' stroke-width=\'5\'/%3E%3C/g%3E%3Ctext x=\'200\' y=\'370\' text-anchor=\'middle\' font-size=\'32\' fill=\'%23F5F0E8\' font-family=\'serif\' font-weight=\'bold\' opacity=\'0.9\'%3E掐丝珐琅麒麟%3C/text%3E%3C/svg%3E'
+      }
+    ],
+    'crafts': [
+      {
+        id: 'cr1',
+        title: '脱胎漆器云龙纹瓶',
+        era: '现代',
+        craft: '脱胎漆器、髹饰',
+        desc: '廊坊现代非遗工艺精品，器型优美，漆色光润，云龙纹饰栩栩如生，展现了现代传承人对传统工艺的继承与创新。',
+        unit: '廊坊非遗中心',
+        badge: '非遗精品',
+        image: 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 440\'%3E%3Cdefs%3E%3ClinearGradient id=\'grad5\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' style=\'stop-color:%23000000;stop-opacity:1\' /%3E%3Cstop offset=\'100%25\' style=\'stop-color:%23333333;stop-opacity:1\' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=\'url(%23grad5)\' width=\'400\' height=\'440\'/%3E%3Cellipse cx=\'200\' cy=\'200\' rx=\'60\' ry=\'100\' fill=\'%239D2933\' stroke=\'%23D4AF37\' stroke-width=\'2\'/%3E%3Ctext x=\'200\' y=\'370\' text-anchor=\'middle\' font-size=\'32\' fill=\'%23F5F0E8\' font-family=\'serif\' font-weight=\'bold\' opacity=\'0.9\'%3E脱胎漆器瓶%3C/text%3E%3C/svg%3E'
+      }
+    ],
+    'inheritors': [
+      {
+        id: 'i1',
+        title: '花丝镶嵌传承人 - 张德和',
+        era: '国家级',
+        craft: '花丝镶嵌',
+        desc: '张德和大师从事花丝镶嵌工艺五十余年，在继承传统技艺的基础上大胆创新，其作品多次获得国内外大奖。',
+        unit: '廊坊市',
+        badge: '国家级传承人',
+        image: 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 440\'%3E%3Cdefs%3E%3ClinearGradient id=\'grad6\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' style=\'stop-color:%233a1a1a;stop-opacity:1\' /%3E%3Cstop offset=\'100%25\' style=\'stop-color:%231d0d0d;stop-opacity:1\' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=\'url(%23grad6)\' width=\'400\' height=\'440\'/%3E%3Ccircle cx=\'200\' cy=\'180\' r=\'60\' fill=\'%23D4AF37\' opacity=\'0.8\'/%3E%3Cpath d=\'M140 300 Q200 260 260 300\' stroke=\'%23D4AF37\' stroke-width=\'3\' fill=\'none\'/%3E%3Ctext x=\'200\' y=\'370\' text-anchor=\'middle\' font-size=\'32\' fill=\'%23F5F0E8\' font-family=\'serif\' font-weight=\'bold\' opacity=\'0.9\'%3E张德和大师%3C/text%3E%3C/svg%3E'
+      }
+    ],
+    'culture': [
+      {
+        id: 'cu1',
+        title: '廊坊非遗分布图',
+        era: '现代',
+        craft: '文化研究',
+        desc: '通过数字化地图展示廊坊市各区县的非物质文化遗产分布情况，包括传统美术、传统技艺、民间文学等多个类别。',
+        unit: '文化馆',
+        badge: '文化专题',
+        image: 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 440\'%3E%3Cdefs%3E%3ClinearGradient id=\'grad7\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' style=\'stop-color:%231a3a1a;stop-opacity:1\' /%3E%3Cstop offset=\'100%25\' style=\'stop-color:%230d1d0d;stop-opacity:1\' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=\'url(%23grad7)\' width=\'400\' height=\'440\'/%3E%3Cpath d=\'M100 100 L300 100 L300 300 L100 300 Z\' fill=\'none\' stroke=\'%23D4AF37\' stroke-width=\'2\'/%3E%3Ccircle cx=\'150\' cy=\'150\' r=\'5\' fill=\'%23E63946\'/%3E%3Ccircle cx=\'250\' cy=\'250\' r=\'5\' fill=\'%23E63946\'/%3E%3Ctext x=\'200\' y=\'370\' text-anchor=\'middle\' font-size=\'32\' fill=\'%23F5F0E8\' font-family=\'serif\' font-weight=\'bold\' opacity=\'0.9\'%3E非遗分布图%3C/text%3E%3C/svg%3E'
+      }
+    ]
+  };
+
   // ========== 状态管理 ==========
   const State = {
     currentHall: 'filigree',
@@ -43,6 +127,9 @@ import Utils from './utils.js';
     // 缓存DOM元素
     cacheElements();
 
+    // 检查 URL Hash 并更新初始展厅
+    handleInitialHash();
+
     // 绑定事件
     bindEvents();
 
@@ -52,12 +139,35 @@ import Utils from './utils.js';
     // 初始化展品卡片
     initExhibitCards();
 
+    // 初始渲染展品
+    renderExhibits(State.currentHall);
+
     // 开始自动播放
     if (State.isAutoPlaying) {
       startAutoPlay();
     }
 
     console.log('🏛️ 虚拟博物馆初始化完成');
+  }
+
+  /**
+   * 处理初始 URL Hash
+   */
+  function handleInitialHash() {
+    const hash = window.location.hash.replace('#', '');
+    if (hash && EXHIBITS_DATA[hash]) {
+      State.currentHall = hash;
+      // 更新标签状态
+      hallTabs.forEach(tab => {
+        if (tab.dataset.hall === hash) {
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+        } else {
+          tab.classList.remove('active');
+          tab.setAttribute('aria-selected', 'false');
+        }
+      });
+    }
   }
 
   /**
@@ -70,6 +180,15 @@ import Utils from './utils.js';
     infoPanel = document.getElementById('infoPanel');
     sceneDots = Array.from(document.querySelectorAll('.scene-dot'));
     particlesContainer = document.getElementById('particles');
+    // 展品容器
+    State.exhibitsGrid = document.querySelector('.exhibits-grid');
+    updateExhibitCardsList();
+  }
+
+  /**
+   * 更新展品卡片列表引用
+   */
+  function updateExhibitCardsList() {
     exhibitCards = Array.from(document.querySelectorAll('.exhibit-card'));
   }
 
@@ -179,8 +298,72 @@ import Utils from './utils.js';
     // 更新场景
     updateScene();
 
+    // 重新渲染展品列表
+    renderExhibits(hallId);
+
     // 显示提示
     showToast(`已切换到${getHallName(hallId)}`);
+  }
+
+  /**
+   * 渲染展品列表
+   */
+  function renderExhibits(hallId) {
+    if (!State.exhibitsGrid) return;
+
+    const data = EXHIBITS_DATA[hallId] || [];
+    if (data.length === 0) {
+      State.exhibitsGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 50px; color: var(--color-ink-gray-light);">该展厅暂无展品，敬请期待...</div>';
+      return;
+    }
+
+    State.exhibitsGrid.innerHTML = data.map((item, index) => `
+      <article class="exhibit-card" data-aos="fade-up" data-aos-delay="${index * 100}" data-id="${item.id}">
+        <div class="exhibit-image">
+          <img src="${item.image}" alt="${item.title}" loading="lazy"
+               onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22440%22%3E%3Crect fill=%22%231a1a2e%22 width=%22400%22 height=%22440%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22%23D4AF37%22 font-family=%22serif%22%3E${encodeURIComponent(item.title)}%3C/text%3E%3C/svg%3E'">
+          <div class="exhibit-overlay">
+            <span class="exhibit-view-btn">查看详情</span>
+          </div>
+          <span class="exhibit-badge">${item.badge}</span>
+        </div>
+        <div class="exhibit-content">
+          <h3 class="exhibit-title">${item.title}</h3>
+          <p class="exhibit-desc">${item.desc}</p>
+          <div class="exhibit-meta">
+            <span class="exhibit-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </svg>
+              ${item.era}
+            </span>
+            <span class="exhibit-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z M2 17L12 22L22 17 M2 12L12 17L22 12" />
+              </svg>
+              ${item.craft.split('、')[0]}
+            </span>
+          </div>
+        </div>
+      </article>
+    `).join('');
+
+    // 重新初始化 AOS
+    if (typeof AOS !== 'undefined') {
+      AOS.refresh();
+    }
+
+    // 重新绑定事件
+    updateExhibitCardsList();
+    initExhibitCards();
+
+    // 为新渲染的卡片绑定点击事件
+    exhibitCards.forEach(card => {
+      card.addEventListener('click', () => {
+        showExhibitInfo(card);
+      });
+    });
   }
 
   /**
@@ -319,8 +502,21 @@ import Utils from './utils.js';
     // 场景切换动画
     if (hallScene) {
       hallScene.style.opacity = '0.5';
+      hallScene.style.transform = `scale(0.95) rotate(${State.rotation}deg)`;
+
       setTimeout(() => {
         hallScene.style.opacity = '1';
+        hallScene.style.transform = `scale(${State.zoom}) rotate(${State.rotation}deg)`;
+
+        // 根据展厅更新背景颜色
+        const colors = {
+          'filigree': 'radial-gradient(circle at center, #2a1a1a 0%, #1a0d0d 100%)',
+          'cloisonne': 'radial-gradient(circle at center, #1e2a4a 0%, #1a1a2e 100%)',
+          'crafts': 'radial-gradient(circle at center, #1a2a1a 0%, #0d1a0d 100%)',
+          'inheritors': 'radial-gradient(circle at center, #2a2a1a 0%, #1a1a0d 100%)',
+          'culture': 'radial-gradient(circle at center, #1a1a1a 0%, #000000 100%)'
+        };
+        hallScene.style.background = colors[State.currentHall] || colors.filigree;
       }, 300);
     }
 
@@ -398,15 +594,21 @@ import Utils from './utils.js';
    * 显示展品信息
    */
   function showExhibitInfo(card) {
-    const title = card.querySelector('.exhibit-title')?.textContent || '展品';
-    const desc = card.querySelector('.exhibit-desc')?.textContent || '';
+    const id = card.dataset.id;
+    const hallData = EXHIBITS_DATA[State.currentHall] || [];
+    const exhibit = hallData.find(item => item.id === id);
+
+    if (!exhibit) return;
 
     if (infoPanel) {
       // 更新信息面板内容
-      const titleEl = infoPanel.querySelector('.detail-value');
-      if (titleEl) {
-        titleEl.textContent = title;
-      }
+      const sections = infoPanel.querySelectorAll('.detail-section');
+
+      sections[0].querySelector('.detail-value').textContent = exhibit.title;
+      sections[1].querySelector('.detail-value').textContent = exhibit.era;
+      sections[2].querySelector('.detail-value').textContent = exhibit.craft;
+      sections[3].querySelector('.detail-value').textContent = exhibit.desc;
+      sections[4].querySelector('.detail-value').textContent = exhibit.unit;
 
       // 显示面板
       infoPanel.classList.add('show');

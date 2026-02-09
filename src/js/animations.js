@@ -169,13 +169,15 @@ import Utils from './utils.js';
   function initHoverEffects() {
     if (Utils.getDeviceInfo().isMobile) return;
 
-    // 卡片倾斜效果
+    // 卡片倾斜效果已去除
+    /*
     const tiltCards = document.querySelectorAll('.inheritor-card, .access-card');
 
     tiltCards.forEach(card => {
       card.addEventListener('mousemove', handleCardTilt);
       card.addEventListener('mouseleave', resetCardTilt);
     });
+    */
   }
 
   /**

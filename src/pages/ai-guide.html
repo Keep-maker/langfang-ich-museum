@@ -74,6 +74,18 @@
 
       <!-- 主导航菜单 -->
       <nav class="nav-menu" role="navigation" aria-label="主导航">
+        <a href="../../index.html" class="nav-item" data-section="home">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+              <polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="nav-text">首页</span>
+          <span class="nav-underline"></span>
+        </a>
         <a href="museum.html" class="nav-item" data-section="museum">
           <span class="nav-icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -106,7 +118,7 @@
           <span class="nav-text">非遗答题</span>
           <span class="nav-underline"></span>
         </a>
-        <a href="ai-guide.html" class="nav-item active" data-section="culture">
+        <a href="ai-guide.html" class="nav-item" data-section="ai-guide">
           <span class="nav-icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2"
@@ -136,22 +148,9 @@
           </svg>
         </button>
 
-        <a href="../../index.html" class="action-btn" aria-label="返回首页" title="返回首页">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M7 13L3 9L7 5M3 9H13C15.2091 9 17 10.7909 17 13V15" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </a>
-
-        <button class="action-btn" aria-label="全屏" id="fullscreenBtn" title="全屏模式">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M2 6V2H6M14 2H18V6M18 14V18H14M6 18H2V14" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </button>
-
+        <!-- 语言切换 -->
         <div class="language-selector">
-          <button class="language-btn" aria-expanded="false" aria-haspopup="listbox">
+          <button class="language-btn" id="langBtn" aria-expanded="false" aria-haspopup="listbox">
             <span>中文</span>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
               <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
@@ -160,8 +159,16 @@
           <ul class="language-dropdown" role="listbox">
             <li role="option" aria-selected="true" data-lang="zh">中文</li>
             <li role="option" aria-selected="false" data-lang="en">English</li>
+            <li role="option" aria-selected="false" data-lang="ja">日本語</li>
           </ul>
         </div>
+
+        <button class="action-btn" aria-label="全屏" id="fullscreenBtn" title="全屏模式">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M2 6V2H6M14 2H18V6M18 14V18H14M6 18H2V14" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
 
         <button class="mobile-menu-toggle" aria-label="打开菜单" aria-expanded="false" id="mobileMenuToggle">
           <span class="hamburger-line"></span>
@@ -202,6 +209,11 @@
         </button>
       </div>
       <nav class="sidebar-nav">
+        <a href="../../index.html" class="sidebar-link">
+          <span class="link-icon">🏠</span>
+          <span class="link-text">首页</span>
+          <span class="link-desc">返回中心主页</span>
+        </a>
         <a href="museum.html" class="sidebar-link">
           <span class="link-icon">🏛️</span>
           <span class="link-text">虚拟博物馆</span>

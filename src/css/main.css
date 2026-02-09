@@ -144,7 +144,7 @@
 }
 
 /* ========== 导航栏 ========== */
-.navbar {
+.navbar, .main-header {
   position: fixed;
   top: 0;
   left: 0;
@@ -157,12 +157,12 @@
   transition: all var(--duration-normal) var(--ease-smooth);
 }
 
-.navbar.scrolled {
+.navbar.scrolled, .main-header.scrolled {
   height: var(--navbar-height-scrolled);
   box-shadow: var(--shadow-md);
 }
 
-.navbar>.container {
+.navbar > .container, .header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1040,3 +1040,43 @@
   background: radial-gradient(circle, rgba(var(--color-palace-red-rgb), 0.05) 0%, transparent 70%);
   border-radius: var(--radius-full);
 }
+
+/* ========== 无障碍模式 (High Contrast) ========== */
+.accessibility-mode {
+  --color-bg: #000000 !important;
+  --color-text: #ffffff !important;
+  --color-gold: #ffff00 !important;
+  --color-primary: #ffffff !important;
+  filter: contrast(120%);
+}
+
+.accessibility-mode .navbar,
+.accessibility-mode .site-footer {
+  background: #000 !important;
+  border-bottom: 2px solid #ff0 !important;
+}
+
+.accessibility-mode .nav-item,
+.accessibility-mode .nav-text {
+  color: #fff !important;
+  font-weight: bold !important;
+  font-size: 1.1rem !important;
+}
+
+.accessibility-mode .nav-item:hover,
+.accessibility-mode .nav-item.active {
+  background: #ff0 !important;
+  color: #000 !important;
+}
+
+.accessibility-mode img {
+  filter: grayscale(100%) contrast(150%);
+}
+
+/* 键盘导航焦点可见性 */
+.keyboard-navigation :focus {
+  outline: 3px solid var(--color-gold) !important;
+  outline-offset: 2px !important;
+}
+
+/* ========== 辅助功能 ========== */

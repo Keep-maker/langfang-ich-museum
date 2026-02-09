@@ -40,7 +40,7 @@
 }
 
 .inheritor-card:hover {
-  transform: translateY(-8px);
+  /* transform: translateY(-8px); */
   box-shadow: var(--shadow-xl);
 }
 
@@ -72,7 +72,7 @@
 }
 
 .inheritor-card:hover .card-image img {
-  transform: scale(1.08);
+  /* transform: scale(1.08); */
 }
 
 /* 卡片遮罩层 */
@@ -237,7 +237,7 @@
 }
 
 .access-card:hover {
-  transform: translateY(-8px);
+  /* transform: translateY(-8px); */
 }
 
 /* 卡片背景 */
@@ -252,7 +252,7 @@
 }
 
 .access-card:hover .card-bg {
-  transform: scale(1.05);
+  /* transform: scale(1.05); */
 }
 
 .museum-bg {
@@ -329,7 +329,7 @@
 }
 
 .access-card:hover .card-action svg {
-  transform: translateX(4px);
+  /* transform: translateX(4px); */
 }
 
 /* 卡片光效 */
@@ -348,7 +348,7 @@
 }
 
 .access-card:hover .card-shine {
-  left: 150%;
+  /* left: 150%; */
 }
 
 /* ========== 工艺项目卡片 ========== */

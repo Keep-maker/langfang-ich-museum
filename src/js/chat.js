@@ -34,6 +34,35 @@ import Utils from './utils.js';
 
     bindEvents();
     initParticles();
+    
+    // 延迟显示欢迎语
+    setTimeout(renderWelcomeMessage, 600);
+  }
+
+  function renderWelcomeMessage() {
+    const welcomeText = `尊贵的访客，您好！我是您的非遗智能向导“智荟”。
+
+廊坊非遗，源远流长。无论是精巧绝伦的**花丝镶嵌**，还是金碧辉煌的**景泰蓝**，亦或是古朴典雅的**雕漆**，我都能为您悉数道来。
+
+您可以询问我：
+1. **技艺解密**：了解各项非遗的制作流程与核心技艺。
+2. **历史溯源**：探寻非遗项目背后的文化底蕴与历史故事。
+3. **传承现状**：了解当代的非遗传承人及其代表作品。
+
+请问您想从哪项非遗技艺开始了解？`;
+
+    const { msgDiv, textContainer, sealIcon } = appendAiPlaceholder();
+    msgDiv.classList.remove('typing');
+    textContainer.style.display = 'block';
+    textContainer.innerHTML = renderMarkdown(welcomeText);
+    textContainer.classList.add('markdown-body');
+    sealIcon.classList.add('seal-active');
+
+    // 添加时间戳
+    const timeSpan = document.createElement('span');
+    timeSpan.className = 'ai-timestamp';
+    timeSpan.textContent = getTimeString();
+    msgDiv.querySelector('.ai-bubble').appendChild(timeSpan);
   }
 
   function cacheElements() {

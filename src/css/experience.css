@@ -27,6 +27,207 @@
   pointer-events: none;
 }
 
+/* ========== 预约模态框样式 ========== */
+.booking-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.booking-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.modal-container {
+  position: relative;
+  width: 90%;
+  max-width: 560px;
+  background: white;
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-8);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transform: translateY(30px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1001;
+}
+
+.booking-modal.active .modal-container {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: var(--spacing-4);
+  right: var(--spacing-4);
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: var(--color-ivory-white);
+  color: var(--color-ink-gray);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: var(--color-palace-red);
+  color: white;
+  transform: rotate(90deg);
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  color: var(--color-palace-red);
+  margin-bottom: var(--spacing-2);
+}
+
+.modal-subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-ink-gray-light);
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-4);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.form-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-ink-gray-dark);
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--color-border-gray);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-base);
+  color: var(--color-ink-gray-dark);
+  transition: all 0.3s ease;
+  background: var(--color-ivory-white);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(var(--color-gold-rgb), 0.1);
+}
+
+.form-input[readonly] {
+  background: rgba(var(--color-gold-rgb), 0.05);
+  border-color: transparent;
+  cursor: default;
+}
+
+.form-footer {
+  margin-top: var(--spacing-4);
+  padding-top: var(--spacing-6);
+  border-top: 1px solid var(--color-border-gray);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.booking-summary {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-label {
+  font-size: var(--text-xs);
+  color: var(--color-ink-gray-light);
+}
+
+.summary-price {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--color-palace-red);
+}
+
+.submit-btn {
+  padding: 14px 40px;
+  background: var(--gradient-red);
+  color: white;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(var(--color-palace-red-rgb), 0.3);
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(var(--color-palace-red-rgb), 0.4);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 响应式调整 */
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal-container {
+    padding: var(--spacing-6);
+    width: 95%;
+  }
+  
+  .form-footer {
+    flex-direction: column;
+    gap: var(--spacing-4);
+    text-align: center;
+  }
+  
+  .submit-btn {
+    width: 100%;
+  }
+}
+
 .hero-deco {
   display: flex;
   align-items: center;

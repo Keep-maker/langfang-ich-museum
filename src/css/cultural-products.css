@@ -1,3 +1,8 @@
+/* ==========================================
+   廊坊非遗数字中心 - 文创商店样式
+   风格统一于 index.html 设计语言
+   ========================================== */
+
 :root {
     --gold: #D4AF37;
     --red: #9D2933;
@@ -12,92 +17,75 @@
     --border-radius: 4px;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "SourceHanSerif", "SourceHanSans", serif, sans-serif;
+/* 页面背景 */
+.cultural-products-page {
+    background: linear-gradient(180deg, var(--color-ivory-white, #F5F0E8) 0%, var(--color-ivory-white-dark, #E8E3DB) 100%);
+    min-height: 100vh;
 }
 
-body {
-    background-color: var(--bg-light);
-    color: var(--text-dark);
-    padding-bottom: 100px;
+/* ========== 核心内容区 ========== */
+.culture-section {
+    padding-top: var(--navbar-height, 80px);
+    padding-bottom: var(--spacing-16, 64px);
     position: relative;
+    overflow: hidden;
 }
 
-.container {
+.culture-section > .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 0;
+    padding: var(--spacing-12, 48px) 0;
 }
 
-/* 板块标题 - 完全沿用原项目非遗装饰风格 */
-.culture-header {
-    text-align: center;
-    margin-bottom: 60px;
-    position: relative;
-}
-
-.culture-header .decor {
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 0 auto 16px;
-}
-
-.culture-header h2 {
-    font-size: 32px;
-    color: var(--text-dark);
-    margin-bottom: 12px;
-    font-weight: 600;
-}
-
-.culture-header p {
-    font-size: 16px;
-    color: var(--gray);
-}
-
-/* 筛选栏 - 原样式基础优化，贴合原项目卡片风格 */
+/* ========== 筛选栏 ========== */
 .culture-filter {
     display: flex;
     flex-wrap: wrap;
+    gap: 16px;
     align-items: center;
     justify-content: space-between;
-    background: var(--white);
-    padding: 16px 24px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    margin-bottom: 40px;
-    border-left: 4px solid var(--gold);
+    margin-bottom: 48px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 24px 28px;
+    border-radius: var(--radius-xl, 16px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .filter-cate {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
 }
 
 .cate-btn {
-    padding: 6px 16px;
-    border: 1px solid var(--light-gray);
+    padding: 8px 20px;
+    border: 2px solid var(--light-gray);
     background: var(--white);
-    border-radius: 20px;
+    border-radius: var(--radius-full, 9999px);
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     font-size: 14px;
+    font-weight: 500;
+    color: var(--gray);
+    letter-spacing: 0.5px;
 }
 
 .cate-btn.active {
-    background: var(--gold);
+    background: var(--red);
     color: var(--white);
-    border-color: var(--gold);
+    border-color: var(--red);
+    box-shadow: 0 4px 12px rgba(157, 41, 51, 0.3);
 }
 
 .cate-btn:hover:not(.active) {
     border-color: var(--gold);
     color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
 }
 
 .filter-search {
@@ -107,143 +95,200 @@ body {
 }
 
 .filter-search input {
-    padding: 8px 16px;
-    border: 1px solid var(--light-gray);
-    border-radius: 20px;
+    padding: 10px 20px;
+    border: 2px solid var(--light-gray);
+    border-radius: var(--radius-full, 9999px);
     outline: none;
-    width: 200px;
-    transition: var(--transition);
+    width: 220px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    background: var(--color-ivory-white-pure, #FFFDF9);
 }
 
 .filter-search input:focus {
     border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
 }
 
-.search-btn {
-    padding: 8px 16px;
+.culture-filter .search-btn {
+    padding: 10px 18px;
     background: var(--red);
     color: var(--white);
     border: none;
-    border-radius: 20px;
+    border-radius: var(--radius-full, 9999px);
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
 
-.search-btn:hover {
+.culture-filter .search-btn:hover {
     background: #80222c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(157, 41, 51, 0.3);
 }
 
-/* 商品卡片网格 - 原样式不变 */
+/* ========== 商品卡片网格 ========== */
 .culture-card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
     margin-bottom: 60px;
 }
 
 .culture-card {
     background: var(--white);
-    border-radius: 8px;
-    box-shadow: var(--shadow);
+    border-radius: var(--radius-xl, 16px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
     overflow: hidden;
-    transition: var(--transition);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.culture-card::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(212, 175, 55, 0.08);
+    border-radius: calc(var(--radius-xl, 16px) - 6px);
+    pointer-events: none;
+    z-index: 2;
+    transition: all 0.4s ease;
 }
 
 .culture-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-deep);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(157, 41, 51, 0.1);
+    border-color: rgba(212, 175, 55, 0.3);
 }
 
-/* 商品标签 - 非遗工艺标识，原样式 */
+.culture-card:hover::before {
+    border-color: rgba(212, 175, 55, 0.25);
+}
+
+/* 商品标签 */
 .card-badge {
     position: absolute;
     top: 16px;
     left: 16px;
-    background: var(--gold);
+    background: linear-gradient(135deg, #9D2933, #C63946);
     color: var(--white);
     font-size: 12px;
-    padding: 4px 8px;
-    border-radius: var(--border-radius);
-    z-index: 2;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: var(--radius-full, 9999px);
+    z-index: 3;
+    box-shadow: 0 4px 12px rgba(157, 41, 51, 0.3);
+    letter-spacing: 1px;
 }
 
 .card-img-wrapper {
     width: 100%;
-    height: 200px;
+    aspect-ratio: 4 / 3;
     overflow: hidden;
+    background: linear-gradient(135deg, #f9f7f2, #ece8df);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.card-img-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.03) 100%);
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+
+.culture-card:hover .card-img-wrapper::after {
+    background: linear-gradient(180deg, transparent 30%, rgba(157, 41, 51, 0.08) 100%);
 }
 
 .card-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: var(--transition);
+    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .culture-card:hover .card-img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .card-content {
-    padding: 20px;
+    padding: 24px 24px 28px;
+    background: linear-gradient(to bottom, #fff, #fdfcf9);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .card-title {
-    font-size: 18px;
+    font-family: var(--font-serif, 'Noto Serif SC', serif);
+    font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 8px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    margin-bottom: 10px;
+    color: var(--color-ink-gray-dark, #2D2D2D);
+    letter-spacing: 0.5px;
+    line-height: 1.4;
 }
 
 .card-desc {
-    font-size: 14px;
-    color: var(--gray);
-    line-height: 1.5;
-    margin-bottom: 16px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    font-size: 0.875rem;
+    color: var(--color-ink-gray-light, #6B6B6B);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    flex: 1;
 }
 
 .card-price {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    align-items: baseline;
+    gap: 10px;
     margin-bottom: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .price-now {
-    font-size: 20px;
+    font-size: 1.5rem;
     color: var(--red);
     font-weight: 700;
+    font-family: "Georgia", serif;
 }
 
 .price-orig {
     font-size: 14px;
-    color: #999;
+    color: #aaa;
     text-decoration: line-through;
 }
 
-/* 按钮样式 - 完全沿用原项目榫卯/鎏金按钮风格 */
+/* 按钮区域 */
+.card-actions {
+    display: flex;
+    gap: 10px;
+}
+
 .card-btn {
-    display: block;
-    width: 100%;
-    padding: 10px 0;
+    flex: 1;
+    padding: 12px 0;
     text-align: center;
     background: var(--gold);
     color: var(--white);
     text-decoration: none;
-    border-radius: var(--border-radius);
-    transition: var(--transition);
-    font-size: 16px;
+    border-radius: var(--radius-md, 8px);
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 600;
     border: none;
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    letter-spacing: 0.5px;
 }
 
 .card-btn::after {
@@ -253,13 +298,13 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
     transition: all 0.6s ease;
 }
 
 .card-btn:hover {
-    background: #b8942e;
-    letter-spacing: 1px;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
 }
 
 .card-btn:hover::after {
@@ -271,10 +316,36 @@ body {
 }
 
 .add-cart-btn:hover {
-    background: #80222c;
+    box-shadow: 0 4px 12px rgba(157, 41, 51, 0.3);
 }
 
-/* 分页 - 原样式不变 */
+.card-btn.secondary {
+    background: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+}
+
+.card-btn.secondary:hover {
+    background: var(--gold);
+    color: var(--white);
+}
+
+/* 无结果提示 */
+.no-result {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--gray);
+}
+
+.no-result i {
+    font-size: 48px;
+    color: var(--light-gray);
+    margin-bottom: 16px;
+    display: block;
+}
+
+/* ========== 分页 ========== */
 .culture-pagination {
     display: flex;
     align-items: center;
@@ -283,27 +354,30 @@ body {
 }
 
 .page-btn {
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--light-gray);
+    width: 42px;
+    height: 42px;
+    border: 2px solid var(--light-gray);
     background: var(--white);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md, 8px);
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: 500;
 }
 
 .page-btn.active {
-    background: var(--gold);
+    background: var(--red);
     color: var(--white);
-    border-color: var(--gold);
+    border-color: var(--red);
+    box-shadow: 0 4px 12px rgba(157, 41, 51, 0.3);
 }
 
 .page-btn:hover:not(.active):not(.disabled) {
     border-color: var(--gold);
     color: var(--gold);
+    transform: translateY(-2px);
 }
 
 .page-btn.disabled {
@@ -312,40 +386,36 @@ body {
     cursor: not-allowed;
 }
 
-/* ================================== */
-/* 购物车样式 - 贴合原项目非遗视觉风格 */
-/* ================================== */
-/* 悬浮购物车按钮 - 右下角固定，花丝纹样+角标 */
+/* ========== 购物车样式 ========== */
 .cart-float {
     position: fixed;
     right: 30px;
     bottom: 30px;
     width: 60px;
     height: 60px;
-    background: var(--red);
+    background: linear-gradient(135deg, var(--red), #C63946);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--white);
-    font-size: 24px;
-    box-shadow: var(--shadow-deep);
+    font-size: 22px;
+    box-shadow: 0 8px 24px rgba(157, 41, 51, 0.35);
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     z-index: 998;
-    border: 2px solid var(--white);
+    border: 3px solid rgba(255, 255, 255, 0.3);
 }
 
 .cart-float:hover {
-    transform: scale(1.1);
-    background: var(--gold);
+    transform: scale(1.12) translateY(-4px);
+    box-shadow: 0 12px 32px rgba(157, 41, 51, 0.4);
 }
 
-/* 购物车数量角标 - 原项目红金配色 */
 .cart-badge {
     position: absolute;
-    top: -8px;
-    right: -8px;
+    top: -6px;
+    right: -6px;
     width: 24px;
     height: 24px;
     background: var(--gold);
@@ -357,9 +427,10 @@ body {
     align-items: center;
     justify-content: center;
     border: 2px solid var(--white);
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
 }
 
-/* 购物车弹窗 - 原项目卡片风格，金红装饰 */
+/* 购物车弹窗 */
 .cart-modal {
     position: fixed;
     top: 0;
@@ -367,6 +438,7 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -385,22 +457,21 @@ body {
     width: 90%;
     max-width: 600px;
     background: var(--white);
-    border-radius: 8px;
-    box-shadow: var(--shadow-deep);
+    border-radius: var(--radius-xl, 16px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     position: relative;
-    transform: translateY(20px);
-    transition: var(--transition);
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cart-modal.show .cart-content {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
-/* 购物车头部 - 花丝纹样装饰，原项目标题风格 */
 .cart-header {
     padding: 20px 24px;
-    background: linear-gradient(120deg, var(--red), #a82c38);
+    background: linear-gradient(135deg, var(--red), #C63946);
     color: var(--white);
     display: flex;
     align-items: center;
@@ -409,14 +480,15 @@ body {
 }
 
 .cart-header h3 {
-    font-size: 20px;
+    font-size: 18px;
     display: flex;
     align-items: center;
     gap: 8px;
+    font-family: var(--font-serif, serif);
 }
 
 .cart-close {
-    font-size: 24px;
+    font-size: 22px;
     cursor: pointer;
     width: 36px;
     height: 36px;
@@ -431,7 +503,6 @@ body {
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* 购物车空状态 */
 .cart-empty {
     padding: 60px 20px;
     text-align: center;
@@ -450,19 +521,20 @@ body {
 }
 
 .cart-empty .back-shop {
-    padding: 8px 24px;
+    padding: 10px 28px;
     background: var(--gold);
     color: var(--white);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-full, 9999px);
     text-decoration: none;
     transition: var(--transition);
+    font-weight: 500;
 }
 
 .cart-empty .back-shop:hover {
     background: #b8942e;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
 }
 
-/* 购物车商品列表 */
 .cart-list {
     max-height: 400px;
     overflow-y: auto;
@@ -480,14 +552,9 @@ body {
 .cart-item-img {
     width: 80px;
     height: 80px;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md, 8px);
     overflow: hidden;
     flex-shrink: 0;
-}
-
-.cart-item-img img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
 }
 
@@ -496,21 +563,12 @@ body {
 }
 
 .cart-item-title {
-    font-size: 16px;
+    font-size: 15px;
+    font-weight: 600;
     margin-bottom: 8px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-.cart-item-badge {
-    font-size: 12px;
-    color: var(--gold);
-    border: 1px solid var(--gold);
-    padding: 2px 6px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 8px;
 }
 
 .cart-item-price {
@@ -519,19 +577,17 @@ body {
     font-weight: 700;
 }
 
-/* 数量控制 - 原项目配色，圆角风格 */
-.cart-item-count {
+.cart-item-ctrl {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-right: 8px;
+    gap: 8px;
 }
 
 .count-btn {
     width: 32px;
     height: 32px;
-    border: 1px solid var(--light-gray);
-    border-radius: var(--border-radius);
+    border: 2px solid var(--light-gray);
+    border-radius: var(--radius-md, 8px);
     background: var(--white);
     color: var(--text-dark);
     cursor: pointer;
@@ -539,7 +595,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .count-btn:hover {
@@ -551,42 +608,43 @@ body {
     width: 40px;
     height: 32px;
     text-align: center;
-    border: 1px solid var(--light-gray);
-    border-radius: var(--border-radius);
+    border: 2px solid var(--light-gray);
+    border-radius: var(--radius-md, 8px);
     outline: none;
+    font-weight: 600;
 }
 
 .count-input:focus {
     border-color: var(--gold);
 }
 
-/* 删除按钮 - 原项目红色系，hover动效 */
 .cart-item-del {
     color: var(--gray);
     cursor: pointer;
     transition: var(--transition);
     flex-shrink: 0;
+    padding: 4px;
 }
 
 .cart-item-del:hover {
     color: var(--red);
+    transform: scale(1.1);
 }
 
-/* 购物车底部 - 结算区域，金红配色贴合原项目 */
 .cart-footer {
     padding: 20px 24px;
     border-top: 2px solid var(--gold);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--bg-light);
+    background: linear-gradient(to bottom, #fdfcf9, #f5f0e8);
 }
 
 .cart-total {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .cart-total label {
@@ -597,19 +655,22 @@ body {
     font-size: 24px;
     color: var(--red);
     font-weight: 700;
+    font-family: "Georgia", serif;
 }
 
 .cart-settle {
-    padding: 10px 32px;
-    background: var(--gold);
-    color: var(--white);
+    padding: 12px 36px;
+    background: linear-gradient(135deg, var(--gold), #F0D98C);
+    color: #4A3500;
     border: none;
-    border-radius: var(--border-radius);
-    font-size: 18px;
+    border-radius: var(--radius-full, 9999px);
+    font-size: 16px;
+    font-weight: 700;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    letter-spacing: 1px;
 }
 
 .cart-settle::after {
@@ -619,13 +680,13 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transition: all 0.6s ease;
 }
 
 .cart-settle:hover {
-    background: #b8942e;
-    letter-spacing: 1px;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
 }
 
 .cart-settle:hover::after {
@@ -638,14 +699,17 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(157, 41, 51, 0.95);
     color: var(--white);
-    padding: 12px 24px;
-    border-radius: 20px;
+    padding: 14px 32px;
+    border-radius: var(--radius-full, 9999px);
     z-index: 9999;
     opacity: 0;
     visibility: hidden;
     transition: var(--transition);
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(157, 41, 51, 0.3);
+    backdrop-filter: blur(10px);
 }
 
 .cart-toast.show {
@@ -653,16 +717,13 @@ body {
     visibility: visible;
 }
 
-/* 移动端适配 - 完全贴合原项目移动端逻辑 */
+/* ========== 响应式 ========== */
 @media (max-width: 768px) {
-    .culture-header h2 {
-        font-size: 24px;
-    }
-
     .culture-filter {
         flex-direction: column;
         gap: 16px;
-        align-items: flex-start;
+        align-items: stretch;
+        padding: 20px;
     }
 
     .filter-search {
@@ -675,8 +736,12 @@ body {
     }
 
     .culture-card-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
+    }
+
+    .card-content {
+        padding: 16px;
     }
 
     .cart-item {
@@ -710,5 +775,12 @@ body {
         width: 20px;
         height: 20px;
         font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .culture-card-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 }

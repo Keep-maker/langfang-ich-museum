@@ -51,6 +51,49 @@ import Utils from './utils.js';
   };
 
   /**
+   * 显示全局提示 (支持对象或字符串参数)
+   */
+  function showToast(options) {
+    // 处理字符串参数的情况
+    if (typeof options === 'string') {
+      options = { message: options, title: '提示', type: 'info' };
+    }
+
+    const { title, message, type = 'info', duration = 5000 } = options;
+    const container = document.querySelector('.toast-container') || createToastContainer();
+
+    const toast = Utils.createElement('div', {
+      className: `toast ${type}`,
+      role: 'alert'
+    }, [
+      Utils.createElement('div', { className: 'toast-icon' }, getToastIcon(type)),
+      Utils.createElement('div', { className: 'toast-content' }, [
+        Utils.createElement('div', { className: 'toast-title' }, title),
+        Utils.createElement('div', { className: 'toast-message' }, message)
+      ]),
+      Utils.createElement('button', {
+        className: 'toast-close',
+        'aria-label': '关闭',
+        onClick: () => removeToast(toast)
+      }, '×')
+    ]);
+
+    container.appendChild(toast);
+
+    // 触发动画
+    requestAnimationFrame(() => {
+      toast.classList.add('show');
+    });
+
+    // 自动移除
+    if (duration > 0) {
+      setTimeout(() => removeToast(toast), duration);
+    }
+
+    return toast;
+  }
+
+  /**
    * 初始化DOM元素缓存
    */
   function cacheElements() {
@@ -131,9 +174,12 @@ import Utils from './utils.js';
   function initNavbar() {
     if (!Elements.navbar) return;
 
+    // 自动设置当前页面的 active 状态
+    updateActiveNavItem();
+
     // 滚动时改变导航栏样式
     const handleScroll = Utils.throttle(() => {
-      const scrollTop = window.pageYOffset;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
       if (scrollTop > 50) {
         Elements.navbar.classList.add('scrolled');
@@ -172,8 +218,40 @@ import Utils from './utils.js';
 
     // 全屏按钮
     if (Elements.fullscreenBtn) {
+      // 先移除可能存在的监听器，防止重复绑定
+      Elements.fullscreenBtn.removeEventListener('click', Utils.toggleFullscreen);
       Elements.fullscreenBtn.addEventListener('click', Utils.toggleFullscreen);
     }
+  }
+
+  /**
+   * 根据当前 URL 更新导航栏激活状态
+   */
+  function updateActiveNavItem() {
+    const currentPath = window.location.pathname;
+    const navItems = document.querySelectorAll('.nav-item, .sidebar-link');
+
+    navItems.forEach(item => {
+      const href = item.getAttribute('href');
+      if (!href) return;
+
+      // 移除所有 active 类
+      item.classList.remove('active');
+
+      // 检查路径匹配
+      // 处理首页特殊情况
+      if (currentPath === '/' || currentPath.endsWith('index.html')) {
+        if (href.endsWith('index.html') || href === './' || href === 'index.html') {
+          item.classList.add('active');
+        }
+      } else if (href !== '#' && !href.endsWith('index.html')) {
+        // 获取文件名进行匹配
+        const fileName = href.split('/').pop();
+        if (currentPath.includes(fileName)) {
+          item.classList.add('active');
+        }
+      }
+    });
   }
 
   /**
@@ -323,7 +401,8 @@ import Utils from './utils.js';
    * 初始化数字动画
    */
   function initNumberAnimations() {
-    const statNumbers = document.querySelectorAll('.stat-number .number');
+    // 兼容两种属性：data-value (mainJs) 和 data-target (animations.js)
+    const statNumbers = document.querySelectorAll('.stat-number .number, .stat-number[data-target]');
 
     if (!statNumbers.length) return;
 
@@ -331,11 +410,17 @@ import Utils from './utils.js';
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const element = entry.target;
-          const endValue = parseInt(element.dataset.value, 10);
+          const targetNode = element.classList.contains('number') ? element : element.querySelector('.number');
+
+          if (!targetNode) return;
+
+          const endValue = parseInt(element.dataset.value || element.dataset.target, 10);
           const suffix = element.dataset.suffix || '';
 
-          Utils.animateNumber(element, 0, endValue, 2000, suffix);
-          observer.unobserve(element);
+          if (!isNaN(endValue)) {
+            Utils.animateNumber(targetNode, 0, endValue, 2000, suffix);
+            observer.unobserve(element);
+          }
         }
       });
     }, {
@@ -435,6 +520,29 @@ import Utils from './utils.js';
    * 初始化键盘无障碍
    */
   function initKeyboardAccessibility() {
+    // 键盘无障碍按钮
+    const accessibilityBtn = document.querySelector('.accessibility-btn');
+    if (accessibilityBtn) {
+      accessibilityBtn.addEventListener('click', () => {
+        document.body.classList.toggle('accessibility-mode');
+        const isActive = document.body.classList.contains('accessibility-mode');
+
+        // 存储偏好
+        Utils.setStorage('accessibility-mode', isActive);
+
+        showToast({
+          title: '无障碍模式',
+          message: isActive ? '已开启高对比度辅助模式' : '已关闭辅助模式',
+          type: 'info'
+        });
+      });
+
+      // 初始化加载存储的偏好
+      if (Utils.getStorage('accessibility-mode')) {
+        document.body.classList.add('accessibility-mode');
+      }
+    }
+
     // 跳过链接
     const skipLink = document.querySelector('.skip-link');
     if (skipLink) {
@@ -469,30 +577,32 @@ import Utils from './utils.js';
 
     if (!languageBtn || !languageDropdown) return;
 
-    languageBtn.addEventListener('click', () => {
+    // 获取存储的语言偏好并更新UI
+    const savedLang = Utils.getStorage('preferred-language', 'zh');
+    updateLanguageUI(savedLang);
+
+    languageBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       const isExpanded = languageBtn.getAttribute('aria-expanded') === 'true';
       languageBtn.setAttribute('aria-expanded', !isExpanded);
+      languageDropdown.classList.toggle('active', !isExpanded);
     });
 
     // 选择语言
     const languageOptions = languageDropdown.querySelectorAll('li');
     languageOptions.forEach(option => {
-      option.addEventListener('click', () => {
+      option.addEventListener('click', (e) => {
+        e.stopPropagation();
         const lang = option.dataset.lang;
-
-        // 更新选中状态
-        languageOptions.forEach(opt => opt.setAttribute('aria-selected', 'false'));
-        option.setAttribute('aria-selected', 'true');
-
-        // 更新按钮文本
-        languageBtn.querySelector('span').textContent = option.textContent;
-        languageBtn.setAttribute('aria-expanded', 'false');
+        updateLanguageUI(lang);
 
         // 存储语言偏好
         Utils.setStorage('preferred-language', lang);
 
         // 触发语言切换事件
         document.dispatchEvent(new CustomEvent('languageChange', { detail: { lang } }));
+
+        showToast({ title: '语言切换', message: `已切换至: ${option.textContent}`, type: 'success' });
       });
     });
 
@@ -500,8 +610,39 @@ import Utils from './utils.js';
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.language-selector')) {
         languageBtn.setAttribute('aria-expanded', 'false');
+        languageDropdown.classList.remove('active');
       }
     });
+  }
+
+  /**
+   * 更新语言UI
+   */
+  function updateLanguageUI(lang) {
+    const languageBtn = document.querySelector('.language-btn');
+    const languageDropdown = document.querySelector('.language-dropdown');
+    if (!languageBtn || !languageDropdown) return;
+
+    const languageOptions = languageDropdown.querySelectorAll('li');
+    const langMap = {
+      'zh': '中文',
+      'en': 'English',
+      'ja': '日本語'
+    };
+
+    // 更新选中状态
+    languageOptions.forEach(opt => {
+      const isSelected = opt.dataset.lang === lang;
+      opt.setAttribute('aria-selected', isSelected);
+      opt.classList.toggle('active', isSelected);
+    });
+
+    // 更新按钮文本
+    const btnSpan = languageBtn.querySelector('span');
+    if (btnSpan) btnSpan.textContent = langMap[lang] || '中文';
+
+    languageBtn.setAttribute('aria-expanded', 'false');
+    languageDropdown.classList.remove('active');
   }
 
   /**
@@ -691,44 +832,6 @@ import Utils from './utils.js';
   }
 
   /**
-   * 显示Toast通知
-   * @param {Object} options
-   */
-  function showToast({ title, message, type = 'info', duration = 5000 }) {
-    const container = document.querySelector('.toast-container') || createToastContainer();
-
-    const toast = Utils.createElement('div', {
-      className: `toast ${type}`,
-      role: 'alert'
-    }, [
-      Utils.createElement('div', { className: 'toast-icon' }, getToastIcon(type)),
-      Utils.createElement('div', { className: 'toast-content' }, [
-        Utils.createElement('div', { className: 'toast-title' }, title),
-        Utils.createElement('div', { className: 'toast-message' }, message)
-      ]),
-      Utils.createElement('button', {
-        className: 'toast-close',
-        'aria-label': '关闭',
-        onClick: () => removeToast(toast)
-      }, '×')
-    ]);
-
-    container.appendChild(toast);
-
-    // 触发动画
-    requestAnimationFrame(() => {
-      toast.classList.add('show');
-    });
-
-    // 自动移除
-    if (duration > 0) {
-      setTimeout(() => removeToast(toast), duration);
-    }
-
-    return toast;
-  }
-
-  /**
    * 创建Toast容器
    */
   function createToastContainer() {
@@ -765,29 +868,43 @@ import Utils from './utils.js';
    * 应用入口
    */
   function init() {
-    console.log('--- init called ---');
+    console.log('🏛️ Langfang ICH Digital Center - Initializing...');
+
     try {
-      // 缓存DOM元素
+      // 1. 核心基础模块
       cacheElements();
-      console.log('Elements cached:', Elements);
 
-      // 初始化各模块
-      initNavbar();
-      initSearch();
-      initBackToTop();
-      initLazyLoading();
-      initScrollAnimations();
-      initSmoothAnchors();
-      initKeyboardAccessibility();
-      initLanguageSelector();
-      initParallax();
-      initCardEffects();
-      initThemeToggle();
-      initFormValidation();
+      const modules = [
+        { name: 'Navbar', fn: initNavbar },
+        { name: 'Search', fn: initSearch },
+        { name: 'BackToTop', fn: initBackToTop },
+        { name: 'Language', fn: initLanguageSelector },
+        { name: 'Accessibility', fn: initKeyboardAccessibility },
+        { name: 'Theme', fn: initThemeToggle }
+      ];
 
-      console.log('Modules initialized successfully');
+      // 2. 交互与视觉模块
+      const extraModules = [
+        { name: 'LazyLoading', fn: initLazyLoading },
+        { name: 'ScrollAnims', fn: initScrollAnimations },
+        { name: 'SmoothAnchors', fn: initSmoothAnchors },
+        { name: 'Parallax', fn: initParallax },
+        { name: 'CardEffects', fn: initCardEffects },
+        { name: 'FormValidation', fn: initFormValidation }
+      ];
+
+      // 独立初始化，互不干扰
+      [...modules, ...extraModules].forEach(module => {
+        try {
+          module.fn();
+        } catch (e) {
+          console.warn(`[Init] Module "${module.name}" failed to initialize:`, e);
+        }
+      });
+
+      console.log('✅ All modules processed');
     } catch (error) {
-      console.error('Initialization error:', error);
+      console.error('Critical initialization error:', error);
       // 即便初始化报错，也要尝试隐藏加载器
       handlePageLoad();
     }
