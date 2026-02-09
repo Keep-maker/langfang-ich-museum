@@ -225,6 +225,14 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (craft === 'lacquer') {
                 updateLacquerSpecifics();
             }
+
+            // 隐藏"相关工艺"中当前工艺的卡片
+            const relatedCards = document.querySelectorAll('.related-card[data-craft]');
+            relatedCards.forEach(card => {
+                if (card.dataset.craft === craft) {
+                    card.classList.add('current');
+                }
+            });
         }
     };
 

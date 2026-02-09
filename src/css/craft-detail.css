@@ -1011,3 +1011,159 @@ body::before {
         padding: 15px;
     }
 }
+
+/* ========== 相关工艺推荐 ========== */
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.related-card {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    text-decoration: none;
+    color: white;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.related-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.related-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.6s ease;
+}
+
+.related-bg svg {
+    width: 100px;
+    height: 100px;
+}
+
+.related-card:hover .related-bg {
+    transform: scale(1.1);
+}
+
+.related-content {
+    position: relative;
+    z-index: 1;
+    padding: 24px;
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
+}
+
+.related-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    background: rgba(212, 175, 55, 0.8);
+    border-radius: var(--radius-full);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+    color: #1a1a1a;
+}
+
+.related-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.related-desc {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    line-height: 1.4;
+}
+
+/* 隐藏当前工艺的推荐卡片 */
+.related-card.current {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .related-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .related-card {
+        min-height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .related-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== CTA 行动号召 ========== */
+.cta-section {
+    margin-bottom: 60px;
+}
+
+.cta-box {
+    text-align: center;
+    padding: 80px 40px;
+    background: linear-gradient(135deg, rgba(var(--color-palace-red-rgb), 0.03), rgba(var(--color-gold-rgb), 0.05));
+    border-radius: var(--radius-2xl);
+    border: 1px solid rgba(var(--color-gold-rgb), 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-deco {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 24px;
+    display: block;
+}
+
+.cta-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    color: var(--accent-red);
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.cta-desc {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 36px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+    .cta-box {
+        padding: 50px 20px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
