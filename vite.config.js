@@ -18,7 +18,9 @@ export default defineConfig({
         aiGuide: resolve(__dirname, 'src/pages/ai-guide.html'),
         culturalProducts: resolve(__dirname, 'src/pages/cultural-products.html'),
         craftDetail: resolve(__dirname, 'src/pages/craft-detail.html'),
-        culturalDetail: resolve(__dirname, 'src/pages/cultural-detail.html')
+        culturalDetail: resolve(__dirname, 'src/pages/cultural-detail.html'),
+        inheritors: resolve(__dirname, 'src/pages/inheritors.html'),
+        allInheritors: resolve(__dirname, 'src/pages/all-inheritors.html')
       }
     }
   }

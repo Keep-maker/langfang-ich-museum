@@ -1,0 +1,2110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>廊坊非遗数字中心 - 非遗传承人</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ==========================================
+           变量系统 - 与 index.html 完全一致
+           ========================================== */
+        :root {
+            --color-palace-red: #9D2933;
+            --color-palace-red-light: #C63946;
+            --color-palace-red-dark: #7A1F28;
+            --color-palace-red-rgb: 157, 41, 51;
+            --color-cloisonne-blue: #1E5A8C;
+            --color-cloisonne-blue-light: #2A6BA8;
+            --color-cloisonne-blue-dark: #164468;
+            --color-cloisonne-blue-rgb: 30, 90, 140;
+            --color-ivory-white: #F5F0E8;
+            --color-ivory-white-dark: #E8E3DB;
+            --color-ivory-white-rgb: 245, 240, 232;
+            --color-gold: #D4AF37;
+            --color-gold-light: #F0D98C;
+            --color-gold-dark: #B8942E;
+            --color-gold-rgb: 212, 175, 55;
+            --color-ink-gray: #4A4A4A;
+            --color-ink-gray-light: #6B6B6B;
+            --color-ink-gray-dark: #2D2D2D;
+            --color-light-gray: #E8E8E8;
+            --gradient-red: linear-gradient(135deg, #9D2933 0%, #C63946 100%);
+            --gradient-gold: linear-gradient(135deg, #D4AF37 0%, #F0D98C 100%);
+            --gradient-gold-metallic: linear-gradient(135deg, #B8942E 0%, #D4AF37 25%, #F0D98C 50%, #D4AF37 75%, #B8942E 100%);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.18);
+            --shadow-2xl: 0 20px 48px rgba(0, 0, 0, 0.22);
+            --shadow-red: 0 8px 24px rgba(157, 41, 51, 0.25);
+            --shadow-gold: 0 8px 24px rgba(212, 175, 55, 0.3);
+            --font-serif: 'Noto Serif SC', 'SimSun', serif;
+            --font-sans: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-full: 9999px;
+            --navbar-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--color-ivory-white);
+            font-family: var(--font-sans);
+            color: var(--color-ink-gray);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        /* ==========================================
+           导航栏
+           ========================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--navbar-height);
+            background: rgba(var(--color-ivory-white-rgb), 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 300;
+            transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .navbar.scrolled {
+            height: 70px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar>.container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: transform 150ms ease;
+        }
+
+        .logo-group:hover {
+            transform: scale(1.02);
+        }
+
+        .logo-text h1 {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-palace-red);
+            letter-spacing: 0.025em;
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            color: var(--color-ink-gray-light);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-ink-gray);
+            transition: color 150ms ease;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: var(--color-palace-red);
+        }
+
+        .nav-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+        }
+
+        .nav-underline {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-gold);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover .nav-underline,
+        .nav-item.active .nav-underline {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            color: var(--color-ink-gray);
+            transition: all 150ms ease;
+        }
+
+        .action-btn:hover {
+            background: rgba(var(--color-palace-red-rgb), 0.1);
+            color: var(--color-palace-red);
+        }
+
+        .nav-border-decoration {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            overflow: hidden;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 44px;
+            height: 44px;
+            padding: 10px;
+        }
+
+        .hamburger-line {
+            width: 24px;
+            height: 2px;
+            background: var(--color-ink-gray);
+            border-radius: var(--radius-full);
+            transition: all 0.3s ease;
+        }
+
+        /* ==========================================
+           Hero 展区
+           ========================================== */
+        .hero-section {
+            position: relative;
+            padding: calc(var(--navbar-height) + 56px) 0 72px;
+            background: var(--color-ink-gray-dark);
+            overflow: hidden;
+            min-height: 520px;
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            inset: 0;
+            background:
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10 L80 30 L80 70 L50 90 L20 70 L20 30 Z' fill='none' stroke='%23D4AF37' stroke-width='0.5' opacity='0.06'/%3E%3C/svg%3E") repeat;
+            background-size: 100px 100px;
+        }
+
+        .hero-light {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            pointer-events: none;
+        }
+
+        .hero-light.light-1 {
+            top: -100px;
+            left: -60px;
+            background: var(--color-palace-red);
+        }
+
+        .hero-light.light-2 {
+            bottom: -120px;
+            right: -80px;
+            background: var(--color-gold);
+        }
+
+        .hero-light.light-3 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 300px;
+            background: radial-gradient(ellipse, rgba(var(--color-gold-rgb), 0.08), transparent);
+            opacity: 1;
+            filter: none;
+        }
+
+        .filigree-corner {
+            position: absolute;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .filigree-corner.top-left {
+            top: calc(var(--navbar-height) + 12px);
+            left: 12px;
+        }
+
+        .filigree-corner.top-right {
+            top: calc(var(--navbar-height) + 12px);
+            right: 12px;
+        }
+
+        .filigree-corner.bottom-left {
+            bottom: 12px;
+            left: 12px;
+        }
+
+        .filigree-corner.bottom-right {
+            bottom: 12px;
+            right: 12px;
+        }
+
+        .filigree-line {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: filigreeDrawIn 2s ease-out forwards;
+        }
+
+        @keyframes filigreeDrawIn {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .cloisonne-border {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 50%;
+            background: linear-gradient(180deg, transparent, var(--color-cloisonne-blue) 20%, var(--color-gold) 50%, var(--color-cloisonne-blue) 80%, transparent);
+            border-radius: var(--radius-full);
+            z-index: 2;
+        }
+
+        .cloisonne-border.left {
+            left: 1.5rem;
+        }
+
+        .cloisonne-border.right {
+            right: 1.5rem;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 24px;
+            background: rgba(var(--color-gold-rgb), 0.12);
+            color: var(--color-gold-light);
+            border: 1px solid rgba(var(--color-gold-rgb), 0.3);
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .hero-title ruby rt {
+            font-size: 0.32em;
+            color: var(--color-gold-light);
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.78);
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto 44px;
+        }
+
+        /* 统计区 */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.25rem 0.75rem;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: var(--radius-xl);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .stat-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px);
+            border-color: rgba(var(--color-gold-rgb), 0.25);
+        }
+
+        .stat-number {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.02em;
+        }
+
+        .stat-decoration {
+            margin-top: 0.75rem;
+            height: 2px;
+            background: var(--gradient-gold);
+            opacity: 0.25;
+            border-radius: 1px;
+        }
+
+        /* ==========================================
+           波浪过渡
+           ========================================== */
+        .wave-transition {
+            position: relative;
+            height: 60px;
+            margin-top: -60px;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .wave-transition svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* ==========================================
+           传承人展示区
+           ========================================== */
+        .inheritors-section {
+            position: relative;
+            padding: 5rem 0 6rem;
+            background: var(--color-ivory-white);
+            overflow: hidden;
+        }
+
+        .section-bg-decoration {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .bg-pattern-left {
+            position: absolute;
+            top: 10%;
+            left: -5%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(var(--color-gold-rgb), 0.05), transparent 70%);
+            border-radius: var(--radius-full);
+        }
+
+        .bg-pattern-right {
+            position: absolute;
+            bottom: 10%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(var(--color-palace-red-rgb), 0.04), transparent 70%);
+            border-radius: var(--radius-full);
+        }
+
+        /* 区块标题 */
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-decoration {
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--color-palace-red);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.025em;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--color-ink-gray-light);
+        }
+
+        .title-underline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .title-underline .line {
+            width: 60px;
+            height: 1px;
+            background: var(--gradient-gold);
+        }
+
+        .title-underline .diamond {
+            width: 8px;
+            height: 8px;
+            background: var(--color-gold);
+            transform: rotate(45deg);
+        }
+
+        .section-intro {
+            max-width: 580px;
+            margin: 0 auto 2rem;
+            text-align: center;
+            font-size: 1rem;
+            color: var(--color-ink-gray-light);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ==========================================
+           筛选标签
+           ========================================== */
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.5rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-ink-gray);
+            background: white;
+            border: 1px solid var(--color-light-gray);
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--color-palace-red);
+            color: var(--color-palace-red);
+            background: rgba(var(--color-palace-red-rgb), 0.04);
+        }
+
+        .filter-btn.active {
+            background: var(--color-palace-red);
+            color: white;
+            border-color: var(--color-palace-red);
+            box-shadow: 0 4px 12px rgba(var(--color-palace-red-rgb), 0.3);
+        }
+
+        .filter-btn .count {
+            font-size: 0.75rem;
+            padding: 1px 8px;
+            border-radius: var(--radius-full);
+            background: rgba(0, 0, 0, 0.06);
+            transition: all 0.25s ease;
+        }
+
+        .filter-btn.active .count {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* ==========================================
+           卡片网格
+           ========================================== */
+        .inheritor-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 传承人卡片 */
+        .inheritor-card {
+            position: relative;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            background: white;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .inheritor-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .inheritor-card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-8px);
+            border-color: rgba(var(--color-gold-rgb), 0.2);
+        }
+
+        .inheritor-card.visible:hover {
+            transform: translateY(-8px);
+        }
+
+        /* 卡片顶部金色装饰线 */
+        .inheritor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-gold-metallic);
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .inheritor-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-inner {
+            position: relative;
+        }
+
+        /* 卡片图片区 */
+        .card-image-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image {
+            position: relative;
+            padding-top: 110%;
+            /* 10:11 近正方形偏竖 */
+            overflow: hidden;
+            background: var(--color-ivory-white-dark);
+        }
+
+        .card-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .inheritor-card:hover .card-image img {
+            transform: scale(1.06);
+        }
+
+        /* 图片底部渐变叠层 */
+        .card-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.35), transparent);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* 图片底部金色装饰线 */
+        .card-image-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-gold-metallic);
+            z-index: 3;
+        }
+
+        /* 卡片遮罩层 */
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(var(--color-palace-red-rgb), 0.7), rgba(var(--color-ink-gray-dark), 0.6) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            opacity: 0;
+            z-index: 2;
+            transition: opacity 0.35s ease;
+            cursor: pointer;
+        }
+
+        .inheritor-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .overlay-icon {
+            color: white;
+            transform: scale(0.8) translateY(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .inheritor-card:hover .overlay-icon {
+            transform: scale(1) translateY(0);
+        }
+
+        .overlay-text {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.08s;
+        }
+
+        .inheritor-card:hover .overlay-text {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* 荣誉徽章 */
+        .card-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 5px 12px;
+            background: rgba(var(--color-palace-red-rgb), 0.92);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border-radius: var(--radius-full);
+            backdrop-filter: blur(6px);
+            z-index: 4;
+            box-shadow: 0 2px 8px rgba(var(--color-palace-red-rgb), 0.35);
+        }
+
+        .card-badge.provincial {
+            background: rgba(var(--color-cloisonne-blue-rgb), 0.92);
+            box-shadow: 0 2px 8px rgba(var(--color-cloisonne-blue-rgb), 0.35);
+        }
+
+        .card-badge.digital {
+            background: linear-gradient(135deg, rgba(var(--color-gold-rgb), 0.95), rgba(var(--color-gold-dark), 0.95));
+            color: var(--color-ink-gray-dark);
+            box-shadow: 0 2px 8px rgba(var(--color-gold-rgb), 0.4);
+        }
+
+        .badge-icon {
+            font-size: 0.85rem;
+            line-height: 1;
+        }
+
+        /* 图片左下角姓名 */
+        .card-image-name {
+            position: absolute;
+            bottom: 12px;
+            left: 16px;
+            z-index: 3;
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .inheritor-card:hover .card-image-name {
+            opacity: 0;
+        }
+
+        /* 卡片内容区 */
+        .card-content {
+            padding: 1.25rem 1.5rem 1.5rem;
+        }
+
+        .card-name {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--color-palace-red);
+            margin-bottom: 4px;
+        }
+
+        .card-title {
+            font-size: 0.82rem;
+            color: var(--color-cloisonne-blue);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .card-description {
+            font-size: 0.85rem;
+            color: var(--color-ink-gray);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.15rem;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.2rem 0.65rem;
+            font-size: 0.72rem;
+            color: var(--color-gold-dark);
+            background: rgba(var(--color-gold-rgb), 0.12);
+            border: 1px solid rgba(var(--color-gold-rgb), 0.25);
+            border-radius: var(--radius-full);
+            white-space: nowrap;
+        }
+
+        .tag.red {
+            color: var(--color-palace-red);
+            background: rgba(var(--color-palace-red-rgb), 0.08);
+            border-color: rgba(var(--color-palace-red-rgb), 0.18);
+        }
+
+        .tag.blue {
+            color: var(--color-cloisonne-blue);
+            background: rgba(var(--color-cloisonne-blue-rgb), 0.08);
+            border-color: rgba(var(--color-cloisonne-blue-rgb), 0.18);
+        }
+
+        /* 卡片按钮 */
+        .mortise-btn-small {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.6rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-palace-red);
+            background: rgba(var(--color-palace-red-rgb), 0.04);
+            border: 1px solid rgba(var(--color-palace-red-rgb), 0.25);
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .mortise-btn-small:hover {
+            background: var(--color-palace-red);
+            color: white;
+            border-color: var(--color-palace-red);
+            box-shadow: 0 4px 12px rgba(var(--color-palace-red-rgb), 0.25);
+        }
+
+        .mortise-btn-small svg {
+            transition: transform 0.2s ease;
+        }
+
+        .mortise-btn-small:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* 查看更多 */
+        .section-footer {
+            text-align: center;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .view-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.9rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-palace-red);
+            border: 2px solid var(--color-palace-red);
+            border-radius: var(--radius-full);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .view-more-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-red);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .view-more-btn:hover::before {
+            opacity: 1;
+        }
+
+        .view-more-btn:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-red);
+            border-color: var(--color-palace-red-light);
+        }
+
+        .view-more-btn span,
+        .view-more-btn svg {
+            position: relative;
+            z-index: 1;
+        }
+
+        .view-more-btn svg {
+            transition: transform 0.25s ease;
+        }
+
+        .view-more-btn:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* ==========================================
+           详情弹窗
+           ========================================== */
+        .detail-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 500;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: var(--radius-xl);
+            max-width: 880px;
+            width: 100%;
+            max-height: 90vh;
+            overflow: hidden;
+            position: relative;
+            animation: modalIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-top-bar {
+            background: var(--color-ink-gray-dark);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .modal-top-bar::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-gold-metallic);
+        }
+
+        .modal-top-title {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            color: var(--color-gold-light);
+            letter-spacing: 0.1em;
+        }
+
+        .close-btn {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-full);
+            background: rgba(255, 255, 255, 0.08);
+            transition: all 0.2s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .modal-body {
+            padding: 2rem;
+            overflow-y: auto;
+            max-height: calc(90vh - 56px);
+        }
+
+        .detail-header {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-img-wrapper {
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .detail-img {
+            width: 240px;
+            height: 320px;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: var(--radius-lg);
+            border: 2px solid rgba(var(--color-gold-rgb), 0.4);
+            box-shadow: var(--shadow-md);
+        }
+
+        .detail-info {
+            flex: 1;
+            min-width: 240px;
+        }
+
+        .detail-title {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            color: var(--color-palace-red);
+            margin-bottom: 0.4rem;
+        }
+
+        .detail-role {
+            font-size: 0.95rem;
+            color: var(--color-cloisonne-blue);
+            margin-bottom: 1.25rem;
+            font-weight: 500;
+        }
+
+        .detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .detail-desc {
+            font-size: 0.92rem;
+            line-height: 1.85;
+            color: var(--color-ink-gray);
+        }
+
+        .divider-ruyi {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.75rem 0;
+        }
+
+        .divider-ruyi::before,
+        .divider-ruyi::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+        }
+
+        .divider-ruyi::before {
+            background: linear-gradient(90deg, transparent, var(--color-gold));
+        }
+
+        .divider-ruyi::after {
+            background: linear-gradient(90deg, var(--color-gold), transparent);
+        }
+
+        .ruyi-diamond {
+            width: 8px;
+            height: 8px;
+            background: var(--color-gold);
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
+
+        .detail-more-title {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            color: var(--color-palace-red);
+            margin-bottom: 0.75rem;
+        }
+
+        .detail-more {
+            font-size: 0.92rem;
+            line-height: 1.9;
+            color: var(--color-ink-gray-light);
+            text-indent: 2em;
+        }
+
+        /* ==========================================
+           页脚
+           ========================================== */
+        .site-footer {
+            background: var(--color-ink-gray-dark);
+            color: var(--color-ivory-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-main {
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .footer-brand .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand .footer-logo span {
+            font-family: var(--font-serif);
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+
+        .footer-desc {
+            font-size: 0.875rem;
+            line-height: 1.625;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            color: var(--color-ink-gray-light);
+            background: rgba(255, 255, 255, 0.08);
+            transition: all 150ms ease;
+        }
+
+        .social-link:hover {
+            color: var(--color-gold);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-links h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            transition: all 150ms ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--color-gold);
+            padding-left: 0.25rem;
+        }
+
+        .footer-bottom {
+            padding: 1.5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .copyright {
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+
+        .copyright a {
+            color: var(--color-gold);
+            transition: opacity 150ms;
+        }
+
+        .copyright a:hover {
+            opacity: 0.8;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.25rem;
+        }
+
+        .footer-bottom-links a {
+            font-size: 0.875rem;
+            opacity: 0.7;
+            transition: all 150ms;
+        }
+
+        .footer-bottom-links a:hover {
+            opacity: 1;
+            color: var(--color-gold);
+        }
+
+        .footer-decoration {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            pointer-events: none;
+        }
+
+        /* ==========================================
+           响应式
+           ========================================== */
+        @media (max-width: 1023px) {
+            :root {
+                --navbar-height: 70px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .section-title {
+                font-size: 1.875rem;
+            }
+
+            .inheritor-cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 767px) {
+            :root {
+                --navbar-height: 60px;
+            }
+
+            .hero-section {
+                padding-top: calc(var(--navbar-height) + 36px);
+                padding-bottom: 56px;
+                min-height: auto;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+                letter-spacing: 0.05em;
+            }
+
+            .hero-desc {
+                font-size: 0.95rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.75rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .stat-item {
+                padding: 1rem 0.5rem;
+            }
+
+            .inheritor-cards-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                max-width: 440px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .card-image {
+                padding-top: 90%;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .section-intro {
+                font-size: 0.92rem;
+            }
+
+            .detail-header {
+                flex-direction: column;
+            }
+
+            .detail-img {
+                width: 100%;
+                height: 260px;
+            }
+
+            .detail-title {
+                font-size: 1.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cloisonne-border,
+            .filigree-corner {
+                display: none;
+            }
+
+            .wave-transition {
+                height: 40px;
+                margin-top: -40px;
+            }
+
+            .filter-bar {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.4rem 1.15rem;
+                font-size: 0.82rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            :root {
+                --navbar-height: 56px;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero-title {
+                font-size: 1.65rem;
+            }
+
+            .hero-stats {
+                gap: 0.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.4rem;
+            }
+
+            .stat-label {
+                font-size: 0.72rem;
+            }
+
+            .card-name {
+                font-size: 1.15rem;
+            }
+
+            .card-content {
+                padding: 1rem 1.15rem 1.15rem;
+            }
+
+            .card-image {
+                padding-top: 100%;
+            }
+
+            .modal-body {
+                padding: 1.25rem;
+            }
+
+            .logo-text h1 {
+                font-size: 0.875rem;
+            }
+
+            .logo-subtitle {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ========== 导航栏 ========== -->
+    <header class="navbar" id="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo-group" aria-label="廊坊非遗数字中心首页">
+                <svg class="logo-icon" width="50" height="50" viewBox="0 0 50 50" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#D4AF37" />
+                            <stop offset="100%" stop-color="#F0D98C" />
+                        </linearGradient>
+                    </defs>
+                    <polygon points="25,2 47,14 47,36 25,48 3,36 3,14" fill="none" stroke="url(#goldGradient)"
+                        stroke-width="2" />
+                    <polygon points="25,10 40,18 40,32 25,40 10,32 10,18" fill="none" stroke="#9D2933"
+                        stroke-width="1.5" />
+                    <circle cx="25" cy="25" r="6" fill="none" stroke="url(#goldGradient)" stroke-width="1" />
+                    <circle cx="25" cy="25" r="2" fill="#9D2933" />
+                </svg>
+                <div class="logo-text">
+                    <h1>廊坊非遗数字中心</h1>
+                    <span class="logo-subtitle" lang="en">Langfang ICH Digital Center</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" aria-label="主导航">
+                <a href="../../index.html" class="nav-item">
+                    <span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></span>
+                    <span>首页</span><span class="nav-underline"></span>
+                </a>
+                <a href="museum.html" class="nav-item">
+                    <span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 21H21M5 21V7L12 3L19 7V21M9 21V13H15V21" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></span>
+                    <span>虚拟博物馆</span><span class="nav-underline"></span>
+                </a>
+                <a href="experience.html" class="nav-item">
+                    <span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></span>
+                    <span>互动体验</span><span class="nav-underline"></span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" />
+                            <path d="M5.5 21C5.5 17.134 8.41 14 12 14s6.5 3.134 6.5 7" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" />
+                        </svg></span>
+                    <span>传承人</span><span class="nav-underline"></span>
+                </a>
+                <a href="ai-guide.html" class="nav-item">
+                    <span class="nav-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></span>
+                    <span>智能导览</span><span class="nav-underline"></span>
+                </a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="../../index.html" class="action-btn" aria-label="返回首页" title="返回首页">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M3 7.5l7-5.5 7 5.5v9a1.5 1.5 0 01-1.5 1.5h-11A1.5 1.5 0 013 16.5z"
+                            stroke="currentColor" stroke-width="1.5" />
+                        <path d="M7.5 18V11h5v7" stroke="currentColor" stroke-width="1.5" />
+                    </svg>
+                </a>
+                <button class="mobile-menu-toggle" aria-label="打开菜单" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+        <div class="nav-border-decoration">
+            <svg width="100%" height="4" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="transparent" />
+                        <stop offset="20%" stop-color="#D4AF37" />
+                        <stop offset="50%" stop-color="#D4AF37" />
+                        <stop offset="80%" stop-color="#D4AF37" />
+                        <stop offset="100%" stop-color="transparent" />
+                    </linearGradient>
+                </defs>
+                <rect width="100%" height="1" fill="url(#borderGradient)" />
+            </svg>
+        </div>
+    </header>
+
+    <!-- ========== Hero 展区 ========== -->
+    <section class="hero-section">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-light light-1"></div>
+        <div class="hero-light light-2"></div>
+        <div class="hero-light light-3"></div>
+
+        <!-- 花丝镶嵌角纹 -->
+        <svg class="filigree-corner top-left" width="80" height="80" viewBox="0 0 100 100">
+            <path class="filigree-line" d="M0,50 Q25,25 50,0" fill="none" stroke="#D4AF37" stroke-width="2" />
+            <path class="filigree-line" d="M0,70 Q35,35 70,0" fill="none" stroke="#D4AF37" stroke-width="1" />
+            <circle cx="12" cy="12" r="3" fill="#9D2933" />
+        </svg>
+        <svg class="filigree-corner top-right" width="80" height="80" viewBox="0 0 100 100">
+            <path class="filigree-line" d="M100,50 Q75,25 50,0" fill="none" stroke="#D4AF37" stroke-width="2" />
+            <path class="filigree-line" d="M100,70 Q65,35 30,0" fill="none" stroke="#D4AF37" stroke-width="1" />
+            <circle cx="88" cy="12" r="3" fill="#9D2933" />
+        </svg>
+        <svg class="filigree-corner bottom-left" width="80" height="80" viewBox="0 0 100 100">
+            <path class="filigree-line" d="M0,50 Q25,75 50,100" fill="none" stroke="#D4AF37" stroke-width="2" />
+            <path class="filigree-line" d="M0,30 Q35,65 70,100" fill="none" stroke="#D4AF37" stroke-width="1" />
+            <circle cx="12" cy="88" r="3" fill="#9D2933" />
+        </svg>
+        <svg class="filigree-corner bottom-right" width="80" height="80" viewBox="0 0 100 100">
+            <path class="filigree-line" d="M100,50 Q75,75 50,100" fill="none" stroke="#D4AF37" stroke-width="2" />
+            <path class="filigree-line" d="M100,30 Q65,65 30,100" fill="none" stroke="#D4AF37" stroke-width="1" />
+            <circle cx="88" cy="88" r="3" fill="#9D2933" />
+        </svg>
+
+        <div class="cloisonne-border left"></div>
+        <div class="cloisonne-border right"></div>
+
+        <div class="hero-content">
+            <span class="hero-tag">匠心传承 · 技艺不朽</span>
+            <h1 class="hero-title">
+                <ruby>非遗传承人<rp>(</rp>
+                    <rt>fēi yí chuán chéng rén</rt>
+                    <rp>)</rp>
+                </ruby>
+            </h1>
+            <p class="hero-desc">以匠心守初心，以技艺传文化。一代代非遗传承人用毕生坚守，让千年技艺在当代焕发新生。</p>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="4">0</div>
+                    <div class="stat-label">代表性传承人</div>
+                    <div class="stat-decoration"></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="2">0</div>
+                    <div class="stat-label">国家级非遗项目</div>
+                    <div class="stat-decoration"></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="800" data-suffix="+">0</div>
+                    <div class="stat-label">年历史传承</div>
+                    <div class="stat-decoration"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 波浪过渡 -->
+    <div class="wave-transition">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+            <path d="M0,0 C360,50 1080,50 1440,0 L1440,60 L0,60 Z" fill="var(--color-ivory-white)" />
+        </svg>
+    </div>
+
+    <!-- ========== 传承人卡片区 ========== -->
+    <section class="inheritors-section" id="inheritors">
+        <div class="container">
+            <header class="section-header">
+                <div class="header-decoration">
+                    <svg width="60" height="20" viewBox="0 0 60 20">
+                        <path d="M0 10 Q15 0 30 10 Q45 20 60 10" fill="none" stroke="#D4AF37" stroke-width="2" />
+                    </svg>
+                </div>
+                <h2 class="section-title">代表性传承人</h2>
+                <p class="section-subtitle">技艺传承者 · 文化守护人</p>
+                <div class="title-underline">
+                    <span class="line"></span>
+                    <span class="diamond"></span>
+                    <span class="line"></span>
+                </div>
+            </header>
+
+            <p class="section-intro">走近非遗传承人，聆听指尖上的匠心故事，感受代代相传的技艺温度</p>
+
+            <div class="inheritor-cards-grid">
+
+                <!-- 传承人卡片1：马福良 -->
+                <article class="inheritor-card" data-id="1" data-category="national">
+                    <div class="card-inner">
+                        <div class="card-image-wrapper">
+                            <div class="card-image">
+                                <img src="../assets/images/all-inheritors/马福良.jpg" alt="马福良 - 花丝镶嵌国家级传承人" loading="lazy"
+                                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 440%22%3E%3Cdefs%3E%3ClinearGradient id=%22bg%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22%3E%3Cstop offset=%220%25%22 stop-color=%22%239D2933%22/%3E%3Cstop offset=%22100%25%22 stop-color=%22%237A1F28%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=%22url(%23bg)%22 width=%22400%22 height=%22440%22/%3E%3Cpath d=%22M200 100 L260 150 L260 250 L200 300 L140 250 L140 150 Z%22 fill=%22none%22 stroke=%22%23D4AF37%22 stroke-width=%222%22 opacity=%220.3%22/%3E%3Ctext x=%2250%25%22 y=%2248%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2248%22 fill=%22%23F5F0E8%22 font-family=%22serif%22%3E马福良%3C/text%3E%3Ctext x=%2250%25%22 y=%2260%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2214%22 fill=%22%23D4AF37%22 opacity=%220.7%22%3E花丝镶嵌国家级传承人%3C/text%3E%3C/svg%3E'">
+                                <div class="card-image-line"></div>
+                            </div>
+                            <div class="card-overlay">
+                                <span class="overlay-icon">
+                                    <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+                                        <circle cx="22" cy="22" r="20" stroke="currentColor" stroke-width="1.5" />
+                                        <path d="M18 14L30 22L18 30V14Z" fill="currentColor" />
+                                    </svg>
+                                </span>
+                                <span class="overlay-text">了解匠心故事</span>
+                            </div>
+                            <div class="card-badge">
+                                <span class="badge-icon">🏆</span>
+                                <span>国家级</span>
+                            </div>
+                            <span class="card-image-name">马福良</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-name">马福良</h3>
+                            <p class="card-title">花丝镶嵌国家级传承人</p>
+                            <p class="card-description">
+                                1975年随父学习花丝镶嵌技艺，深耕30余年，精通花丝镶嵌、烧蓝、錾活等全流程工艺，融合古今中西元素创新技艺，作品屡获金奖，推动非遗走向国际。</p>
+                            <div class="card-tags">
+                                <span class="tag red">国家级传承人</span>
+                                <span class="tag">全国劳动模范</span>
+                                <span class="tag">百花奖</span>
+                            </div>
+                            <button class="mortise-btn-small detail-btn">
+                                <span>了解更多</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 传承人卡片2：黄景仁 -->
+                <article class="inheritor-card" data-id="2" data-category="national">
+                    <div class="card-inner">
+                        <div class="card-image-wrapper">
+                            <div class="card-image">
+                                <img src="../assets/images/all-inheritors/黄景仁.jpg" alt="黄景仁 - 景泰蓝国家级传承人"
+                                    loading="lazy"
+                                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 440%22%3E%3Cdefs%3E%3ClinearGradient id=%22bg2%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22%3E%3Cstop offset=%220%25%22 stop-color=%22%231E5A8C%22/%3E%3Cstop offset=%22100%25%22 stop-color=%22%23164468%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=%22url(%23bg2)%22 width=%22400%22 height=%22440%22/%3E%3Ccircle cx=%22200%22 cy=%22200%22 r=%2260%22 fill=%22none%22 stroke=%22%23D4AF37%22 stroke-width=%222%22 opacity=%220.3%22/%3E%3Ccircle cx=%22200%22 cy=%22200%22 r=%2290%22 fill=%22none%22 stroke=%22%23D4AF37%22 stroke-width=%221%22 opacity=%220.15%22/%3E%3Ctext x=%2250%25%22 y=%2248%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2248%22 fill=%22%23F5F0E8%22 font-family=%22serif%22%3E黄景仁%3C/text%3E%3Ctext x=%2250%25%22 y=%2260%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2214%22 fill=%22%23D4AF37%22 opacity=%220.7%22%3E景泰蓝国家级传承人%3C/text%3E%3C/svg%3E'">
+                                <div class="card-image-line"></div>
+                            </div>
+                            <div class="card-overlay">
+                                <span class="overlay-icon">
+                                    <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+                                        <circle cx="22" cy="22" r="20" stroke="currentColor" stroke-width="1.5" />
+                                        <path d="M18 14L30 22L18 30V14Z" fill="currentColor" />
+                                    </svg>
+                                </span>
+                                <span class="overlay-text">了解匠心故事</span>
+                            </div>
+                            <div class="card-badge">
+                                <span class="badge-icon">🏆</span>
+                                <span>国家级</span>
+                            </div>
+                            <span class="card-image-name">黄景仁</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-name">黄景仁</h3>
+                            <p class="card-title">景泰蓝国家级传承人</p>
+                            <p class="card-description">
+                                深耕景泰蓝技艺五十余载，精通108道核心工序，攻克釉料渲染自然景象等百年工艺难题，创办企业并参与编写行业规范，培养传承人500余名。</p>
+                            <div class="card-tags">
+                                <span class="tag red">国家级传承人</span>
+                                <span class="tag blue">企业家</span>
+                                <span class="tag blue">高级技师</span>
+                            </div>
+                            <button class="mortise-btn-small detail-btn">
+                                <span>了解更多</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 传承人卡片3：梁淑平 -->
+                <article class="inheritor-card" data-id="3" data-category="digital">
+                    <div class="card-inner">
+                        <div class="card-image-wrapper">
+                            <div class="card-image">
+                                <img src="../assets/images/all-inheritors/梁淑平.jpg" alt="梁淑平 - 京绣国家级传承人" loading="lazy"
+                                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 440%22%3E%3Cdefs%3E%3ClinearGradient id=%22bg3%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22%3E%3Cstop offset=%220%25%22 stop-color=%22%23D4AF37%22/%3E%3Cstop offset=%22100%25%22 stop-color=%22%23B8942E%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=%22url(%23bg3)%22 width=%22400%22 height=%22440%22/%3E%3Crect x=%22160%22 y=%22130%22 width=%2280%22 height=%2260%22 rx=%228%22 fill=%22none%22 stroke=%22%23fff%22 stroke-width=%222%22 opacity=%220.3%22/%3E%3Cpath d=%22M175 210h50M200 195v30%22 stroke=%22%23fff%22 stroke-width=%221.5%22 opacity=%220.2%22/%3E%3Ctext x=%2250%25%22 y=%2248%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2248%22 fill=%22%23fff%22 font-family=%22serif%22%3E梁淑平%3C/text%3E%3Ctext x=%2250%25%22 y=%2260%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2214%22 fill=%22rgba(255,255,255,0.7)%22%3E京绣国家级传承人%3C/text%3E%3C/svg%3E'">
+                                <div class="card-image-line"></div>
+                            </div>
+                            <div class="card-overlay">
+                                <span class="overlay-icon">
+                                    <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+                                        <circle cx="22" cy="22" r="20" stroke="currentColor" stroke-width="1.5" />
+                                        <path d="M18 14L30 22L18 30V14Z" fill="currentColor" />
+                                    </svg>
+                                </span>
+                                <span class="overlay-text">了解匠心故事</span>
+                            </div>
+                            <div class="card-badge">
+                                <span class="badge-icon">🏆</span>
+                                <span>国家级</span>
+                            </div>
+                            <span class="card-image-name">梁淑平</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-name">梁淑平</h3>
+                            <p class="card-title">京绣国家级传承人</p>
+                            <p class="card-description">出身京绣世家，精通宫廷刺绣全套工序，绣工精细、纹样考究，多件作品被故宫收藏，深耕传承与创新，助力乡村非遗振兴。</p>
+                            <div class="card-tags">
+                                <span class="tag">非遗振兴</span>
+                                <span class="tag blue">宫廷京绣</span>
+                                <span class="tag blue">故宫收藏</span>
+                            </div>
+                            <button class="mortise-btn-small detail-btn">
+                                <span>了解更多</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                
+            </div>
+
+            <div class="section-footer">
+                <a href="all-inheritors.html" class="view-more-btn">
+                    <span>查看全部传承人</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M4 10H16M12 6L16 10L12 14" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="section-bg-decoration">
+            <div class="bg-pattern-left"></div>
+            <div class="bg-pattern-right"></div>
+        </div>
+    </section>
+
+    <!-- ========== 详情弹窗 ========== -->
+    <div class="detail-modal" id="detailModal">
+        <div class="modal-content">
+            <div class="modal-top-bar">
+                <span class="modal-top-title">传承人详情</span>
+                <button class="close-btn" id="closeBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="detail-header">
+                    <div class="detail-img-wrapper">
+                        <img src="" alt="" class="detail-img" id="modalImg">
+                    </div>
+                    <div class="detail-info">
+                        <h3 class="detail-title" id="modalTitle"></h3>
+                        <p class="detail-role" id="modalRole"></p>
+                        <div class="detail-tags" id="modalTags"></div>
+                        <p class="detail-desc" id="modalDesc"></p>
+                    </div>
+                </div>
+                <div class="divider-ruyi">
+                    <span class="ruyi-diamond"></span>
+                </div>
+                <h4 class="detail-more-title">详细介绍</h4>
+                <div class="detail-more" id="modalMore"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 页脚 ========== -->
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <svg width="40" height="40" viewBox="0 0 50 50">
+                                <polygon points="25,2 47,14 47,36 25,48 3,36 3,14" fill="none" stroke="#D4AF37"
+                                    stroke-width="2" />
+                                <circle cx="25" cy="25" r="6" fill="#9D2933" />
+                            </svg>
+                            <span>廊坊非遗数字中心</span>
+                        </div>
+                        <p class="footer-desc">以数字之笔，复刻花丝镶嵌的指尖乾坤。致力于非物质文化遗产的数字化保护与传承创新。</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="微信公众号">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M8.5 11a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM15.5 11a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM12 2C6.477 2 2 6.477 2 12c0 1.82.487 3.53 1.338 5L2 22l5-1.338A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" />
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="微博">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M20.194 14.197c0 3.26-4.063 5.907-9.073 5.907-5.01 0-9.074-2.647-9.074-5.907 0-3.259 4.064-5.906 9.074-5.906 5.01 0 9.073 2.647 9.073 5.906z" />
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="抖音">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <h3>快速导航</h3>
+                        <ul>
+                            <li><a href="museum.html">虚拟博物馆</a></li>
+                            <li><a href="experience.html">互动体验</a></li>
+                            <li><a href="quiz.html">非遗答题</a></li>
+                            <li><a href="ai-guide.html">智能导览</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links">
+                        <h3>非遗传承</h3>
+                        <ul>
+                            <li><a href="all-inheritors.html">全部传承人</a></li>
+                            <li><a href="craft-detail.html?craft=filigree">花丝镶嵌</a></li>
+                            <li><a href="craft-detail.html?craft=cloisonne">景泰蓝</a></li>
+                            <li><a href="cultural-products.html">文创商店</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p class="copyright">&copy; 2026 廊坊非遗数字中心 版权所有 | <a href="#">冀ICP备XXXXXXXX号</a></p>
+                    <div class="footer-bottom-links">
+                        <a href="#">隐私政策</a>
+                        <a href="#">使用条款</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-decoration">
+            <svg viewBox="0 0 1920 100" preserveAspectRatio="none" style="width:100%;height:100px;">
+                <path d="M0 50 Q480 0 960 50 Q1440 100 1920 50 V100 H0 Z" fill="rgba(157,41,51,0.1)" />
+            </svg>
+        </div>
+    </footer>
+
+    <!-- ========== JavaScript ========== -->
+    <script>
+        // ========== 传承人数据 ==========
+        const inheritorsData = [
+            {
+                id: 1,
+                name: "马福良",
+                role: "花丝镶嵌国家级传承人",
+                img: "../assets/images/all-inheritors/马福良.jpg",
+                tags: ["国家级传承人", "百花奖", "全国劳动模范"],
+                desc: "1975年随父学习花丝镶嵌技艺，深耕30余年，精通花丝镶嵌、烧蓝、錾活等全流程工艺，融合古今中西元素创新技艺，作品屡获金奖，推动非遗走向国际。",
+                more: "1975年开始学制作花丝镶嵌卡克图工艺。30多年不断学习、钻研，潜心探索工艺品的设计开发与制作。对花丝镶嵌工艺进行系统研究，并把此工艺进行古今结合，中西交融，利用现代美学，对花丝镶嵌技术进行发扬光大，并加强手工艺品其他工艺的研究学习，现已成为花丝镶嵌、烧蓝、錾活、镶活的全活工艺专家。"
+            },
+            {
+                id: 2,
+                name: "黄景仁",
+                role: "景泰蓝国家级代表性传承人",
+                img: "../assets/images/all-inheritors/黄景仁.jpg",
+                tags: ["国家级传承人", "企业家", "高级技师"],
+                desc: "黄景仁为大厂籍景泰蓝国家级非遗传承人，深耕技艺五十余载，创办企业并参与编写行业规范，攻克釉料工艺难题，培养大批传承人，代表作屡获殊荣，其企业获评国家级非遗传承保护单位。",
+                more: "黄景仁为河北大厂籍景泰蓝国家级非遗传承人，深耕技艺五十余载，精通景泰蓝108道核心工序，攻克釉料渲染自然景象等百年工艺难题，研发多项新技术，推动国画与景泰蓝技艺跨界融合。他广授门徒500余名，参编行业规范教材，创办企业获评国家级非遗传承保护单位，推动大厂获评\u201c中国景泰蓝之乡\u201d，兼顾技艺传承与产业创新，让景泰蓝融入现代生活，秉持诚信经营理念，深耕非遗半世纪获多方赞誉。"
+            },
+            {
+                id: 3,
+                name: "梁淑平",
+                role: "京绣国家级代表性传承人",
+                img: "../assets/images/all-inheritors/梁淑平.jpg",
+                tags: ["非遗振兴", "宫廷京绣", "故宫收藏"],
+                desc: "出身京绣世家，精通宫廷刺绣全套工序，绣工精细、纹样考究，多件作品被故宫收藏，深耕传承与创新，助力乡村非遗振兴。",
+                more: "梁淑平国家级非遗京绣代表性传承人。自上世纪 70 年代系统学习京绣，熟练掌握打版、盘金绣等全套技艺。作品以明清宫廷纹样为根基，《双凤盘金绣褂裙》《盘金补子》被故宫博物院收藏。她创新开发冬奥文创，曾为 2008 年奥运会制作礼仪礼服，并以非遗工坊带动超 2000 人就业，推进非遗进校园，培养田丽、田鹏等新一代传承人。"
+            }
+        ];
+
+        // ========== 导航栏滚动效果 ==========
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        }, { passive: true });
+
+        // ========== 数字动画 ==========
+        function animateNumber(el) {
+            const target = parseInt(el.dataset.target);
+            const suffix = el.dataset.suffix || '';
+            const duration = 1200;
+            const start = performance.now();
+
+            function update(now) {
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+                const current = Math.round(target * eased);
+                el.textContent = current + suffix;
+                if (progress < 1) requestAnimationFrame(update);
+            }
+            requestAnimationFrame(update);
+        }
+
+        // 当Hero Stats进入视口时触发数字动画
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.stat-number[data-target]').forEach(animateNumber);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const heroStats = document.querySelector('.hero-stats');
+        if (heroStats) statsObserver.observe(heroStats);
+
+        // ========== 卡片滚动入场动画 ==========
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.inheritor-card').forEach((card, i) => {
+            card.style.transition = `opacity 0.6s cubic-bezier(0.4,0,0.2,1) ${i * 0.12}s, transform 0.6s cubic-bezier(0.4,0,0.2,1) ${i * 0.12}s, box-shadow 0.3s ease, border-color 0.3s ease`;
+            cardObserver.observe(card);
+        });
+
+        // ========== 筛选逻辑 ==========
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.inheritor-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+                cards.forEach(card => {
+                    const category = card.dataset.category;
+                    const show = filter === 'all' || category === filter;
+                    card.style.display = show ? '' : 'none';
+                    // Re-trigger animation
+                    if (show) {
+                        card.classList.remove('visible');
+                        requestAnimationFrame(() => {
+                            requestAnimationFrame(() => {
+                                card.classList.add('visible');
+                            });
+                        });
+                    }
+                });
+            });
+        });
+
+        // ========== 弹窗逻辑 ==========
+        const detailModal = document.getElementById('detailModal');
+        const closeBtn = document.getElementById('closeBtn');
+
+        document.querySelectorAll('.detail-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const card = this.closest('.inheritor-card');
+                const id = parseInt(card.dataset.id);
+                const data = inheritorsData.find(item => item.id === id);
+                if (!data) return;
+
+                const modalImg = document.getElementById('modalImg');
+                if (data.img) {
+                    modalImg.src = data.img;
+                } else {
+                    modalImg.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 320'%3E%3Cdefs%3E%3ClinearGradient id='mg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23D4AF37'/%3E%3Cstop offset='100%25' stop-color='%23B8942E'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23mg)' width='240' height='320'/%3E%3Ctext x='50%25' y='46%25' dominant-baseline='middle' text-anchor='middle' font-size='36' fill='%23fff' font-family='serif'%3E${encodeURIComponent(data.name)}%3C/text%3E%3Ctext x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' font-size='12' fill='rgba(255,255,255,0.7)'%3E${encodeURIComponent(data.role.split('·')[0].trim())}%3C/text%3E%3C/svg%3E`;
+                }
+                modalImg.alt = `${data.name} - 详细介绍`;
+                document.getElementById('modalTitle').textContent = data.name;
+                document.getElementById('modalRole').textContent = data.role;
+
+                const tagsContainer = document.getElementById('modalTags');
+                tagsContainer.innerHTML = '';
+                data.tags.forEach(tag => {
+                    const tagEl = document.createElement('span');
+                    tagEl.className = 'tag';
+                    if (tag.includes('国家级') || tag.includes('AI')) tagEl.classList.add('red');
+                    if (tag.includes('数字') || tag.includes('企业') || tag.includes('技师')) tagEl.classList.add('blue');
+                    tagEl.textContent = tag;
+                    tagsContainer.appendChild(tagEl);
+                });
+
+                document.getElementById('modalDesc').textContent = data.desc;
+                document.getElementById('modalMore').textContent = data.more;
+
+                detailModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // 卡片 overlay 也触发弹窗
+        document.querySelectorAll('.card-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function () {
+                this.closest('.inheritor-card').querySelector('.detail-btn').click();
+            });
+        });
+
+        function closeModal() {
+            detailModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        closeBtn.addEventListener('click', closeModal);
+        detailModal.addEventListener('click', e => { if (e.target === detailModal) closeModal(); });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && detailModal.style.display === 'flex') closeModal();
+        });
+    </script>
+</body>
+
+</html>

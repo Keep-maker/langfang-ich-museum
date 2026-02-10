@@ -38,12 +38,37 @@
 
   <!-- 内联兜底：确保加载器不会卡住 + AOS元素不会永远隐藏 -->
   <style>
-    .page-loader{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;background:#F5F0E8;display:flex;align-items:center;justify-content:center}
-    .page-loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
-    @keyframes aosShow{to{opacity:1!important;transform:none!important}}
-    [data-aos]:not(.aos-animate){animation:aosShow 0.6s ease-out 2.5s both}
+    .page-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      background: #F5F0E8;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .page-loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none
+    }
+
+    @keyframes aosShow {
+      to {
+        opacity: 1 !important;
+        transform: none !important
+      }
+    }
+
+    [data-aos]:not(.aos-animate) {
+      animation: aosShow 0.6s ease-out 2.5s both
+    }
   </style>
-  <script>setTimeout(function(){var l=document.getElementById('pageLoader');if(l){l.style.transition='opacity 0.5s';l.style.opacity='0';setTimeout(function(){l.style.display='none'},600)}},3000);</script>
+  <script>setTimeout(function () { var l = document.getElementById('pageLoader'); if (l) { l.style.transition = 'opacity 0.5s'; l.style.opacity = '0'; setTimeout(function () { l.style.display = 'none' }, 600) } }, 3000);</script>
 </head>
 
 <body>
@@ -613,14 +638,14 @@
         <!-- 卡片网格 -->
         <div class="inheritor-cards-grid">
 
-          <!-- 传承人卡片1 -->
-          <article class="inheritor-card" data-aos="fade-up">
+          <!-- 传承人卡片1：马福良 -->
+          <article class="inheritor-card" data-aos="fade-up" data-aos-delay="0">
             <div class="card-inner">
               <!-- 卡片图片区 -->
               <div class="card-image-wrapper">
                 <div class="card-image">
-                  <img src="assets/images/inheritors/master-wang.jpg" alt="王德功大师工作照" loading="lazy"
-                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22360%22 height=%22200%22%3E%3Crect fill=%22%239D2933%22 width=%22360%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22%23F5F0E8%22%3E王德功%3C/text%3E%3C/svg%3E'">
+                  <img src="src/assets/images/all-inheritors/马福良.jpg" alt="马福良 - 花丝镶嵌国家级传承人" loading="lazy"
+                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22360%22 height=%22200%22%3E%3Crect fill=%22%239D2933%22 width=%22360%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22%23F5F0E8%22%3E马福良%3C/text%3E%3C/svg%3E'">
                 </div>
                 <div class="card-overlay">
                   <span class="overlay-icon">
@@ -629,10 +654,10 @@
                       <path d="M16 14L28 20L16 26V14Z" fill="currentColor" />
                     </svg>
                   </span>
-                  <span class="overlay-text">观看匠心故事</span>
+                  <span class="overlay-text">了解匠心故事</span>
                 </div>
                 <!-- 荣誉标签 -->
-                <div class="card-badge">
+                <div class="card-badge digital">
                   <span class="badge-icon">🏆</span>
                   <span class="badge-text">国家级</span>
                 </div>
@@ -640,17 +665,17 @@
 
               <!-- 卡片内容区 -->
               <div class="card-content">
-                <h3 class="card-name">王德功</h3>
-                <p class="card-title">花丝镶嵌国家级代表性传承人</p>
+                <h3 class="card-name">马福良</h3>
+                <p class="card-title">花丝镶嵌国家级传承人</p>
                 <p class="card-description">
-                  从艺50余年，作品多次获得国家级工艺美术大奖。擅长宫廷花丝镶嵌技艺复原，代表作《凤冠》被故宫博物院收藏。
+                  1975年随父学习花丝镶嵌技艺,深耕30余年,精通花丝镶嵌、烧蓝、錾活等全流程工艺，融合古今中西元素创新技艺，作品屡获金奖，推动非遗走向国际。
                 </p>
                 <div class="card-tags">
-                  <span class="tag">国家级大师</span>
-                  <span class="tag">50年匠心</span>
-                  <span class="tag">故宫收藏</span>
+                  <span class="tag">国家级传承人</span>
+                  <span class="tag">全国劳动模范</span>
+                  <span class="tag">百花奖</span>
                 </div>
-                <a href="src/pages/inheritor-detail.html?id=1" class="card-btn mortise-btn-small">
+                <a href="src/pages/inheritors.html" class="card-btn mortise-btn-small">
                   <span>了解更多</span>
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
@@ -667,13 +692,13 @@
             </div>
           </article>
 
-          <!-- 传承人卡片2 -->
-          <article class="inheritor-card" data-aos="fade-up">
+          <!-- 传承人卡片2：黄景仁 -->
+          <article class="inheritor-card" data-aos="fade-up" data-aos-delay="100">
             <div class="card-inner">
               <div class="card-image-wrapper">
                 <div class="card-image">
-                  <img src="assets/images/inheritors/master-li.jpg" alt="李静怡大师工作照" loading="lazy"
-                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22360%22 height=%22200%22%3E%3Crect fill=%22%231E5A8C%22 width=%22360%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22%23F5F0E8%22%3E李静怡%3C/text%3E%3C/svg%3E'">
+                  <img src="src/assets/images/all-inheritors/黄景仁.jpg" alt="黄景仁 - 景泰蓝国家级代表性传承人" loading="lazy"
+                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22360%22 height=%22200%22%3E%3Crect fill=%22%231E5A8C%22 width=%22360%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22%23F5F0E8%22%3E黄景仁%3C/text%3E%3C/svg%3E'">
                 </div>
                 <div class="card-overlay">
                   <span class="overlay-icon">
@@ -682,26 +707,26 @@
                       <path d="M16 14L28 20L16 26V14Z" fill="currentColor" />
                     </svg>
                   </span>
-                  <span class="overlay-text">观看匠心故事</span>
+                  <span class="overlay-text">了解匠心故事</span>
                 </div>
-                <div class="card-badge provincial">
-                  <span class="badge-icon">⭐</span>
-                  <span class="badge-text">省级</span>
+                <div class="card-badge digital">
+                  <span class="badge-icon">🏆</span>
+                  <span class="badge-text">国家级</span>
                 </div>
               </div>
 
               <div class="card-content">
-                <h3 class="card-name">李静怡</h3>
-                <p class="card-title">景泰蓝省级代表性传承人</p>
+                <h3 class="card-name">黄景仁</h3>
+                <p class="card-title">景泰蓝国家级代表性传承人</p>
                 <p class="card-description">
-                  传承宫廷景泰蓝制作技艺，创新融合现代设计理念。作品《千里江山》系列被国家博物馆永久收藏。
+                  深耕景泰蓝技艺五十余载，精通108道核心工序，攻克釉料渲染自然景象等百年工艺难题，创办企业并参与编写行业规范，培养传承人500余名。
                 </p>
                 <div class="card-tags">
-                  <span class="tag">省级传承人</span>
-                  <span class="tag">创新设计</span>
-                  <span class="tag">国博收藏</span>
+                  <span class="tag">国家级传承人</span>
+                  <span class="tag">企业家</span>
+                  <span class="tag">高级技师</span>
                 </div>
-                <a href="src/pages/inheritor-detail.html?id=2" class="card-btn mortise-btn-small">
+                <a href="src/pages/inheritors.html" class="card-btn mortise-btn-small">
                   <span>了解更多</span>
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
@@ -717,13 +742,13 @@
             </div>
           </article>
 
-          <!-- 传承人卡片3 -->
-          <article class="inheritor-card" data-aos="fade-up">
+          <!-- 传承人卡片3：梁淑平 -->
+          <article class="inheritor-card" data-aos="fade-up" data-aos-delay="200">
             <div class="card-inner">
               <div class="card-image-wrapper">
                 <div class="card-image">
-                  <img src="assets/images/inheritors/master-zhang.jpg" alt="张明轩工作照" loading="lazy"
-                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22360%22 height=%22200%22%3E%3Crect fill=%22%23D4AF37%22 width=%22360%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22%234A4A4A%22%3E张明轩%3C/text%3E%3C/svg%3E'">
+                  <img src="src/assets/images/all-inheritors/梁淑平.jpg" alt="梁淑平 - 京绣国家级代表性传承人" loading="lazy"
+                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22360%22 height=%22200%22%3E%3Crect fill=%22%23D4AF37%22 width=%22360%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22%234A4A4A%22%3E梁淑平%3C/text%3E%3C/svg%3E'">
                 </div>
                 <div class="card-overlay">
                   <span class="overlay-icon">
@@ -732,26 +757,26 @@
                       <path d="M16 14L28 20L16 26V14Z" fill="currentColor" />
                     </svg>
                   </span>
-                  <span class="overlay-text">观看匠心故事</span>
+                  <span class="overlay-text">了解匠心故事</span>
                 </div>
                 <div class="card-badge digital">
-                  <span class="badge-icon">💻</span>
-                  <span class="badge-text">数字专家</span>
+                  <span class="badge-icon">🏆</span>
+                  <span class="badge-text">国家级</span>
                 </div>
               </div>
 
               <div class="card-content">
-                <h3 class="card-name">张明轩</h3>
-                <p class="card-title">非遗数字化保护专家</p>
+                <h3 class="card-name">梁淑平</h3>
+                <p class="card-title">京绣国家级代表性传承人</p>
                 <p class="card-description">
-                  致力于非遗数字化保护工作，运用AI技术修复古代工艺纹样，建立廊坊非遗数字资料库，让传统技艺焕发新生。
+                  出身京绣世家，精通宫廷刺绣全套工序，绣工精细、纹样考究，多件作品被故宫收藏，深耕传承与创新，助力乡村非遗振兴。
                 </p>
                 <div class="card-tags">
-                  <span class="tag">AI应用</span>
-                  <span class="tag">数字保护</span>
-                  <span class="tag">创新传承</span>
+                  <span class="tag">非遗振兴</span>
+                  <span class="tag">宫廷京绣</span>
+                  <span class="tag">故宫收藏</span>
                 </div>
-                <a href="src/pages/inheritor-detail.html?id=3" class="card-btn mortise-btn-small">
+                <a href="src/pages/inheritors.html" class="card-btn mortise-btn-small">
                   <span>了解更多</span>
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
@@ -771,7 +796,7 @@
 
         <!-- 查看更多按钮 -->
         <div class="section-footer" data-aos="fade-up">
-          <a href="src/pages/museum.html#inheritors" class="view-more-btn">
+          <a href="src/pages/inheritors.html" class="view-more-btn">
             <span>查看全部传承人</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M4 10H16M12 6L16 10L12 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
