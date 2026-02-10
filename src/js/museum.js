@@ -28,7 +28,7 @@ import Utils from './utils.js';
         desc: '这件凤冠采用传统花丝镶嵌工艺制作，以金银为基材，运用掐、填、攒、焊等技法，镶嵌珍珠、宝石，展现了中国传统金工技艺的精湛水平。',
         unit: '故宫博物院',
         badge: '国宝级',
-        image: 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 440\'%3E%3Cdefs%3E%3ClinearGradient id=\'grad1\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' style=\'stop-color:%239D2933;stop-opacity:1\' /%3E%3Cstop offset=\'100%25\' style=\'stop-color:%237A1D25;stop-opacity:1\' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=\'url(%23grad1)\' width=\'400\' height=\'440\'/%3E%3Cg opacity=\'0.08\'%3E%3Cpath d=\'M0 20 L400 20 M0 40 L400 40 M0 60 L400 60\' stroke=\'%23D4AF37\' stroke-width=\'1\'/%3E%3C/g%3E%3Cg transform=\'translate(200, 200)\'%3E%3Cpath d=\'M-100 100 Q0 120 100 100 L110 120 Q0 140 -110 120 Z\' fill=\'%23D4AF37\' opacity=\'0.8\'/%3E%3Cpath d=\'M-40 0 Q0 -100 40 0 T-40 0\' fill=\'none\' stroke=\'%23D4AF37\' stroke-width=\'3\'/%3E%3Ccircle cx=\'0\' cy=\'-40\' r=\'7\' fill=\'%23E63946\' /%3E%3C/g%3E%3Ctext x=\'200\' y=\'370\' text-anchor=\'middle\' font-size=\'32\' fill=\'%23F5F0E8\' font-family=\'serif\' font-weight=\'bold\' opacity=\'0.9\'%3E花丝镶嵌凤冠%3C/text%3E%3C/svg%3E'
+        image: 'https://img.d-arts.cn/grab_img/29b4ffadfeb3241a98e460edc4e9a7eb1659582580.jpeg'
       },
       {
         id: 'f2',
@@ -38,7 +38,7 @@ import Utils from './utils.js';
         desc: '此香囊通体以细如发丝的金丝累织而成，呈如意形，两面镂空，镶嵌红绿宝石，工艺极其精细，体现了明代宫廷审美的华贵与细腻。',
         unit: '国家博物馆',
         badge: '一级文物',
-        image: 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 440\'%3E%3Cdefs%3E%3ClinearGradient id=\'grad2\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' style=\'stop-color:%231a3a3a;stop-opacity:1\' /%3E%3Cstop offset=\'100%25\' style=\'stop-color:%230d1d1d;stop-opacity:1\' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=\'url(%23grad2)\' width=\'400\' height=\'440\'/%3E%3Cg transform=\'translate(200, 200)\'%3E%3Cpath d=\'M-60 0 Q0 -80 60 0 T-60 0\' fill=\'none\' stroke=\'%23D4AF37\' stroke-width=\'2\'/%3E%3Ccircle cx=\'0\' cy=\'0\' r=\'10\' fill=\'%23E63946\' /%3E%3C/g%3E%3Ctext x=\'200\' y=\'370\' text-anchor=\'middle\' font-size=\'32\' fill=\'%23F5F0E8\' font-family=\'serif\' font-weight=\'bold\' opacity=\'0.9\'%3E金累丝嵌宝石香囊%3C/text%3E%3C/svg%3E'
+        image: 'https://k.sinaimg.cn/n/sinakd10120/206/w619h387/20200702/2b3f-ivwfwmn7241071.jpg/w700d1q75cms.jpg'
       }
     ],
     'cloisonne': [
@@ -50,7 +50,7 @@ import Utils from './utils.js';
         desc: '元代景泰蓝精品，釉色深沉稳重，掐丝豪放，缠枝莲纹饰饱满，是研究早期景泰蓝工艺的重要实物资料。',
         unit: '廊坊博物馆',
         badge: '镇馆之宝',
-        image: 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 440\'%3E%3Cdefs%3E%3ClinearGradient id=\'grad3\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' style=\'stop-color:%231e2a4a;stop-opacity:1\' /%3E%3Cstop offset=\'100%25\' style=\'stop-color:%2316213e;stop-opacity:1\' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=\'url(%23grad3)\' width=\'400\' height=\'440\'/%3E%3Cg transform=\'translate(200, 200)\'%3E%3Cpath d=\'M-80 40 Q0 80 80 40 L60 -60 Q0 -100 -60 -60 Z\' fill=\'%23D4AF37\' opacity=\'0.8\'/%3E%3Ccircle cx=\'0\' cy=\'0\' r=\'30\' fill=\'%23457B9D\' stroke=\'%23D4AF37\' stroke-width=\'2\'/%3E%3C/g%3E%3Ctext x=\'200\' y=\'370\' text-anchor=\'middle\' font-size=\'32\' fill=\'%23F5F0E8\' font-family=\'serif\' font-weight=\'bold\' opacity=\'0.9\'%3E景泰蓝鼎炉%3C/text%3E%3C/svg%3E'
+        image: 'https://ts1.tc.mm.bing.net/th/id/R-C.b8ea2d2771bc9cc6edcb0e58a8a0652d?rik=jGbAxYe6bxCm%2fQ&riu=http%3a%2f%2fwww.zhongyishoucang.com%2fimages%2fupload%2fimage%2f202011%2f20201107175002_92433.jpg&ehk=iKhdMb59aShlPqqUNAa2Ig95Vdg2XtJLjHbL18Y%2f3qA%3d&risl=&pid=ImgRaw&r=0'
       },
       {
         id: 'c2',
@@ -60,7 +60,7 @@ import Utils from './utils.js';
         desc: '这对麒麟造型雄健，色彩斑斓，珐琅质地细腻，镀金厚重，是清代宫廷陈设佳品。',
         unit: '廊坊文化馆',
         badge: '珍贵文物',
-        image: 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 440\'%3E%3Cdefs%3E%3ClinearGradient id=\'grad4\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' style=\'stop-color:%234a1e4a;stop-opacity:1\' /%3E%3Cstop offset=\'100%25\' style=\'stop-color:%232e162e;stop-opacity:1\' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=\'url(%23grad4)\' width=\'400\' height=\'440\'/%3E%3Cg transform=\'translate(200, 200)\'%3E%3Ccircle cx=\'0\' cy=\'0\' r=\'50\' fill=\'%23D4AF37\' opacity=\'0.8\'/%3E%3Cpath d=\'M-30 -30 L30 30 M-30 30 L30 -30\' stroke=\'white\' stroke-width=\'5\'/%3E%3C/g%3E%3Ctext x=\'200\' y=\'370\' text-anchor=\'middle\' font-size=\'32\' fill=\'%23F5F0E8\' font-family=\'serif\' font-weight=\'bold\' opacity=\'0.9\'%3E掐丝珐琅麒麟%3C/text%3E%3C/svg%3E'
+        image: 'https://ts1.tc.mm.bing.net/th/id/R-C.60e212952789f80bf4ab92f325e734c4?rik=1nwTWDN5%2fekB1g&riu=http%3a%2f%2fnjgx.org%2fjaney_editor%2fattached%2fimage%2f20150717%2f20150717150767806780.jpg&ehk=IvrsZBM7CJ96UBuvWQ2H73Z%2ffjI5bLMz%2bP4vNv6jJRQ%3d&risl=&pid=ImgRaw&r=0'
       }
     ],
     'crafts': [
@@ -72,19 +72,19 @@ import Utils from './utils.js';
         desc: '廊坊现代非遗工艺精品，器型优美，漆色光润，云龙纹饰栩栩如生，展现了现代传承人对传统工艺的继承与创新。',
         unit: '廊坊非遗中心',
         badge: '非遗精品',
-        image: 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 440\'%3E%3Cdefs%3E%3ClinearGradient id=\'grad5\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' style=\'stop-color:%23000000;stop-opacity:1\' /%3E%3Cstop offset=\'100%25\' style=\'stop-color:%23333333;stop-opacity:1\' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=\'url(%23grad5)\' width=\'400\' height=\'440\'/%3E%3Cellipse cx=\'200\' cy=\'200\' rx=\'60\' ry=\'100\' fill=\'%239D2933\' stroke=\'%23D4AF37\' stroke-width=\'2\'/%3E%3Ctext x=\'200\' y=\'370\' text-anchor=\'middle\' font-size=\'32\' fill=\'%23F5F0E8\' font-family=\'serif\' font-weight=\'bold\' opacity=\'0.9\'%3E脱胎漆器瓶%3C/text%3E%3C/svg%3E'
+        image: 'https://www.zsbeike.com/imgs/D/D11108/d11108.0171.2[07c0a85a85f8].jpg'
       }
     ],
     'inheritors': [
       {
         id: 'i1',
-        title: '花丝镶嵌传承人 - 张德和',
+        title: '景泰蓝传承人 - 马福良',
         era: '国家级',
-        craft: '花丝镶嵌',
-        desc: '张德和大师从事花丝镶嵌工艺五十余年，在继承传统技艺的基础上大胆创新，其作品多次获得国内外大奖。',
+        craft: '景泰蓝制作技艺',
+        desc: '马福良，国家级非物质文化遗产代表性项目景泰蓝制作技艺代表性传承人。他长期从事景泰蓝技艺的研究与创作，在继承传统的基础上，对釉料和掐丝工艺进行了多项创新。',
         unit: '廊坊市',
         badge: '国家级传承人',
-        image: 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 440\'%3E%3Cdefs%3E%3ClinearGradient id=\'grad6\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' style=\'stop-color:%233a1a1a;stop-opacity:1\' /%3E%3Cstop offset=\'100%25\' style=\'stop-color:%231d0d0d;stop-opacity:1\' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=\'url(%23grad6)\' width=\'400\' height=\'440\'/%3E%3Ccircle cx=\'200\' cy=\'180\' r=\'60\' fill=\'%23D4AF37\' opacity=\'0.8\'/%3E%3Cpath d=\'M140 300 Q200 260 260 300\' stroke=\'%23D4AF37\' stroke-width=\'3\' fill=\'none\'/%3E%3Ctext x=\'200\' y=\'370\' text-anchor=\'middle\' font-size=\'32\' fill=\'%23F5F0E8\' font-family=\'serif\' font-weight=\'bold\' opacity=\'0.9\'%3E张德和大师%3C/text%3E%3C/svg%3E'
+        image: '../assets/images/all-inheritors/马福良.jpg'
       }
     ],
     'culture': [
@@ -96,7 +96,7 @@ import Utils from './utils.js';
         desc: '通过数字化地图展示廊坊市各区县的非物质文化遗产分布情况，包括传统美术、传统技艺、民间文学等多个类别。',
         unit: '文化馆',
         badge: '文化专题',
-        image: 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 440\'%3E%3Cdefs%3E%3ClinearGradient id=\'grad7\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' style=\'stop-color:%231a3a1a;stop-opacity:1\' /%3E%3Cstop offset=\'100%25\' style=\'stop-color:%230d1d0d;stop-opacity:1\' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=\'url(%23grad7)\' width=\'400\' height=\'440\'/%3E%3Cpath d=\'M100 100 L300 100 L300 300 L100 300 Z\' fill=\'none\' stroke=\'%23D4AF37\' stroke-width=\'2\'/%3E%3Ccircle cx=\'150\' cy=\'150\' r=\'5\' fill=\'%23E63946\'/%3E%3Ccircle cx=\'250\' cy=\'250\' r=\'5\' fill=\'%23E63946\'/%3E%3Ctext x=\'200\' y=\'370\' text-anchor=\'middle\' font-size=\'32\' fill=\'%23F5F0E8\' font-family=\'serif\' font-weight=\'bold\' opacity=\'0.9\'%3E非遗分布图%3C/text%3E%3C/svg%3E'
+        image: 'https://ts1.tc.mm.bing.net/th/id/OIP-C.t9akY6AW4VTITutxzc05iAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3'
       }
     ]
   };
