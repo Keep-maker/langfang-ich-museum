@@ -21,24 +21,24 @@ import Utils from './utils.js';
   const EXHIBITS_DATA = {
     'filigree': [
       {
-        id: 'f1',
-        title: '花丝镶嵌凤冠',
-        era: '清代',
-        craft: '花丝镶嵌、点翠、累丝',
-        desc: '这件凤冠采用传统花丝镶嵌工艺制作，以金银为基材，运用掐、填、攒、焊等技法，镶嵌珍珠、宝石，展现了中国传统金工技艺的精湛水平。',
-        unit: '故宫博物院',
-        badge: '国宝级',
-        image: 'https://img.d-arts.cn/grab_img/29b4ffadfeb3241a98e460edc4e9a7eb1659582580.jpeg'
+        id: 'f3',
+        title: '花丝镶嵌繁花纹饰盘',
+        era: '现代',
+        craft: '花丝镶嵌、点翠、錾刻',
+        desc: '这件作品采用了传统花丝镶嵌技法，盘面装饰有繁复的花卉纹样，中心镶嵌红宝石，工艺考究，色彩典雅，是当代花丝技艺的杰出代表。',
+        unit: '廊坊非遗中心',
+        badge: '精品展品',
+        image: 'https://n.sinaimg.cn/sinacn10104/489/w640h649/20190107/636e-hrfcctn3626828.jpg'
       },
       {
-        id: 'f2',
-        title: '金累丝嵌宝石香囊',
-        era: '明代',
-        craft: '累丝、镶嵌',
-        desc: '此香囊通体以细如发丝的金丝累织而成，呈如意形，两面镂空，镶嵌红绿宝石，工艺极其精细，体现了明代宫廷审美的华贵与细腻。',
-        unit: '国家博物馆',
-        badge: '一级文物',
-        image: 'https://k.sinaimg.cn/n/sinakd10120/206/w619h387/20200702/2b3f-ivwfwmn7241071.jpg/w700d1q75cms.jpg'
+        id: 'f4',
+        title: '花丝镶嵌如意摆件',
+        era: '现代',
+        craft: '花丝镶嵌、累丝',
+        desc: '此件如意摆件造型优美，花丝排布均匀细密，展现了高超的累丝技艺，是廊坊非遗文化中极具代表性的现代工艺品。',
+        unit: '廊坊非遗中心',
+        badge: '新增展品',
+        image: 'https://n.sinaimg.cn/sinacn10104/465/w690h575/20190107/ddc7-hrfcctn3626762.jpg'
       }
     ],
     'cloisonne': [
@@ -180,6 +180,9 @@ import Utils from './utils.js';
     infoPanel = document.getElementById('infoPanel');
     sceneDots = Array.from(document.querySelectorAll('.scene-dot'));
     particlesContainer = document.getElementById('particles');
+    // 展品展示
+    State.featuredImg = document.getElementById('featuredExhibitImg');
+    State.guideHint = document.querySelector('.guide-hint');
     // 展品容器
     State.exhibitsGrid = document.querySelector('.exhibits-grid');
     updateExhibitCardsList();
@@ -517,6 +520,21 @@ import Utils from './utils.js';
           'culture': 'radial-gradient(circle at center, #1a1a1a 0%, #000000 100%)'
         };
         hallScene.style.background = colors[State.currentHall] || colors.filigree;
+
+        // 更新中心展示展品
+        const hallData = EXHIBITS_DATA[State.currentHall] || [];
+        if (hallData.length > 0 && State.featuredImg) {
+          const exhibit = hallData[State.currentScene % hallData.length];
+          State.featuredImg.src = exhibit.image;
+          State.featuredImg.alt = exhibit.title;
+          State.featuredImg.style.opacity = '1';
+          State.featuredImg.style.transform = 'scale(1)';
+
+          // 隐藏导览提示
+          if (State.guideHint) {
+            State.guideHint.style.display = 'none';
+          }
+        }
       }, 300);
     }
 
